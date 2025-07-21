@@ -1,0 +1,63 @@
+import funkin.modding.module.Module;
+import flixel.FlxG;
+import funkin.Paths;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.util.ReflectUtil;
+import funkin.ui.freeplay.SongMenuItem;
+import funkin.audio.FunkinSound;
+import funkin.modding.base.ScriptedMusicBeatSubState;
+import StringTools;
+import flixel.util.FlxTimer;
+import funkin.PlayerSettings;
+import StringTools;
+
+class FreeplayCapsule extends Module {
+
+	public function new(){
+		super('FreeplayCapsule');
+	}
+
+	override function onSubStateOpenEnd(event) {
+        super.onSubStateOpenEnd(event);
+        if (Std.isOfType(event.targetState, FreeplayState)) {
+			var state = event.targetState;
+			if (event.targetState.currentDifficulty != 'siiva') return;
+			for (capsule in event.targetState.grpCapsules.members){
+				if (capsule?.freeplayData != null) {
+					weekText(capsule);
+				}
+			}	
+		}
+	}
+
+	function weekText(cap:SongMenuItem) {
+		if (cap?.freeplayData == null) return;
+		var songID = cap.freeplayData.data.id;
+		var swagGoodArray:Array<String> = [];
+		var extractedSongID:String;
+		swagGoodArray = songID.split('-');
+		if (StringTools.contains(songID, 'winter-horrorland') || StringTools.contains(songID, 'satin-panties') || StringTools.contains(songID, 'lit-up')) 
+			extractedSongID = swagGoodArray[0] + '-' + swagGoodArray[1]; 
+		else 
+			extractedSongID = swagGoodArray[0];
+		cap.checkWeek(extractedSongID);
+	}
+	
+	override function onUpdate(event:UpdateScriptEvent) {
+		super.onUpdate(event);
+		if (Std.isOfType(FlxG.state.subState, FreeplayState))
+			{
+				//Prevents from running if the Freeplay state is busy (Ex. Choosing an inst, choosing a Doki for Catfight, first load, currently loading a song)
+				if (!FlxG.state.subState.busy && (PlayerSettings.player1.controls.UI_LEFT_P || PlayerSettings.player1.controls.UI_RIGHT_P || FlxG.keys.justPressed.Q || FlxG.keys.justPressed.E)){
+					new FlxTimer().start(0.1, _ -> {
+						if (FlxG.state.subState.currentDifficulty != 'siiva') return;
+						for (capsule in FlxG.state.subState.grpCapsules.members){
+							if (capsule?.freeplayData != null) {
+								weekText(capsule);
+							}
+						}	
+					});			
+				}
+			}		
+	}
+}

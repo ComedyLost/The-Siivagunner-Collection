@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "name": "Pico (Fetty Wap)",
+  "assetPath": "characters/Pico_FNF_assetss_fetty",
+  "flipX": true,
+  "healthIcon": {
+    "id": "pico-fetty"
+  },
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "Pico Idle Dance",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "Pico NOTE LEFT0",
+      "offsets": [-86, -10]
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "Pico Down Note0",
+      "offsets": [183, -72]
+    },
+    {
+      "name": "singUP",
+      "prefix": "pico Up note0",
+      "offsets": [-32, 28]
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "Pico Note Right0",
+      "offsets": [61, 2]
+    }
+  ]
+}

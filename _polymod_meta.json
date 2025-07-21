@@ -1,0 +1,14 @@
+{
+  "title": "The Siivagunner Collection",
+  "description": "A port of all Siivagunner base game rips into V-Slice.",
+  "contributors": [
+    {
+      "name": "Comedy Lost",
+      "role": "Porting",
+      "url": "https://www.youtube.com/channel/UCGUHN_tmfSFAzKa3hOhHT-Q"
+    }
+  ],
+  "api_version": "0.6.3",
+  "mod_version": "1.0.0",
+  "license": "Apache-2.0"
+}

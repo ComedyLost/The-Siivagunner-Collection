@@ -1,0 +1,112 @@
+{
+  "version": "1.0.0",
+  "name": "Boyfriend (Car) (Steven)",
+  "assetPath": "characters/bfCar-steven",
+  "flipX": true,
+  "renderType": "multisparrow",
+  "singTime": 8.0,
+  "healthIcon": {
+    "id": "bf-steven"
+  },
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "BF idle dance",
+      "offsets": [-5, -10]
+    },
+    {
+      "name": "idle-hold",
+      "prefix": "BF idle dance",
+      "frameIndices": [10, 11, 12, 13],
+      "looped": true,
+      "offsets": [-5, -10]
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "BF NOTE LEFT0",
+      "offsets": [12, -16]
+    },
+	{
+      "name": "singLEFT-hold",
+      "prefix": "BF NOTE LEFT0",
+      "frameIndices": [12, 13, 14, 15],
+      "looped": true,
+      "offsets": [12, -16]
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "BF NOTE DOWN0",
+      "offsets": [-10, -60]
+    },
+	{
+      "name": "singDOWN-hold",
+      "prefix": "BF NOTE DOWN0",
+      "frameIndices": [26, 27, 28, 29],
+      "looped": true,
+      "offsets": [-10, -60]
+    },
+    {
+      "name": "singUP",
+      "prefix": "BF NOTE UP0",
+      "offsets": [-29, 13]
+    },
+	{
+      "name": "singUP-hold",
+      "prefix": "BF NOTE UP0",
+      "frameIndices": [11, 12, 13, 14],
+      "looped": true,
+      "offsets": [-29, 13]
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "BF NOTE RIGHT0",
+      "offsets": [-38, -17]
+    },
+	{
+      "name": "singRIGHT-hold",
+      "prefix": "BF NOTE RIGHT0",
+      "frameIndices": [58, 59, 60, 61],
+      "looped": true,
+      "offsets": [-38, -17]
+    },
+    {
+      "name": "singLEFTmiss",
+      "prefix": "BF NOTE LEFT MISS",
+      "offsets": [12, -17]
+    },
+    {
+      "name": "singDOWNmiss",
+      "prefix": "BF NOTE DOWN MISS",
+      "offsets": [-11, -60]
+    },
+    {
+      "name": "singUPmiss",
+      "prefix": "BF NOTE UP MISS",
+      "offsets": [-29, -5]
+    },
+    {
+      "name": "singRIGHTmiss",
+      "prefix": "BF NOTE RIGHT MISS",
+      "offsets": [-30, -17]
+    },
+    {
+      "name": "firstDeath",
+      "prefix": "BF dies",
+      "assetPath": "characters/stevenDead",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "deathLoop",
+      "prefix": "BF Dead Loop",
+      "assetPath": "characters/stevenDead",
+      "looped": true,
+      "offsets": [-2, -17]
+    },
+    {
+      "name": "deathConfirm",
+      "prefix": "BF Dead confirm",
+      "assetPath": "characters/stevenDead",
+      "offsets": [-2, 43]
+    }
+  ]
+}

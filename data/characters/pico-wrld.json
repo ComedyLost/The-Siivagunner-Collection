@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "name": "Pico (Juice WRLD)",
+  "assetPath": "characters/Pico_FNF_assetss_wrld",
+  "flipX": true,
+  "offsets": [-20, 40],
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "Pico Idle Dance",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "Pico NOTE LEFT0",
+      "offsets": [-76, -10]
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "Pico Down Note0",
+      "offsets": [198, -72]
+    },
+    {
+      "name": "singUP",
+      "prefix": "pico Up note0",
+      "offsets": [-27, 23]
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "Pico Note Right0",
+      "offsets": [66, 4]
+    }
+  ]
+}

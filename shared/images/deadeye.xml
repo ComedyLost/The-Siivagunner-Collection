@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="deadeye.png">
+	<!-- Created with Adobe Animate version 20.5.1.31044 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bf dead eye0000" x="8" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0001" x="52" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0002" x="52" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0003" x="96" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0004" x="96" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0005" x="140" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0006" x="140" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0007" x="184" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0008" x="184" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0009" x="8" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0010" x="8" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0011" x="52" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0012" x="52" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0013" x="96" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0014" x="96" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0015" x="140" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0016" x="184" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0017" x="8" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0018" x="52" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0019" x="52" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0020" x="96" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0021" x="96" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0022" x="140" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0023" x="140" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0024" x="184" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0025" x="184" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0026" x="8" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0027" x="8" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0028" x="52" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0029" x="52" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0030" x="96" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0031" x="96" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0032" x="140" y="8" width="34" height="67"/>
+	<SubTexture name="bf dead eye0033" x="184" y="8" width="34" height="67"/>
+</TextureAtlas>

@@ -1,0 +1,65 @@
+import funkin.audio.FunkinSound;
+import funkin.play.character.MultiSparrowCharacter;
+import funkin.play.GameOverSubState;
+import flixel.util.FlxTimer;
+import funkin.graphics.FunkinSprite;
+import Math;
+
+class BoyfriendCarStevenCharacter extends MultiSparrowCharacter
+{
+    function new()
+    {
+        super('bf-car-steven');
+    }
+
+    override function onGameOver(event):Void
+    {
+        super.onGameOver(event);
+        
+        // plays the dust sound effect on a delay
+        new FlxTimer().start(0.6, ()->{
+            FunkinSound.playOnce(Paths.sound('dust'), 1.0);
+        });
+    }
+
+    var eye:FunkinSprite;
+
+    override function playAnimation(name:String, restart:Bool, ignoreOther:Bool):Void
+    {
+        switch (name) {
+            case 'firstDeath':
+                createEye();
+            
+            case 'deathLoop':
+                // ensure it's fully visible
+                eye.alpha = 1;
+        }
+
+        super.playAnimation(name, restart, ignoreOther);
+    }
+
+    var fadeStartFrame:Int = 35;
+    var fadeEndFrame:Int = 51;
+    override function onAnimationFrame(name:String, frameNumber:Int, frameIndex:Int):Void
+    {
+        super.onAnimationFrame(name, frameNumber, frameIndex);
+
+        if (name == 'firstDeath')
+        {
+            // Increases the eye's alpha each frame in sync with the brain. Done through math rather than a FlxTween to emulate 24 fps
+            eye.alpha = Math.max(0, (frameNumber - fadeStartFrame) / (fadeEndFrame - fadeStartFrame));
+        }
+    }
+
+    function createEye():Void
+    {
+        eye = FunkinSprite.createSparrow(0, 0, 'deadeye');
+        eye.animation.addByPrefix('idle', 'bf dead eye0', 24, true);
+        eye.alpha = 0.001;
+
+        GameOverSubState.instance.add(eye);
+        eye.animation.play('idle');
+        eye.x = this.x + 262;
+        eye.y = this.y + 110;
+    }
+}

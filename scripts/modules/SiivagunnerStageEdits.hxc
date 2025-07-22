@@ -1,0 +1,27 @@
+import funkin.play.PlayState;
+
+import funkin.modding.module.Module;
+
+import funkin.Paths;
+import flixel.FlxG;
+
+class SiivagunnerStageEdits extends Module
+{
+	function new()
+	{
+		super('SiivagunnerStageEdits');
+	}
+
+	override function onSongLoaded(event) {
+		super.onSongLoaded(event);
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		switch (PlayState.instance.currentSong.id.toLowerCase()) { // Replace some stage assets so we don't have to make new stages for small edits
+			case "high-eu-version":
+				PlayState.instance.currentStage.getNamedProp('limo').loadSparrow('limo/limoDriveEU');
+				PlayState.instance.currentStage.getNamedProp('limo').animation.addByPrefix('drive', 'Limo stage', 24, true);
+				PlayState.instance.currentStage.getNamedProp('limo').animation.play('drive', true);
+		}
+	}	
+}

@@ -1,0 +1,89 @@
+{
+  "version": "1.0.0",
+  "name": "Boyfriend (Car EU)",
+  "assetPath": "characters/bfCarEu",
+  "flipX": true,
+  "renderType": "multisparrow",
+  "singTime": 8.0,
+  "healthIcon": {
+    "id": "bf-car-eu"
+  },
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "BF idle dance",
+      "offsets": [0, -22]
+    },
+    {
+      "name": "idle-hold",
+      "prefix": "BF idle dance",
+      "frameIndices": [10, 11, 12, 13],
+      "looped": true,
+      "offsets": [0, -22]
+    },
+    {
+      "name": "BF LoveIntro",
+      "prefix": "BF LoveIntro",
+      "offsets": [0, -22]
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "BF NOTE LEFT0",
+      "offsets": [10, -34]
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "BF NOTE DOWN0",
+      "offsets": [-19, -74]
+    },
+    {
+      "name": "singUP",
+      "prefix": "BF NOTE UP0",
+      "offsets": [-37, -15]
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "BF NOTE RIGHT0",
+      "offsets": [-47, -27]
+    },
+    {
+      "name": "singLEFTmiss",
+      "prefix": "BF NOTE LEFT MISS",
+      "offsets": [12, 2]
+    },
+    {
+      "name": "singDOWNmiss",
+      "prefix": "BF NOTE DOWN MISS",
+      "offsets": [-11, -41]
+    },
+    {
+      "name": "singUPmiss",
+      "prefix": "BF NOTE UP MISS",
+      "offsets": [-29, 5]
+    },
+    {
+      "name": "singRIGHTmiss",
+      "prefix": "BF NOTE RIGHT MISS",
+      "offsets": [-30, -1]
+    },
+    {
+      "name": "firstDeath",
+      "prefix": "BF dies",
+      "assetPath": "characters/bfCar",
+      "offsets": [24, -16]
+    },
+    {
+      "name": "deathLoop",
+      "prefix": "BF Dead Loop",
+      "assetPath": "characters/bfCar",
+      "looped": true,
+      "offsets": [24, -19]
+    },
+    {
+      "name": "deathConfirm",
+      "prefix": "BF Dead confirm",
+      "assetPath": "characters/bfCar",
+      "offsets": [23, 51]
+    }
+  ]
+}

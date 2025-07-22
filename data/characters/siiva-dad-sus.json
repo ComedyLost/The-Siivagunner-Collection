@@ -1,0 +1,220 @@
+{
+	"version": "1.0.0",
+	"renderType": "sparrow",
+	"offsets": [
+		20,
+		20
+	],
+	"danceEvery": 1,
+	"scale": 1,
+	"name": "Red Imposter",
+	"cameraOffsets": [
+		20,
+		20
+	],
+	"flipX": false,
+	"singTime": 8,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"assetPath": "characters/DADDY_DEAREST_SUS",
+	"healthIcon": {
+		"offsets": [
+			20,
+			20
+		],
+		"id": "siiva-dad-sus",
+		"flipX": false,
+		"isPixel": false,
+		"scale": 1
+	},
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				20,
+				20
+			],
+			"frameRate": 24,
+			"prefix": "Dad idle dance",
+			"flipX": false,
+			"looped": false,
+			"name": "idle"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				20,
+				20
+			],
+			"frameRate": 24,
+			"prefix": "Dad idle dance",
+			"frameIndices": [
+				31,
+				32
+			],
+			"flipX": false,
+			"name": "idle-hold",
+			"looped": true
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				10,
+				30
+			],
+			"frameRate": 24,
+			"prefix": "Dad Sing Note LEFT",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				10,
+				30
+			],
+			"frameRate": 24,
+			"prefix": "Dad Sing Note LEFT",
+			"frameIndices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16
+			],
+			"flipX": false,
+			"name": "singLEFT-hold",
+			"looped": true
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				20,
+				-10
+			],
+			"frameRate": 24,
+			"prefix": "Dad Sing Note DOWN",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWN"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				20,
+				-10
+			],
+			"frameRate": 24,
+			"prefix": "Dad Sing Note DOWN",
+			"frameIndices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16
+			],
+			"flipX": false,
+			"name": "singDOWN-hold",
+			"looped": true
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				14,
+				70
+			],
+			"frameRate": 24,
+			"prefix": "Dad Sing Note UP",
+			"flipX": false,
+			"looped": false,
+			"name": "singUP"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				16,
+				70
+			],
+			"frameRate": 24,
+			"prefix": "Dad Sing Note UP",
+			"frameIndices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16
+			],
+			"flipX": false,
+			"name": "singUP-hold",
+			"looped": true
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				20,
+				47
+			],
+			"frameRate": 24,
+			"prefix": "Dad Sing Note RIGHT",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				20,
+				47
+			],
+			"frameRate": 24,
+			"prefix": "Dad Sing Note RIGHT",
+			"frameIndices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16
+			],
+			"flipX": false,
+			"name": "singRIGHT-hold",
+			"looped": true
+		}
+	]
+}

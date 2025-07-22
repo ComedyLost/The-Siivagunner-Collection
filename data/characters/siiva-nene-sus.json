@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "name": "Pink Imposter",
+  "assetPath": "characters/siiva-nene-sus",
+  "startingAnimation": "danceRight",
+  "offsets": [0, -100],
+  "animations": [
+    {
+      "name": "danceLeft",
+      "prefix": "Nene Idle",
+      "frameIndices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+      "offsets": [-75, 160]
+    },
+    {
+      "name": "danceRight",
+      "prefix": "Nene Idle",
+      "frameIndices": [
+        15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29
+      ],
+      "offsets": [-75, 160]
+    },
+    {
+      "name": "idleKnife",
+      "prefix": "knife high held",
+      "offsets": [-174, 138]
+    },
+    {
+      "name": "raiseKnife",
+      "prefix": "knife raise",
+      "offsets": [-135, 138]
+    },
+    {
+      "name": "lowerKnife",
+      "prefix": "knife lower",
+      "offsets": [-40, 138]
+    }
+  ]
+}

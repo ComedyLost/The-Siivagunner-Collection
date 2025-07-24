@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "name": "Mario",
+  "assetPath": "characters/Pico_FNF_assetss_mario",
+  "flipX": true,
+  "healthIcon": {
+    "id": "mario"
+  },
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "Pico Idle Dance",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "Pico NOTE LEFT0",
+      "offsets": [-66, -5]
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "Pico Down Note0",
+      "offsets": [193, -77]
+    },
+    {
+      "name": "singUP",
+      "prefix": "pico Up note0",
+      "offsets": [-7, 28]
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "Pico Note Right0",
+      "offsets": [51, 7]
+    }
+  ]
+}

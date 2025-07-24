@@ -1,0 +1,91 @@
+import funkin.play.PlayState;
+
+import funkin.modding.module.Module;
+
+import funkin.Paths;
+import flixel.FlxG;
+import Date;
+import funkin.play.character.CharacterDataParser;
+import funkin.play.character.CharacterType;
+import funkin.audio.VoicesGroup;
+import funkin.audio.FunkinSound;
+
+class KillMario extends Module
+{
+	function new()
+	{
+		super('KillMario');
+	}
+
+	var kill:Bool;
+
+  	function onNoteHit(event:HitNoteScriptEvent) {
+    	super.onNoteHit(event);
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		if (PlayState.instance.currentSong.id.toLowerCase() != 'dadbattle-in-game-version') return;
+    	if (!event.note.noteData.getMustHitNote() && kill) {
+      		event.cancelEvent();
+      		PlayState.instance.vocals.opponentVolume = 0;
+    	}
+  	}
+	override function onSongStart(event) {
+		super.onSongStart(event);
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+      	if (PlayState.instance.currentSong.id.toLowerCase() == 'dadbattle-in-game-version' && kill) PlayState.instance.vocals.opponentVolume = 0;
+	}
+
+	override function onSongLoaded(event) {
+		super.onSongLoaded(event);
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		if (PlayState.instance.currentSong.id.toLowerCase() == 'dadbattle-in-game-version') {
+			if (Date.now().getMonth() == 2 && Date.now().getDate() == 31) kill = true; // If today's date is March 31st, Kill Mario
+			else kill = false;
+			//kill = FlxG.random.bool(10);
+			if (!kill) return;
+			PlayState.instance.currentStage.getDad().destroy();
+			character = CharacterDataParser.fetchCharacter("mario-gone");
+			PlayState.instance.currentStage.addCharacter(character, CharacterType.DAD);
+			PlayState.instance.currentStage.refresh();
+			PlayState.instance.vocals.stop();
+			PlayState.instance.vocals = buildVocals();
+      		PlayState.instance.vocals.opponentVolume = 0;
+		}
+	}
+
+	public function buildPlayerVoiceList():Array<String>{		  
+		// Automatically resolve voices by removing suffixes.
+		// For example, if `Voices-bf-car-erect.ogg` does not exist, check for `Voices-bf-erect.ogg`.
+		// Then, check for  `Voices-bf-car.ogg`, then `Voices-bf.ogg`.
+	  
+		var playerVoice:String = Paths.voices(PlayState.instance.currentSong.id.toLowerCase(), '-' + PlayState.instance.currentChart.characters.player + '-dead');
+			  
+		return playerVoice != null ? [playerVoice] : [];
+	}		  
+
+	public function buildVocals():VoicesGroup {
+		var result:VoicesGroup = new VoicesGroup();
+		  
+		var playerVoiceList:Array<String> = buildPlayerVoiceList();
+		var opponentVoiceList:Array<String> = PlayState.instance.currentChart.buildOpponentVoiceList();
+
+		// Add player vocals.
+		for (playerVoice in playerVoiceList) {
+			result.addPlayerVoice(FunkinSound.load(playerVoice));
+		}
+
+		for (opponentVoice in opponentVoiceList) {
+    		result.addOpponentVoice(FunkinSound.load(opponentVoice));
+    	}
+		  
+		result.playerVoicesOffset = PlayState.instance.currentChart.offsets.getVocalOffset(PlayState.instance.currentChart.characters.player, '');
+		result.opponentVoicesOffset = PlayState.instance.currentChart.offsets.getVocalOffset(PlayState.instance.currentChart.characters.opponent, '');
+
+		return result;
+	}
+}

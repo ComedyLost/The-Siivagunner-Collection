@@ -44,6 +44,8 @@ class DefaultSoundTray extends Module
 
 	var _defaultScale:Float = 2.0;
 
+	var _bgbars:Array<Bitmap>;
+
 	//Bring back the classic cuz I am evil >:)
 	override function onCreate(event:ScriptEvent)
 	{
@@ -73,6 +75,16 @@ class DefaultSoundTray extends Module
 
 
 		FlxG.sound.soundTray._bars = [];
+		_bgbars = new Array();
+
+		var bgtmp:Bitmap;
+		for (i in 0...10)
+		{
+			bgtmp = new Bitmap(new BitmapData(4, i + 1, false, 0xFFFFFFFF));
+			bgtmp.alpha = 0.5;
+			FlxG.sound.soundTray.addChild(bgtmp);
+			_bgbars.push(bgtmp);
+		}
 
 		var tmp:Bitmap;
 		for (i in 0...10)
@@ -81,6 +93,7 @@ class DefaultSoundTray extends Module
 			FlxG.sound.soundTray.addChild(tmp);
 			FlxG.sound.soundTray._bars.push(tmp);
 		}
+
 		updateSize();
 		FlxG.sound.soundTray.y = -FlxG.sound.soundTray.height;
 		FlxG.sound.soundTray.visible = false;
@@ -96,6 +109,15 @@ class DefaultSoundTray extends Module
 		
 		_label.width = _bg.width;
 		
+		var bbx:Int = Std.int(_bg.width / 2 - 30);
+		var bby:Int = 14;
+		for (i in 0..._bgbars.length)
+		{
+			_bgbars[i].x = bbx;
+			_bgbars[i].y = bby;
+			bbx += 6;
+			bby--;
+		}
 		var bx:Int = Std.int(_bg.width / 2 - 30);
 		var by:Int = 14;
 		for (i in 0...FlxG.sound.soundTray._bars.length)

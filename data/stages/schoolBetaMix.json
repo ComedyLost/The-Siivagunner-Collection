@@ -15,7 +15,7 @@
     {
       "danceEvery": 0,
       "zIndex": 20,
-      "position": [-216, -38],
+      "position": [-816, -38],
       "scale": [6, 6],
       "animType": "sparrow",
       "name": "school",
@@ -27,7 +27,7 @@
     {
       "danceEvery": 0,
       "zIndex": 30,
-      "position": [-200, 6],
+      "position": [-662, 6],
       "scale": [6, 6],
       "animType": "sparrow",
       "name": "street",

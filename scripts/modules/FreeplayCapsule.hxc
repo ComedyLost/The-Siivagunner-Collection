@@ -50,11 +50,7 @@ class FreeplayCapsule extends Module {
 		if (Std.isOfType(FlxG.state.subState, FreeplayState))
 			{
 				var switched = PlayerSettings.player1.controls.UI_LEFT_P || PlayerSettings.player1.controls.UI_RIGHT_P || FlxG.keys.justPressed.Q || FlxG.keys.justPressed.E;
-				if (FlxG.onMobile) {
-					switched = TouchUtil.pressAction(FlxG.state.subState.diffSelLeft, FlxG.state.subState.funnyCam, false) || TouchUtil.pressAction(FlxG.state.subState.diffSelRight, FlxG.state.subState.funnyCam, false);
-					switched = SwipeUtil.swipeLeft || SwipeUtil.swipeRight;
-				}
-				if (!FlxG.state.subState.busy && switched){
+				if (!FlxG.state.subState.busy && (switched || TouchUtil.pressAction(FlxG.state.subState.diffSelLeft, FlxG.state.subState.funnyCam, false) || TouchUtil.pressAction(FlxG.state.subState.diffSelRight, FlxG.state.subState.funnyCam, false) || SwipeUtil.swipeLeft || SwipeUtil.swipeRight)){
 					new FlxTimer().start(0.1, _ -> {
 						if (FlxG.state.subState.currentDifficulty != 'siiva') return;
 						for (capsule in FlxG.state.subState.grpCapsules.members){

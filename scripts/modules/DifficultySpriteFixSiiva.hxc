@@ -1,6 +1,7 @@
 import funkin.play.PlayState;
 import funkin.modding.module.Module;
 import funkin.util.Constants;
+import flixel.FlxG;
 
 class DifficultySpriteFixSiiva extends Module
 {
@@ -11,6 +12,6 @@ class DifficultySpriteFixSiiva extends Module
             this.active = false;
             FlxG.signals.postGameStart.addOnce(function() {
 			    if (!Constants.DEFAULT_DIFFICULTY_LIST_FULL.contains('siiva')) Constants.DEFAULT_DIFFICULTY_LIST_FULL.push("siiva");
-            })
+            });
         }    
 }

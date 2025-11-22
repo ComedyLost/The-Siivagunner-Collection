@@ -34,6 +34,7 @@ import funkin.modding.base.MusicBeatState;
 import funkin.modding.module.Module;
 
 import funkin.Paths;
+import funkin.FunkinMemory;
 
 import Std;
 class SiivaTitleState extends Module
@@ -44,6 +45,7 @@ class SiivaTitleState extends Module
 		super('SiivaTitleState');
 	}
 	
+	var ringtone:String;
 	var version:String;
 	
 	function startIntro(){
@@ -78,14 +80,32 @@ class SiivaTitleState extends Module
 
 	override function onUpdate(event) 
 		{
-			if (FlxG != null && Std.isOfType(FlxG.state, TitleState) && version == 'PT') {
-				if (!FlxG.state.skippedIntro && FlxG.state.lastBeat <= 17) {
+			if (FlxG != null && Std.isOfType(FlxG.state, TitleState)) {
+				if (!FlxG.state.skippedIntro && FlxG.state.lastBeat <= 17 && version == 'PT') {
 					switch (FlxG.state.lastBeat) {
 						case 7:
 							FlxG.state.textGroup.remove(FlxG.state.textGroup.members[2], true);
 							FlxG.state.addMoreText('Tour De Pizza');
 					}	
 				}
+
+				if (FlxG.state.cheatActive && FlxG.state.gfDance.shader == null) {
+
+					FunkinSound.playMusic('girlfriendsRingtone-' + ringtone,
+					{
+						startingVolume: 0.0,
+						overrideExisting: true,
+						restartTrack: true
+					});
+
+					FlxG.sound.music.fadeIn(4.0, 0.0, 1.0);
+
+					FlxG.state.gfDance.frames = Paths.getSparrowAtlas('title/' + ringtone + '/gfDanceTitle');
+					FlxG.state.gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);				
+					FlxG.state.gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+					FlxG.state.gfDance.shader = FlxG.state.swagShader.shader;
+				}
+
 				super.onUpdate(event);
 			}
 		}	
@@ -93,6 +113,11 @@ class SiivaTitleState extends Module
 		{
 			super.onStateChangeEnd(event);
 			if (Std.isOfType(FlxG.state, TitleState) && FlxG.save.data.siivatitle) {
+				var ringtones:Array<String> = ["antonymph"];
+				ringtone = ringtones[FlxG.random.int(0, ringtones.length - 1)];
+
+				FunkinMemory.cacheSound(Paths.music('girlfriendsRingtone-' + ringtone + '/girlfriendsRingtone-' + ringtone));
+				
 				if (!TitleState.initialized) new FlxTimer().start(1, function(tmr:FlxTimer) {
       				startIntro();
     			});
@@ -100,6 +125,7 @@ class SiivaTitleState extends Module
       				startIntro();
 			} else {
 				version = '';
+				ringtone = '';
 			}
 		}
 }

@@ -41,22 +41,22 @@
     {
       "name": "singLEFTmiss",
       "prefix": "Pico NOTE LEFT miss",
-      "offsets": [61, -50]
+      "offsets": [52, -9]
     },
     {
       "name": "singDOWNmiss",
       "prefix": "Pico Down Note MISS",
-      "offsets": [30, -115]
+      "offsets": [30, -75]
     },
     {
       "name": "singUPmiss",
       "prefix": "pico Up note miss",
-      "offsets": [14, -16]
+      "offsets": [19, 34]
     },
     {
       "name": "singRIGHTmiss",
       "prefix": "Pico Note Right Miss",
-      "offsets": [-70, -58]
+      "offsets": [-69, 1]
     },
     {
       "name": "firstDeath",

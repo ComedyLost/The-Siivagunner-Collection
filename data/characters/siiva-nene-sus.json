@@ -22,17 +22,17 @@
     {
       "name": "idleKnife",
       "prefix": "knife high held",
-      "offsets": [-174, 138]
+      "offsets": [-74, 258]
     },
     {
       "name": "raiseKnife",
       "prefix": "knife raise",
-      "offsets": [-135, 138]
+      "offsets": [-35, 260]
     },
     {
       "name": "lowerKnife",
       "prefix": "knife lower",
-      "offsets": [-40, 138]
+      "offsets": [-29, 257]
     }
   ]
 }

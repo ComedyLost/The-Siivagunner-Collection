@@ -33,6 +33,11 @@ class SiivagunnerStageEdits extends Module
 				PlayState.instance.currentStage.getNamedProp('stageBack').loadTexture('inGame/stageback');
 				PlayState.instance.currentStage.getNamedProp('stageFront').loadTexture('inGame/stagefront');
 				PlayState.instance.currentStage.getNamedProp('stageCurtains').loadTexture('inGame/stagecurtains');
+			case "pico-in-game-version":
+				PlayState.instance.currentStage.getNamedProp('stageBack').loadTexture('picoInGame/stageback');
+				PlayState.instance.currentStage.getNamedProp('stageFront').loadTexture('picoInGame/stagefront');
+				PlayState.instance.currentStage.getNamedProp('stageCurtains').loadTexture('picoInGame/stagecurtains');
+
 			case "high-eu-version":
 				PlayState.instance.currentStage.getNamedProp('limo').loadSparrow('limo/limoDriveEU');
 				PlayState.instance.currentStage.getNamedProp('limo').animation.addByPrefix('drive', 'Limo stage', 24, true);

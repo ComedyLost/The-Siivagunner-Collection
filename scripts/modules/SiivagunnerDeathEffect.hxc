@@ -57,7 +57,7 @@ class SiivagunnerDeath extends Module
 		
 		if (PlayState.instance.currentDifficulty != 'siiva') return;
 
-		if (!hasPlayedCutscene && (!PlayStatePlaylist.isStoryMode || PlayStatePlaylist.isStoryMode && PlayStatePlaylist.playlistSongIds.shift() == null)) {
+		if (!hasPlayedCutscene && (!PlayStatePlaylist.isStoryMode || (PlayStatePlaylist.isStoryMode && PlayStatePlaylist.playlistSongIds.copy().shift() == null))) {
 			if (event.eventCanceled) return;
 			hasPlayedCutscene = true;
 			event.cancel();
@@ -93,6 +93,7 @@ class SiivagunnerDeath extends Module
 				new FlxTimer().start(1.3, function(_) {
 					if (PlayState.instance == null) return; // Just in case you SOMEHOW leave this screen before it's finished
 					//Highscore.tallies.totalNotesHit = Highscore.tallies.sick = Highscore.tallies.maxCombo = Highscore.tallies.totalNotes = 1;
+					GameOverSubState.instance.close();
 					PlayState.instance.endSong(true);   
 				});
 			});

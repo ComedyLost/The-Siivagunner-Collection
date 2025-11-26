@@ -1,11 +1,9 @@
 {
   "version": "1.0.0",
-  "name": "Pico (Gecs)",
-  "assetPath": "characters/Pico_FNF_assetss_gecs",
+  "name": "Pico (Grandpa)",
+  "assetPath": "characters/Pico_FNF_assetss_grandpa",
   "flipX": true,
-  "healthIcon": {
-    "id": "pico"
-  },
+  "offsets": [0, 20],
   "animations": [
     {
       "name": "idle",
@@ -20,7 +18,7 @@
     {
       "name": "singDOWN",
       "prefix": "Pico Down Note0",
-      "offsets": [183, -72]
+      "offsets": [183, -82]
     },
     {
       "name": "singUP",

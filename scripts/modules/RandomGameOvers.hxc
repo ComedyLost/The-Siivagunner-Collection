@@ -1,10 +1,9 @@
-import funkin.play.PlayState;
-
-import funkin.modding.module.Module;
-
-import funkin.Paths;
 import flixel.FlxG;
+import funkin.data.character.CharacterDataParser;
+import funkin.modding.module.Module;
 import funkin.play.GameOverSubState;
+import funkin.play.PlayStatePlaylist;
+import funkin.play.PlayState;
 
 class SiivagunnerRandomGameOvers extends Module
 {
@@ -12,27 +11,99 @@ class SiivagunnerRandomGameOvers extends Module
 	{
 		super('SiivagunnerRandomGameOvers');
 	}
+	
+	final defaultPlayerList:Array<String> = ['bf', 'bf-car', 'bf-christmas', 'bf-holding-gf', 'bf-dark'];
+	final gameOverPool:Array<GameOverPoolFilters> = 
+	[
+		{suffix: '-siiva'},
+		{suffix: '-beta-mix', replaceChar: 'bf-phone'},
+		{suffix: '-ingame', replaceChar: 'bf-quote'},
+		{suffix: '-week2', level: 'week2Siiva', replaceChar: 'bf-david'},
+		{suffix: '-pixel-homestuck', chars: ['bf-pixel'], replaceChar: 'bf-pixel-wv'}
+	];
 
-	var normalGameOvers:Array<String> = ['', '-siiva', '-beta-mix', '-ingame', '-week2'];
-	var pixelGameOvers:Array<String> = ['-pixel', '-pixel-homestuck'];
+	var replacedBF:Null<BaseCharacter> = null;
 
-	override function onGameOver(event) {
+	override function onGameOver(event) 
+	{
 		super.onGameOver(event);
+		
+		replacedBF = null;
+
 		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
 		if (PlayState.instance.isMinimalMode) return;
 
 		if (PlayState.instance.currentDifficulty != 'siiva') return;
+		
+		var possibleGameOvers:Array<String> = [];
+		var playerId:String = PlayState.instance.currentStage.getBoyfriend()?.characterId;
 
-		if (normalGameOvers.contains(GameOverSubState.musicSuffix)) {
-			GameOverSubState.musicSuffix = normalGameOvers[FlxG.random.int(0, normalGameOvers.length - 1)];
-		} else if (pixelGameOvers.contains(GameOverSubState.musicSuffix)) {
-			GameOverSubState.musicSuffix = pixelGameOvers[FlxG.random.int(0, pixelGameOvers.length - 1)];
+		for (data in gameOverPool)
+		{
+			var playerList:Array<String> = data.chars ?? defaultPlayerList;
+			if (!playerList.contains(playerId)) continue;
+
+			if (data.level != null && data.level != PlayStatePlaylist.campaignId) continue;
+
+			possibleGameOvers.push(data);
 		}
-		/*switch (GameOverSubState.musicSuffix) {
-			case '', '-siiva', '-beta-mix', '-ingame', '-week2':
-				GameOverSubState.musicSuffix = normalGameOvers[FlxG.random.int(0, normalGameOvers.length - 1)];
-			case '-pixel', '-homestuck':
-				GameOverSubState.musicSuffix = pixelGameOvers[FlxG.random.int(0, pixelGameOvers.length - 1)];
-		}*/
-	}	
+
+		if (possibleGameOvers.length == 0) continue;
+
+		var randomData:String = possibleGameOvers[FlxG.random.int(0, possibleGameOvers.length - 1)];
+
+		GameOverSubState.musicSuffix = randomData.suffix ?? '';
+		GameOverSubState.blueBallSuffix = randomData.suffix ?? '';
+
+		if (randomData.replaceChar != null) replacedBF = CharacterDataParser.fetchCharacter(randomData.replaceChar);
+	}
+
+	override function onSubStateOpenEnd(event)
+	{
+		super.onSubStateOpenEnd(event);
+
+		if (!Std.isOfType(event.targetState, GameOverSubState) || replacedBF == null) return;
+
+		var state:GameOverSubState = GameOverSubState.instance;
+		
+		replacedBF.canPlayOtherAnims = true;
+		replacedBF.isDead = true;
+		replacedBF.flipX = !replacedBF.getDataFlipX();
+		replacedBF.shader = state.boyfriend.shader;
+		state.insert(state.members.indexOf(state.boyfriend) + 1, replacedBF);
+
+		replacedBF.setPosition(state.boyfriend.x, state.boyfriend.y);
+
+		state.remove(state.boyfriend);
+	}
+
+	override function onUpdate(event)
+	{
+		super.onUpdate(event);
+
+		var state:GameOverSubState = GameOverSubState.instance;
+		if (state == null || replacedBF == null) return;
+
+		replacedBF.visible = state.boyfriend.visible;
+
+		if (replacedBF.getCurrentAnimation() != state.boyfriend.getCurrentAnimation())
+		{
+			replacedBF.playAnimation(state.boyfriend.getCurrentAnimation(), true);
+		}
+
+		// Playing the music manually since we removed bf from the gameover substate.
+    	if (replacedBF.getCurrentAnimation().indexOf('firstDeath') == 0 && replacedBF.isAnimationFinished())
+        {
+        	state.startDeathMusic(1.0, false);
+        	state.boyfriend.playAnimation('deathLoop' + GameOverSubState.animationSuffix);
+        }
+	}
+}
+
+typedef GameOverPoolFilters =
+{
+	var suffix:String;
+	var chars:String;
+	var level:String;
+	var replaceChar:String;
 }

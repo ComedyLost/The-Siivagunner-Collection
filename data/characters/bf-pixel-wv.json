@@ -1,0 +1,32 @@
+{
+  "version": "1.0.1",
+  "name": "Boyfriend (Wayward Vagabond)",
+  "assetPath": "characters/bfPixelsWVDead",
+  "flipX": true,
+  "renderType": "sparrow",
+  "singTime": 8.0,
+  "isPixel": true,
+  "healthIcon": {
+    "id": "bf-pixel",
+    "isPixel": true
+  },
+  "scale": 6,
+  "animations": [
+    {
+      "name": "firstDeath",
+      "prefix": "BF Dies pixel",
+      "offsets": [8.33, 0]
+    },
+    {
+      "name": "deathLoop",
+      "prefix": "Retry Loop",
+      "looped": true,
+      "offsets": [3.33, -2.08]
+    },
+    {
+      "name": "deathConfirm",
+      "prefix": "RETRY CONFIRM",
+      "offsets": [3.33, -2.08]
+    }
+  ]
+}

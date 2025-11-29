@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "name": "Boyfriend (David S. Pumpkins)",
+  "renderType": "sparrow",
+  "assetPath": "characters/BOYFRIEND-DAVID",
+  "flipX": true,
+  "singTime": 8.0,
+  "animations": [
+    {
+      "name": "firstDeath",
+      "prefix": "BF dies",
+      "offsets": [-37, 11]
+    },
+    {
+      "name": "deathLoop",
+      "prefix": "BF Dead Loop",
+      "looped": true,
+      "offsets": [-37, 5]
+    },
+    {
+      "name": "deathConfirm",
+      "prefix": "BF Dead confirm",
+      "offsets": [-37, 69]
+    }
+  ]
+}

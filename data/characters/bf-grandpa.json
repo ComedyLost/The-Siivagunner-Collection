@@ -83,12 +83,6 @@
       "offsets": [7, 4]
     },
     {
-      "name": "cheer",
-      "prefix": "Cheer",
-      "assetPath": "characters/BFCheer",
-      "offsets": [0, 0]
-    },
-    {
       "name": "hit",
       "prefix": "BF hit",
       "assetPath": "characters/BOYFRIEND-GRANDPA",

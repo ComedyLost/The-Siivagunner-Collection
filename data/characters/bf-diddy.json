@@ -70,37 +70,9 @@
       "offsets": [0, 0]
     },
     {
-      "name": "dodge-hold",
-      "prefix": "boyfriend dodge",
-      "frameIndices": [10, 11, 12],
-      "looped": true,
-      "assetPath": "characters/BOYFRIEND",
-      "offsets": [0, 0]
-    },
-    {
       "name": "hey",
       "prefix": "BF HEY!!",
       "offsets": [7, 4]
-    },
-    {
-      "name": "cheer",
-      "prefix": "Cheer",
-      "assetPath": "characters/BFCheer",
-      "offsets": [0, 0]
-    },
-    {
-      "name": "hit",
-      "prefix": "BF hit",
-      "assetPath": "characters/BOYFRIEND",
-      "offsets": [0, 0]
-    },
-    {
-      "name": "hit-hold",
-      "prefix": "BF hit",
-      "frameIndices": [10, 11],
-      "looped": true,
-      "assetPath": "characters/BOYFRIEND",
-      "offsets": [0, 0]
     },
     {
       "name": "firstDeath",

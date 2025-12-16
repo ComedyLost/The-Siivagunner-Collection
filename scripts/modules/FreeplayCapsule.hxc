@@ -12,6 +12,11 @@ import funkin.PlayerSettings;
 import funkin.util.TouchUtil;
 import funkin.util.SwipeUtil;
 import funkin.data.story.level.LevelRegistry;
+import openfl.display.BitmapData;
+import flixel.FlxSprite;
+import openfl.display.Bitmap;
+import funkin.input.Cursor;
+import funkin.modding.ModStore;
 
 using StringTools;
 using Lambda;
@@ -26,6 +31,7 @@ class FreeplayCapsule extends Module {
 
 	override function onSubStateOpenEnd(event) {
         super.onSubStateOpenEnd(event);
+		if (!Std.isOfType(event.targetState, FreeplayState)) return;
 		changeSelectionCallback = FlxG.state.subState.letterSort.changeSelectionCallback;
 		FlxG.state.subState.letterSort.changeSelectionCallback = (str) -> {
 			changeSelectionCallback(str);
@@ -147,6 +153,18 @@ class FreeplayCapsule extends Module {
 		switch (songID) {
 			case 'ice-roses': cap.checkWeek('roses');
 			case 'smooth-sherbet-alpha-mix': cap.checkWeek('eggnog');
+			case 'spookeez-beta-mix': // Override the confirm to take a screenshot of the game to use in the song
+				var onConfirmOG:Void->Void = cap.onConfirm;
+				cap.onConfirm = () -> {
+					if (FlxG.state.subState.controls.active) {
+						Cursor.hide();
+						FlxG.mouse.visible = false;
+						var shot:Bitmap = new Bitmap(BitmapData.fromImage(FlxG.stage.window.readPixels()));
+						ModStore.stores.set('FreeplayScreenshot', shot.bitmapData);
+						// FlxG.state.subState.add(preview);
+					}
+					onConfirmOG();
+				};
 		}
 	}
 

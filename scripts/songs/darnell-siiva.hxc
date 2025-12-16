@@ -50,9 +50,8 @@ class DarnellSiivaSong extends Song {
 	public override function onCountdownStart(event:CountdownScriptEvent):Void {
 		super.onCountdownStart(event);
 
-		if (Save.instance.hasBeatenSong(this.id, ['siiva']) || PlayState.instance.currentVariation == 'bf'){
+		if ((Save.instance.hasBeatenSong(this.id, ['siiva']) && !FlxG.save.data.siivacutscenes) || PlayState.instance.currentVariation == 'bf')
 			hasPlayedInGameCutscene = true;
-		}
 
 		if(!hasPlayedInGameCutscene){
 			trace('Pausing countdown to play in game cutscene');

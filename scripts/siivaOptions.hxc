@@ -16,7 +16,9 @@ class SiivaOptions extends Module
     function new(){
         super("siivaOptions");
 		if (FlxG.save.data.siivatitle == null) FlxG.save.data.siivatitle = true;
+		if (FlxG.save.data.siivacutscenes == null) FlxG.save.data.siivacutscenes = false;
 		if (FlxG.save.data.siivavocals == null) FlxG.save.data.siivavocals = true;
+		if (FlxG.save.data.siivaexfx == null) FlxG.save.data.siivaexfx = true;
 		if (FlxG.save.data.siivatray == null) FlxG.save.data.siivatray = true;
 		if (FlxG.save.data.siivadeath == null) FlxG.save.data.siivadeath = true;
 		if (FlxG.save.data.siivalunch == null) FlxG.save.data.siivalunch = true;
@@ -54,14 +56,22 @@ class SiivaOptions extends Module
 				FlxG.save.data.siivatitle = value;
 				FlxG.save.flush();
 			}, FlxG.save.data.siivatitle);
+			prefs.createPrefItemCheckbox("Replay Cutscenes", "Allows cutscenes to play again after beating a song.", (value) -> {
+				FlxG.save.data.siivacutscenes = value;
+				FlxG.save.flush();
+			}, FlxG.save.data.siivacutscenes);
 			prefs.createPrefItemCheckbox("Siiva Death", "Blueballs the player at the end of the song.", (value) -> {
 				FlxG.save.data.siivatitle = value;
 				FlxG.save.flush();
 			}, FlxG.save.data.siivatitle);
-			prefs.createPrefItemCheckbox("Modern Tutorial Vocals", "Changes the vocals in Tutorial rips to use the new samples introduced in the Weekend update", (value) -> {
+			prefs.createPrefItemCheckbox("Modern Tutorial Vocals", "Changes the vocals in Tutorial rips to use the new samples introduced in the Weekend update.", (value) -> {
 				FlxG.save.data.siivavocals = value;
 				FlxG.save.flush();
 			}, FlxG.save.data.siivavocals);
+			prefs.createPrefItemCheckbox("Extreme Effects", "Enables extreme effects for rips (Ex. Spookeez (Beta Mix)).\nWARNING: MAY CAUSE LAG", (value) -> {
+				FlxG.save.data.siivaexfx = value;
+				FlxG.save.flush();
+			}, FlxG.save.data.siivaexfx);
 			// Don't exist yet
 			/*prefs.createPrefItemCheckbox("Siiva Results Music", "Replaces the results music with custom rips made by me.", (value) -> {
 				FlxG.save.data.siivaresults = value;

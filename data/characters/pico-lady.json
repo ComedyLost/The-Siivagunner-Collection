@@ -1,11 +1,9 @@
 {
   "version": "1.0.0",
-  "name": "Pico (Gecs)",
-  "assetPath": "characters/Pico_FNF_assetss_gecs",
+  "name": "Pico (Lady)",
+  "assetPath": "characters/Pico_FNF_assetss_lady",
   "flipX": true,
-  "healthIcon": {
-    "id": "pico"
-  },
+  "offsets": [0, 20],
   "animations": [
     {
       "name": "idle",
@@ -15,22 +13,22 @@
     {
       "name": "singRIGHT",
       "prefix": "Pico NOTE LEFT0",
-      "offsets": [-46, -10]
+      "offsets": [-76, -5]
     },
     {
       "name": "singDOWN",
       "prefix": "Pico Down Note0",
-      "offsets": [243, -67]
+      "offsets": [193, -67]
     },
     {
       "name": "singUP",
       "prefix": "pico Up note0",
-      "offsets": [3, 28]
+      "offsets": [-37, 23]
     },
     {
       "name": "singLEFT",
       "prefix": "Pico Note Right0",
-      "offsets": [91, 2]
+      "offsets": [61, 12]
     }
   ]
 }

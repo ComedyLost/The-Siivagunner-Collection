@@ -48,7 +48,7 @@ class SiivagunnerRandomGameOvers extends Module
 			possibleGameOvers.push(data);
 		}
 
-		if (possibleGameOvers.length == 0) continue;
+		if (possibleGameOvers.length == 0) return;
 
 		var randomData:String = possibleGameOvers[FlxG.random.int(0, possibleGameOvers.length - 1)];
 

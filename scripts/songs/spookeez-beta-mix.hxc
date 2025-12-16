@@ -1,0 +1,282 @@
+import funkin.play.song.Song;
+import funkin.play.PlayState;
+import funkin.play.cutscene.VideoCutscene;
+import funkin.play.PlayStatePlaylist;
+import funkin.save.Save;
+import funkin.audio.VoicesGroup;
+import funkin.audio.FunkinSound;
+import flixel.FlxG;
+import funkin.graphics.FunkinCamera;
+import flixel.FlxCamera;
+import flixel.FlxObject;
+import flixel.math.FlxMath;
+import flixel.math.FlxPoint;
+import flixel.tweens.FlxTween;
+import funkin.Conductor;
+import funkin.util.Constants;
+import funkin.util.FlxTweenUtil;
+import flixel.FlxSprite;
+import funkin.modding.ModStore;
+import funkin.graphics.FunkinSprite;
+
+class SpookeezBetaMixSong extends Song
+{
+  	public function new() {
+		super('spookeez-beta-mix');
+ 	}
+
+	var camMini:FlxCamera;
+	var camScroll:FlxCamera;
+	var camOverlay:FlxCamera;
+	var scrollingCamPos:String;
+	var shouldScroll:Bool;
+	var blackScreen:FlxSprite;
+	var freeplay1:FunkinSprite;
+	var freeplay2:FunkinSprite;
+	var shouldFreeplay:Bool;
+	var curStepPerSection:Int;
+
+	override function onUpdate(event:UpdateScriptEvent) {
+		super.onUpdate(event);
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		if (!FlxG.save.data.siivaexfx) return;
+		if (camMini != null) camMini?.zoom = PlayState.instance.camGame.zoom;
+		if (camScroll != null) {
+			camScroll?.zoom = PlayState.instance.camGame.zoom / 3;
+			camScroll?.targetOffset = FlxG.camera.targetOffset;	
+		}
+	}
+
+	override function onCountdownStart(event) {
+		super.onCountdownStart(event);
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		var bf = PlayState.instance.currentStage.getBoyfriend();
+		if (!bf.ignoreExclusionPref.contains("cheer")) bf.ignoreExclusionPref.push("cheer");
+
+	}
+
+	override function onPause(event) {
+		super.onPause(event);
+		if (!FlxG.save.data.siivaexfx) return;
+
+		if (camMini != null) FlxTweenUtil.pauseTweensOf(camMini);
+		if (camScroll != null) FlxTweenUtil.pauseTweensOf(camScroll);
+		if (freeplay1 != null) FlxTweenUtil.pauseTweensOf(freeplay1);
+		if (freeplay2 != null) FlxTweenUtil.pauseTweensOf(freeplay2);
+	}
+
+	override function onResume(event) {
+		super.onResume(event);
+		if (!FlxG.save.data.siivaexfx) return;
+
+		if (camMini != null) FlxTweenUtil.resumeTweensOf(camMini);
+		if (camScroll != null) FlxTweenUtil.resumeTweensOf(camScroll);
+		if (freeplay1 != null) FlxTweenUtil.resumeTweensOf(freeplay1);
+		if (freeplay2 != null) FlxTweenUtil.resumeTweensOf(freeplay2);
+	}
+
+	override function onSongRetry(event) {
+		super.onSongRetry(event);
+		if (!FlxG.save.data.siivaexfx) return;
+
+		shouldScroll = false;
+		shouldFreeplay = false;
+		camMini?.flashSprite.scaleX = camMini?.flashSprite.scaleY = 1;
+		camMini?.visible = true;
+		camOverlay?.visible = true;
+		PlayState.instance?.camGame.flashSprite.scaleX = -1;
+		blackScreen?.visible = true;
+		if (freeplay1 != null) {
+			freeplay1.x = 0 - freeplay1.width;
+			freeplay1.y = 0 - freeplay1.height;
+			freeplay1.flipX = false;
+		}
+		if (freeplay2 != null) {
+			freeplay2.x = FlxG.width;
+			freeplay2.y = FlxG.height;
+			freeplay2.flipX = true;
+		}
+	}
+
+	override function onSongEnd(event:ScriptEvent) {
+		super.onSongEnd(event);
+		if (!FlxG.save.data.siivaexfx) return;
+
+		shouldScroll = false;
+		camMini?.visible = false;
+		camOverlay?.visible = false;
+		PlayState.instance?.camGame.flashSprite.scaleX = 1;
+		blackScreen?.visible = false;
+	}
+
+	override function onGameOver(event) {
+		super.onGameOver(event);
+		if (!FlxG.save.data.siivaexfx) return;
+
+		shouldScroll = false;
+		camMini?.visible = false;
+		camOverlay?.visible = false;
+		PlayState.instance?.camGame.flashSprite.scaleX = 1;
+		blackScreen?.visible = false;
+	}
+
+	override function onStepHit(event) {
+		super.onStepHit(event);
+		if (!FlxG.save.data.siivaexfx) return;
+
+		switch (event.step) {
+			case 64:
+				if (camMini == null) return;
+				FlxTween.cancelTweensOf(camMini);
+				FlxTween.num(1, 2, (Conductor.instance.stepLengthMs / 1000) * 4, null, (num) -> {
+					camMini.x = (FlxG.width / num) - (camMini.width / num);
+					camMini.y = (FlxG.height / num) - (camMini.height / num);
+					camMini.flashSprite.scaleX = camMini.flashSprite.scaleY = 1 / num;
+					// camMini.scroll.x--;
+				});
+			case 96:
+				shouldScroll = true;
+				scrollingCamPos = 'right';
+			case 126:
+				if (freeplay1 == null || freeplay2 == null) return;
+				FlxTween.cancelTweensOf(freeplay1);
+				FlxTween.cancelTweensOf(freeplay2);
+				freeplay1.flipX = false;
+				freeplay2.flipX = true;
+				freeplay1.y = 0;
+				freeplay2.y = FlxG.height - freeplay2.height;
+				freeplay1.x = 0 - freeplay1.width;
+				freeplay2.x = FlxG.width;
+				for (freeplay in [freeplay1, freeplay2]) {
+					FlxTween.tween(freeplay, {x: (FlxG.width / 2) - (freeplay.width / 2)}, (Conductor.instance.stepLengthMs / 1000) * 2);
+				}
+			case 128:
+				shouldFreeplay = true;
+			case 564:
+				shouldScroll = false;
+			case 704:
+				shouldScroll = true;
+				scrollingCamPos = 'right';
+			case 960:
+				shouldScroll = false;
+				if (camMini != null) {
+					FlxTween.cancelTweensOf(camMini);
+					FlxTween.num(2, 1, (Conductor.instance.stepLengthMs / 1000) * 4, null, (num) -> {
+						camMini.x = (FlxG.width / num) - (camMini.width / num);
+						camMini.y = (FlxG.height / num) - (camMini.height / num);
+						camMini.flashSprite.scaleX = camMini.flashSprite.scaleY = 1 / num;
+						// camMini.scroll.x--;
+					});	
+				}
+				if (freeplay1 != null && freeplay2 != null) {
+					FlxTween.cancelTweensOf(freeplay1);
+					FlxTween.cancelTweensOf(freeplay2);
+					FlxTween.tween(freeplay1, {y: 0 - freeplay1.height}, (Conductor.instance.stepLengthMs / 1000) * 4);
+					FlxTween.tween(freeplay2, {y: FlxG.height}, (Conductor.instance.stepLengthMs / 1000) * 4);
+				}
+		}
+		if (shouldFreeplay) {
+
+		}
+		if (shouldScroll && event.step % 2 == 0) {
+			if (camScroll == null) return;
+			switch (scrollingCamPos) {
+				case 'left':
+					scrollingCamPos = 'right';
+					FlxTween.cancelTweensOf(camScroll);
+					camScroll.x = (FlxG.width - camScroll.width);
+					camScroll.y = 0 - camScroll.height;
+					FlxTween.tween(camScroll, {y: FlxG.height + camScroll.height}, (Conductor.instance.stepLengthMs / 1000) * 2);
+				case 'right':
+					scrollingCamPos = 'left';
+					FlxTween.cancelTweensOf(camScroll);
+					camScroll.x = 0;
+					camScroll.y = FlxG.height;
+					FlxTween.tween(camScroll, {y: 0 - camScroll.height}, (Conductor.instance.stepLengthMs / 1000) * 2);
+			}
+		}
+	}
+
+	function onCreate(event:ScriptEvent):Void {
+		super.onCreate(event);
+
+		if (!FlxG.save.data.siivaexfx) return;
+
+		shouldScroll = false;
+
+		var i = 0;
+
+		scrollingCamPos = 'left';
+
+		blackScreen = new FlxSprite(-FlxG.width * FlxG.camera.zoom, -FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, 0xFF000000);
+		blackScreen.scrollFactor.set();
+		blackScreen.zIndex = 9999999;
+		blackScreen.alpha = 0.6;
+		blackScreen.cameras = [PlayState.instance.camGame];
+		PlayState.instance.add(blackScreen);
+
+		camMini = quickCreateCam(false);
+		FlxG.cameras.insert(camMini, FlxG.cameras.list.indexOf(PlayState.instance.camHUD), true);
+		// camMini.setSize(FlxG.width / 2, FlxG.height / 2);
+		camMini.copyFrom(PlayState.instance.camGame);
+		camMini.focusOn(PlayState.instance.currentStage.getDad().cameraFocusPoint);
+		camMini.follow(PlayState.instance.cameraFollowPoint, null, Constants.DEFAULT_CAMERA_FOLLOW_RATE);
+		camMini.x = (FlxG.width / 2) - (camMini.width / 2);
+		camMini.y = (FlxG.height / 2) - (camMini.height / 2);
+
+		camScroll = quickCreateCam(false);
+		FlxG.cameras.insert(camScroll, FlxG.cameras.list.indexOf(PlayState.instance.camHUD), true);
+		camScroll.setSize(FlxG.width / 3, FlxG.height / 3);
+		camScroll.copyFrom(PlayState.instance.camGame);
+		camScroll.focusOn(PlayState.instance.currentStage.getDad().cameraFocusPoint);
+		camScroll.y = FlxG.height;
+		camScroll.follow(PlayState.instance.cameraFollowPoint, null, Constants.DEFAULT_CAMERA_FOLLOW_RATE);
+
+		camOverlay = quickCreateCam(false);
+		camOverlay.copyFrom(PlayState.instance.camHUD);
+		FlxG.cameras.insert(camOverlay, FlxG.cameras.list.indexOf(PlayState.instance.camHUD), false);
+
+		PlayState.instance.camGame.flashSprite.scaleX = -1;
+
+		var screenShot = ModStore.stores.get('FreeplayScreenshot');
+		if (screenShot != null) {
+			freeplay1 = new FunkinSprite().loadGraphic(screenShot);
+			freeplay1.scrollFactor.set();
+			freeplay1.zIndex = 9999999;
+			freeplay1.setGraphicSize(Std.int(FlxG.width / 3));
+			freeplay1.updateHitbox();
+			freeplay1.cameras = [camOverlay];
+			freeplay1.screenCenter();
+			freeplay1.x = 0 - freeplay1.width;
+			freeplay1.y = 0 - freeplay1.height;
+			PlayState.instance.add(freeplay1);	
+
+			freeplay2 = new FunkinSprite().loadGraphic(screenShot);
+			freeplay2.scrollFactor.set();
+			freeplay2.zIndex = 9999999;
+			freeplay2.setGraphicSize(Std.int(FlxG.width / 3));
+			freeplay2.updateHitbox();
+			freeplay2.flipX = true;
+			freeplay2.cameras = [camOverlay];
+			freeplay2.screenCenter();
+			freeplay2.x = FlxG.width;
+			freeplay2.y = FlxG.height;
+			PlayState.instance.add(freeplay2);	
+		}
+	}
+	
+	function quickCreateCam(add:Bool):FlxCamera {
+		if (add == null) add = true;
+		var cam = new FlxCamera(0, 0, FlxG.width, FlxG.height);
+		cam.bgColor = 0x0;
+	
+		if (add) FlxG.cameras.add(cam, true);
+
+		return cam;
+	}
+	
+}

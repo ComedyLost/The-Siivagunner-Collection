@@ -1,0 +1,58 @@
+{
+ "version": "2.2.4",
+ "songName": "Philly Nice (In-Game Version)",
+ "artist": "Kawai Sprite / SiivaGunner",
+ "looped": false,
+ "offsets": {
+  "instrumental": 0,
+  "altInstrumentals": {  },
+  "vocals": {  },
+  "altVocals": {  }
+ },
+ "playData": {
+  "songVariations": [],
+  "difficulties": [
+   "siiva"
+  ],
+  "characters": {
+   "player": "bf",
+   "girlfriend": "gf",
+   "opponent": "pico-lady",
+   "instrumental": "",
+   "opponentVocals": [
+    "pico"
+   ],
+   "playerVocals": [
+    "bf"
+   ]
+  },
+  "album": "volumeHQ",
+  "stage": "phillyTrain",
+  "noteStyle": "funkin",
+  "ratings": {
+   "siiva": 5
+  },
+  "previewStart": 0,
+  "previewEnd": 0
+ },
+ "generatedBy": "Friday Night Funkin' - v0.7.5",
+ "timeFormat": "ms",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 175,
+   "n": 4,
+   "d": 4,
+   "bt": [4, 4, 4, 4]
+  },
+  {
+   "t": 33085.7142857143,
+   "b": 96.5,
+   "bpm": 175,
+   "n": 4,
+   "d": 4,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

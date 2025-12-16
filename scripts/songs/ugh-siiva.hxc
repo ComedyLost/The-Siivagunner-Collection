@@ -3,6 +3,7 @@ import funkin.play.PlayState;
 import funkin.play.cutscene.VideoCutscene;
 import funkin.play.PlayStatePlaylist;
 import funkin.save.Save;
+import flixel.FlxG;
 
 class UghSiivaSong extends Song
 {
@@ -18,9 +19,7 @@ class UghSiivaSong extends Song
 	public override function onCountdownStart(event:CountdownScriptEvent):Void
 	{
 		super.onCountdownStart(event);
-		if (Save.instance.hasBeatenSong(this.id, ['siiva'])){
-			hasPlayedCutscene = true;
-		}
+		if (Save.instance.hasBeatenSong(this.id, ['siiva']) && !FlxG.save.data.siivacutscenes) hasPlayedCutscene = true;
 
 		if (!hasPlayedCutscene)
 		{

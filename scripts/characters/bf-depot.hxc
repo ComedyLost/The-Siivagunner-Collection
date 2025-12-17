@@ -1,14 +1,13 @@
-import funkin.graphics.adobeanimate.FlxAtlasSprite;
 import flixel.FlxG;
 import funkin.audio.FunkinSound;
-import funkin.play.character.MultiSparrowCharacter;
+import funkin.play.character.MultiAnimateAtlasCharacter;
 import funkin.play.GameOverSubState;
 import funkin.play.PlayState;
 import funkin.Preferences;
 import funkin.util.Constants;
 import funkin.util.HapticUtil;
 
-class BoyfriendDepotCharacter extends MultiSparrowCharacter
+class BoyfriendDepotCharacter extends MultiAnimateAtlasCharacter
 {
   function new()
   {
@@ -35,42 +34,32 @@ class BoyfriendDepotCharacter extends MultiSparrowCharacter
   }
 
   override function playAnimation(name:String, restart:Bool, ignoreOther:Bool)
-  {
-    if (name == "fakeoutDeath" && !this.debug)
-    {
-      doFakeoutDeath();
-    }
-    else
     {
       super.playAnimation(name, restart, ignoreOther);
+  
+      if (name == "fakeoutDeath" && !this.debug)
+      {
+        doFakeoutDeath();
+      }
     }
-  }
-
-  function doFakeoutDeath():Void
-  {
-    FunkinSound.playOnce(Paths.sound("gameplay/gameover/fakeout_death"), 1.0);
-
-    var bfFakeout:FlxAtlasSprite = new FlxAtlasSprite(this.x - 440, this.y - 240, Paths.animateAtlas("characters/bfFakeOut", "shared"));
-    GameOverSubState.instance.add(bfFakeout);
-    bfFakeout.zIndex = 1000;
-    bfFakeout.playAnimation('');
-    // We don't want people to miss this.
-    GameOverSubState.instance.mustNotExit = true;
-    bfFakeout.onAnimationComplete.add(() -> {
-      bfFakeout.visible = false;
-      this.visible = true;
-      GameOverSubState.instance.mustNotExit = false;
-      this.playAnimation('firstDeath', true, true);
-      // Play the "blue balled" sound. May play a variant if one has been assigned.
-      GameOverSubState.playBlueBalledSFX();
-    });
-    bfFakeout.visible = true;
-    this.visible = false;
-  }
-
+  
+    function doFakeoutDeath():Void
+    {
+      FunkinSound.playOnce(Paths.sound("gameplay/gameover/fakeout_death"), 1.0);
+  
+      // We don't want people to miss this.
+      GameOverSubState.instance.mustNotExit = true;
+      this.animation.onFinish.addOnce(() -> {
+        GameOverSubState.instance.mustNotExit = false;
+        this.playAnimation('firstDeath', true);
+        // Play the "blue balled" sound. May play a variant if one has been assigned.
+        GameOverSubState.playBlueBalledSFX();
+      });
+    }
+  
   override function getDeathQuote():Null<String>
   {
-    switch (PlayState.instance.currentStage.getDad().characterId)
+    switch (PlayState.instance?.currentStage?.getDad()?.characterId)
     {
       case "tankman-depot":
         var randomCensor:Array<Int> = [];

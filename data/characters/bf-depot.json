@@ -1,102 +1,94 @@
 {
   "version": "1.0.0",
-  "name": "Boyfriend (Home Depot)",
-  "renderType": "multisparrow",
-  "assetPath": "characters/BOYFRIEND",
+  "name": "Boyfriend",
+  "renderType": "multianimateatlas",
+  "assetPath": "shared:characters/bf",
   "flipX": true,
-  "singTime": 8.0,
-  "healthIcon": {"id": "bf"},
+  "healthIcon": {
+    "id": "bf"
+  },
+  "offsets": [17, 14],
+  "cameraOffsets": [-18, 36],
+  "death": {
+    "cameraOffsets": [-73, 42]
+  },
   "animations": [
     {
       "name": "idle",
-      "prefix": "BF idle dance",
-      "offsets": [-5, 0]
+      "prefix": "Idle"
     },
     {
       "name": "singLEFT",
-      "prefix": "BF NOTE LEFT0",
-      "offsets": [12, -6]
+      "prefix": "Left"
     },
     {
       "name": "singDOWN",
-      "prefix": "BF NOTE DOWN0",
-      "offsets": [-10, -50]
+      "prefix": "Down"
     },
     {
       "name": "singUP",
-      "prefix": "BF NOTE UP0",
-      "offsets": [-29, 27]
+      "prefix": "Up"
     },
     {
       "name": "singRIGHT",
-      "prefix": "BF NOTE RIGHT0",
-      "offsets": [-38, -7]
+      "prefix": "Right"
     },
     {
       "name": "singLEFTmiss",
-      "prefix": "BF NOTE LEFT MISS",
-      "offsets": [12, 24]
+      "prefix": "Left Miss"
     },
     {
       "name": "singDOWNmiss",
-      "prefix": "BF NOTE DOWN MISS",
-      "offsets": [-11, -19]
+      "prefix": "Down Miss"
     },
     {
       "name": "singUPmiss",
-      "prefix": "BF NOTE UP MISS",
-      "offsets": [-29, 27]
+      "prefix": "Up Miss"
     },
     {
       "name": "singRIGHTmiss",
-      "prefix": "BF NOTE RIGHT MISS",
-      "offsets": [-30, 21]
-    },
-    {
-      "name": "preAttack",
-      "prefix": "bf pre attack",
-      "offsets": [0, 0]
-    },
-    {
-      "name": "attack",
-      "prefix": "boyfriend attack",
-      "offsets": [0, 0]
-    },
-    {
-      "name": "dodge",
-      "prefix": "boyfriend dodge",
-      "offsets": [0, 0]
+      "prefix": "Right Miss"
     },
     {
       "name": "hey",
-      "prefix": "BF HEY!!",
-      "offsets": [7, 4]
+      "prefix": "Hey"
     },
     {
+      "name": "cheer",
+      "prefix": "Cheer"
+    },
+    {
+      "asset": "shared:characters/bf-death",
       "name": "firstDeath",
-      "prefix": "BF dies",
-      "offsets": [-37, 11]
+      "prefix": "Death Intro",
+      "offsets": [22, 15],
+      "atlasSettings": {
+        "uniqueInCache": true
+      }
     },
     {
-      "name": "fakeoutDeath",
-      "prefix": "BF dies",
-      "offsets": [-37, 11]
-    },
-    {
+      "assetPath": "shared:characters/bf-death",
       "name": "deathLoop",
-      "prefix": "BF Dead Loop",
+      "prefix": "Death Loop",
       "looped": true,
-      "offsets": [-37, 5]
+      "offsets": [22, 15]
     },
     {
+      "asset": "shared:characters/bf-death",
       "name": "deathConfirm",
-      "prefix": "BF Dead confirm",
-      "offsets": [-37, 69]
+      "prefix": "Death Confirm",
+      "offsets": [22, 15]
+    },
+    {
+      "assetPath": "shared:characters/bfFakeOut",
+      "name": "fakeoutDeath",
+      "prefix": "fake out death BF",
+      "animType": "symbol",
+      "offsets": [-3, -65]
     },
     {
       "name": "scared",
-      "prefix": "BF idle shaking",
-      "offsets": [-4, 0]
+      "prefix": "Scared"
     }
   ]
 }

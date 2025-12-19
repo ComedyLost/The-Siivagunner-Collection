@@ -7,7 +7,8 @@ This mod was made with love for SiivaGunner and their community
 </div>
 
 - [Friday Night Funkin' (PC)](https://ninja-muffin24.itch.io/funkin)
-- [Friday Night Funkin' (Mobile)](https://play.google.com/store/apps/details?id=me.funkin.fnf)
+- [Friday Night Funkin' (Android)](https://play.google.com/store/apps/details?id=me.funkin.fnf)
+- [Friday Night Funkin' (iOS)](https://apps.apple.com/app/id6740428530)
 
 <div align='center'>
 <table>

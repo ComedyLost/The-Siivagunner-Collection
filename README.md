@@ -55,6 +55,7 @@ Feel free to port any songs that aren't ported yet and open a [Pull Request](htt
 - Spookeez
     - [HQ](https://www.youtube.com/watch?v=9OGj1pdBLm0)
     - [Beta Mix](https://www.youtube.com/watch?v=UeKB3pwynQA)
+    - [JPN Version](https://www.youtube.com/watch?v=FE-H3jrd6uI)
 - South (COMPLETED)
     - [HQ](https://www.youtube.com/watch?v=IPPX54LN51Y)
     - [Beta Mix](https://www.youtube.com/watch?v=Vu8O47imAqA)

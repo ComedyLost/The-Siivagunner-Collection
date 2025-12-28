@@ -133,10 +133,11 @@ Feel free to port any songs that aren't ported yet and open a [Pull Request](htt
 ### Unofficial
 - Ice Roses
 
-## Credits
+## Credits 
 - [Comedy Lost](https://twitter.com/C0MEDYLOST) - Main Programmer / Porter
 - [DaBigJ](https://twitter.com/DaBigJ_Twit) - Album / Logo Artist
 - [meatku](https://twitter.com/meatku_) - Made Sonic Sprite
+- [vanzz](https://twitter.com/Da_ArtistFunkin) - Made Bopeebo (HQ) Sprite
 - [KoloInDaCrib](https://twitter.com/KoloInDaCrib) - Contributor
 - [The SiivaGunner Team](https://www.youtube.com/@SiIvaGunner) - Made the rips
 

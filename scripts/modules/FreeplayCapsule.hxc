@@ -168,28 +168,17 @@ class FreeplayCapsule extends Module {
 		}
 	}
 
-	function checkCapsules(){
-		new FlxTimer().start(0.1, _ -> { // Add a small delay to grab the right capsules
-			if (FlxG.state.subState.currentDifficulty != 'siiva') return;
-			var filteredCapsules:Array<SongMenuItem> = FlxG.state.subState.grpCapsules.members.filter(function(cap:SongMenuItem) {
-       			// Dead capsules are ones which were removed from the list when changing filters.
-        		return cap != null && cap.alive && cap.freeplayData != null;
-      		});
-			for (capsule in filteredCapsules){
-				if (capsule == null || !capsule.alive) continue;
+	public function onDifficultySwitch(event:CapsuleScriptEvent):Void {
+		super.onDifficultySwitch(event);
+		if (event.difficultyId != 'siiva') return;
+		var filteredCapsules:Array<SongMenuItem> = FlxG.state.subState.grpCapsules.members.filter(function(cap:SongMenuItem) {
+			   // Dead capsules are ones which were removed from the list when changing filters.
+			return cap != null && cap.alive && cap.freeplayData != null;
+		  });
+		for (capsule in filteredCapsules){
+			if (capsule == null || !capsule.alive) continue;
 
-				weekText(capsule);
-			}
-		});			
-	}
-	override function onUpdate(event:UpdateScriptEvent) {
-		super.onUpdate(event);
-		var switched = PlayerSettings.player1.controls.UI_LEFT_P || PlayerSettings.player1.controls.UI_RIGHT_P;
-		if (FlxG.state.subState.controls.active && (switched || 
-		TouchUtil.pressAction(FlxG.state.subState.diffSelLeft, FlxG.state.subState.funnyCam, false) || 
-		TouchUtil.pressAction(FlxG.state.subState.diffSelRight, FlxG.state.subState.funnyCam, false) || 
-		SwipeUtil.swipeLeft || SwipeUtil.swipeRight)){
-			checkCapsules();
+			weekText(capsule);
 		}
 	}
 }

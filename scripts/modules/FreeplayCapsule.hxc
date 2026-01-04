@@ -165,6 +165,8 @@ class FreeplayCapsule extends Module {
 					}
 					onConfirmOG();
 				};
+			case 'eggnog-unused-mix':
+				cap.pixelIcon.origin.x = 140;
 		}
 	}
 
@@ -180,5 +182,9 @@ class FreeplayCapsule extends Module {
 
 			weekText(capsule);
 		}
+	}
+
+	public function onCapsuleSelected(event:CapsuleScriptEvent):Void { // Fix Eggnog Unused Mix icon being offset incorrectly
+		if (event.capsule?.freeplayData?.data?.id == 'eggnog-unused-mix') event.capsule?.pixelIcon?.origin.x = 140;
 	}
 }

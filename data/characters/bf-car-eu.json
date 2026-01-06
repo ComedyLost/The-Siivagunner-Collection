@@ -69,20 +69,17 @@
     {
       "name": "firstDeath",
       "prefix": "BF dies",
-      "assetPath": "characters/bfCar",
       "offsets": [24, -16]
     },
     {
       "name": "deathLoop",
       "prefix": "BF Dead Loop",
-      "assetPath": "characters/bfCar",
       "looped": true,
       "offsets": [24, -19]
     },
     {
       "name": "deathConfirm",
       "prefix": "BF Dead confirm",
-      "assetPath": "characters/bfCar",
       "offsets": [23, 51]
     }
   ]

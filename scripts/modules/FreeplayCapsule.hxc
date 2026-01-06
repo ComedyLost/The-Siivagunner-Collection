@@ -79,8 +79,15 @@ class FreeplayCapsule extends Module {
 				for (item in levels) {
 					FlxG.state.subState.songs.insert(FlxG.state.subState.songs.indexOf(song), item);
 				}
+				levels = [];
 				break;
 			}
+		}
+		if (levels.length != 0) { // Assume there's no other songs present
+			for (item in levels) {
+				FlxG.state.subState.songs.push(item);
+			}
+			levels = [];
 		}
 		var capsules = [];
 		var hasSeenCapsule = false;

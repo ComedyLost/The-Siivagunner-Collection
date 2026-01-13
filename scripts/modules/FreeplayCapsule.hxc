@@ -24,7 +24,7 @@ using Lambda;
 class FreeplayCapsule extends Module {
 
 	public function new(){
-		super('FreeplayCapsule', 1, {state: FreeplayState});
+		super('FreeplayCapsule');
 	}
 
 	var changeSelectionCallback:String->Void;
@@ -32,19 +32,8 @@ class FreeplayCapsule extends Module {
 	override function onSubStateOpenEnd(event) {
         super.onSubStateOpenEnd(event);
 		if (!Std.isOfType(event.targetState, FreeplayState)) return;
-		changeSelectionCallback = FlxG.state.subState.letterSort.changeSelectionCallback;
-		FlxG.state.subState.letterSort.changeSelectionCallback = (str) -> {
-			changeSelectionCallback(str);
-			checkCapsules();
-		};
 		var baseSongs = LevelRegistry.instance.listBaseGameEntryIds();
 		insertAfterWeek(baseSongs[baseSongs.length - 1], listBaseSiivaEntryIds());
-		if (FlxG.state.subState.currentDifficulty != 'siiva') return;
-		var filteredCapsules:Array<SongMenuItem> = FlxG.state.subState.grpCapsules.members.filter(function(cap:SongMenuItem) {
-			// Dead capsules are ones which were removed from the list when changing filters.
-       		return cap != null && cap.alive && cap.freeplayData != null;
-      	});
-		for (capsule in filteredCapsules) weekText(capsule);	
 	}
 
 	function listBaseSiivaEntryIds() {

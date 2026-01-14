@@ -1,0 +1,93 @@
+{
+    "assetPath": "characters/woodmanSUMMER",
+    "name": "Wood Man (Summer Inst)",
+    "singTime": 4,
+    "version": "1.0.0",
+    "flipX": true,
+    "offsets": [40, 280],
+    "cameraOffsets": [220, 7],
+    "healthIcon": {"id": "woodman-summer"},
+    "animations": [
+        {
+            "name": "singLEFTmiss",
+            "prefix": "woodman alt left note miss",
+            "looped": false,
+            "offsets": [
+                146,
+                2
+            ]
+        },
+        {
+            "name": "singDOWNmiss",
+            "prefix": "woodman alt down note miss",
+            "looped": false,
+            "offsets": [
+                36,
+                -40
+            ]
+        },
+        {
+            "name": "singUPmiss",
+            "prefix": "woodman alt up note miss",
+            "looped": false,
+            "offsets": [
+                50,
+                98
+            ]
+        },
+        {
+            "name": "singRIGHTmiss",
+            "prefix": "woodman alt right note miss",
+            "looped": false,
+            "offsets": [
+                5,
+                5
+            ]
+        },
+        {
+            "name": "idle",
+            "prefix": "woodman alt idle0",
+            "looped": false,
+            "offsets": [
+                21,
+                0
+            ]
+        },
+        {
+            "name": "singLEFT",
+            "prefix": "woodman alt left note0",
+            "looped": false,
+            "offsets": [
+                146,
+                2
+            ]
+        },
+        {
+            "name": "singDOWN",
+            "prefix": "woodman alt down note0",
+            "looped": false,
+            "offsets": [
+                39,
+                -47
+            ]
+        },
+        {
+            "name": "singUP",
+            "prefix": "woodman alt up note0",
+            "looped": false,
+            "offsets": [
+                60,
+                102
+            ]
+        },
+        {
+            "name": "singRIGHT",
+            "prefix": "woodman alt right note0",
+            "looped": false,
+            "offsets": [
+                -13,
+                -1
+            ]
+        }
+    ]
+}

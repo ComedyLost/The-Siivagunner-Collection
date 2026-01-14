@@ -1,0 +1,72 @@
+{
+    "assetPath": "characters/Robbie_Assets",
+    "name": "Robbie? (Finale)",
+    "singTime": 6.1,
+    "version": "1.0.0",
+    "scale": 1.3,
+    "offsets": [100, 110],
+    "cameraOffsets": [0, 50],
+    "healthIcon": {"id": "robbie-finale"},
+    "animations": [
+        {
+            "name": "idle",
+            "prefix": "robbie idle",
+            "looped": true,
+            "offsets": [
+                0,
+                0
+            ],
+            "frameRate": 24
+        },
+        {
+            "name": "singLEFT",
+            "prefix": "robbie left note",
+            "looped": false,
+            "offsets": [
+				123,
+				5
+            ],
+            "frameRate": 24
+        },
+        {
+            "name": "singDOWN",
+            "prefix": "robbie down note",
+            "looped": false,
+            "offsets": [
+				60,
+				-129
+            ],
+            "frameRate": 24
+        },
+        {
+            "name": "singRIGHT",
+            "prefix": "robbie right note",
+            "looped": false,
+            "offsets": [
+                -4,
+                -60
+            ],
+            "frameRate": 24
+        },
+        {
+            "name": "singUP",
+            "prefix": "robbie up note",
+            "looped": false,
+            "offsets": [
+                83,
+                73
+            ],
+            "frameRate": 24
+        },
+        {
+            "name": "melt",
+            "prefix": "robbie melt0",
+            "looped": false,
+            "offsets": [
+                89,
+                -34
+            ],
+            "frameRate": 24
+        }
+    ]
+}

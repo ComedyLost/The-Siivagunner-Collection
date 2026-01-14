@@ -1,0 +1,79 @@
+{
+  "props": [
+    {
+      "danceEvery": 0,
+      "zIndex": 10,
+      "position": [0, 0],
+      "scale": [1, 1],
+      "animType": "sparrow",
+      "name": "DoomFes",
+      "assetPath": "stage/background-doom",
+      "scroll": [1, 1],
+      "animations": []
+    },
+    {
+      "danceEvery": 0,
+      "zIndex": 20,
+      "position": [0, 0],
+      "scale": [1, 1],
+      "animType": "sparrow",
+      "name": "SummerFes",
+      "assetPath": "stage/background-summer",
+      "scroll": [1, 1],
+      "animations": []
+    },
+    {
+      "danceEvery": 0,
+      "zIndex": 30,
+      "position": [0, 0],
+      "scale": [1, 1],
+      "animType": "sparrow",
+      "name": "WestFes",
+      "assetPath": "stage/background-west",
+      "scroll": [1, 1],
+      "animations": []
+    },
+    {
+      "danceEvery": 0,
+      "zIndex": 40,
+      "position": [0, 0],
+      "scale": [1, 1],
+      "animType": "sparrow",
+      "name": "Finale",
+      "startingAnimation": "loopback",
+      "assetPath": "stage/background-finale",
+      "scroll": [1, 1],
+      "animations": [
+        {
+          "offsets": [0, 0],
+          "flipY": false,
+          "frameRate": 24,
+          "prefix": "finale",
+          "looped": true,
+          "flipX": false,
+          "name": "loopback"
+        }
+      ]
+    }
+  ],
+  "cameraZoom": 0.5,
+  "version": "1.0.0",
+  "characters": {
+    "bf": {
+      "zIndex": 70,
+      "position": [2525, 1300],
+      "cameraOffsets": [-350, 58]
+    },
+    "dad": {
+      "zIndex": 60,
+      "position": [1000, 1600],
+      "cameraOffsets": [400, 0]
+    },
+    "gf": {
+      "zIndex": 50,
+      "position": [0, -500],
+      "cameraOffsets": [0, 0]
+    }
+  },
+  "name": "DoomFes"
+}

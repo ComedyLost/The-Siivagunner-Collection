@@ -1,0 +1,94 @@
+import funkin.play.PlayState;
+import funkin.play.event.SongEvent;
+
+import funkin.modding.module.Module;
+import funkin.modding.module.ModuleHandler;
+
+import funkin.play.character.CharacterDataParser;
+import funkin.play.character.CharacterType;
+import funkin.play.components.HealthIcon;
+
+class ChangeCharacterEventCL extends SongEvent {
+
+	public override function handleEvent(data) {
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+        var crh = ModuleHandler.getModule("CharacterResetHandlerCL");
+
+        var charData = CharacterDataParser.parseCharacterData(data.value.newchar);
+        CharacterDataParser.characterCache.h[CharacterDataParser.characterCache.h.length+1] = charData;
+
+        // trace("CHARACTER ZINDEXES TWO THE SEQUEL: " + crh.scriptGet("characterZIndexes"));
+
+		switch(data.value.character) {
+			case 'bf':
+                PlayState.instance.currentStage.getBoyfriend().destroy();
+				var boyfriend = CharacterDataParser.fetchCharacter(data.value.newchar);
+                if (boyfriend != null) {
+                    boyfriend.set_characterType(CharacterType.BF);
+                    boyfriend.initHealthIcon(false);
+                    PlayState.instance.currentStage.addCharacter(boyfriend, CharacterType.BF);
+                    PlayState.instance.currentStage.getBoyfriend().zIndex = crh.scriptGet("characterZIndexes")["bf"];
+                }
+			case 'gf':
+				PlayState.instance.currentStage.getGirlfriend().destroy();
+				var girlfriend = CharacterDataParser.fetchCharacter(data.value.newchar);
+                if (girlfriend != null) {
+                    girlfriend.set_characterType(CharacterType.GF);
+                    PlayState.instance.currentStage.addCharacter(girlfriend, CharacterType.GF);
+                    PlayState.instance.currentStage.getGirlfriend().zIndex = crh.scriptGet("characterZIndexes")["gf"];
+                }
+			case 'dad':
+				PlayState.instance.currentStage.getDad().destroy();
+				var dad = CharacterDataParser.fetchCharacter(data.value.newchar);
+                if (dad != null) {
+                    dad.set_characterType(CharacterType.DAD);
+                    dad.initHealthIcon(true);
+                    PlayState.instance.currentStage.addCharacter(dad, CharacterType.DAD);
+                    PlayState.instance.currentStage.getDad().zIndex = crh.scriptGet("characterZIndexes")["dad"];
+                }
+		}
+
+        PlayState.instance.currentStage.refresh();
+	}
+
+	public function getEventSchema() {
+        var characterList = ["Boyfriend" => "bf", "Daddy Dearest" => "dad"];
+        var charIds:Array<String> = CharacterDataParser.listCharacterIds();
+
+        for (charId in charIds)
+        {
+          var character:Null<CharacterData> = CharacterDataParser.fetchCharacterData(charId);
+          characterList.set(character.name, charId);
+        }    
+		return [
+            {
+                name: "character",
+                title: "Old Character",
+                defaultValue: "bf",
+				type: "enum",
+				keys: [
+					"Boyfriend" => "bf",
+					"Girlfriend" => "gf",
+					"Dad" => "dad"
+				]
+            },
+            {
+                name: "newchar",
+                title: "New Character",
+                defaultValue: "bf",
+                type: "enum",
+                keys: characterList,
+            }
+		];
+	}
+
+	public function getTitle() {
+		return "Change Character (CL Ver.)";
+	}
+	
+	public function new() {
+		super('ChangeCharacterCL');
+	}
+}

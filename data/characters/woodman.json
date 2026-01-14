@@ -1,0 +1,102 @@
+{
+    "assetPath": "characters/WoodMan_Assets",
+    "name": "Wood Man",
+    "singTime": 4,
+    "version": "1.0.0",
+    "flipX": true,
+    "offsets": [40, 280],
+    "cameraOffsets": [220, 10],
+    "healthIcon": {"id": "woodman"},
+    "animations": [
+        {
+            "name": "idle",
+            "prefix": "woodman idle",
+            "looped": false,
+            "offsets": [
+                -5,
+                0
+            ]
+        },
+        {
+            "name": "singLEFT",
+            "prefix": "woodman left note0",
+            "looped": false,
+            "offsets": [
+                70,
+                -5
+            ]
+        },
+        {
+            "name": "singDOWN",
+            "prefix": "woodman down note0",
+            "looped": false,
+            "offsets": [
+                8,
+                -69
+            ]
+        },
+        {
+            "name": "singUP",
+            "prefix": "woodman up note0",
+            "looped": false,
+            "offsets": [
+                104,
+                77
+            ]
+        },
+        {
+            "name": "singRIGHT",
+            "prefix": "woodman right note0",
+            "looped": false,
+            "offsets": [
+                -8,
+                -17
+            ]
+        },
+        {
+            "name": "singLEFTmiss",
+            "prefix": "woodman left note miss",
+            "looped": false,
+            "offsets": [
+                128,
+                100
+            ]
+        },
+        {
+            "name": "singDOWNmiss",
+            "prefix": "woodman down note miss",
+            "looped": false,
+            "offsets": [
+                72,
+                2
+            ]
+        },
+        {
+            "name": "singUPmiss",
+            "prefix": "woodman up note miss",
+            "looped": false,
+            "offsets": [
+                130,
+                180
+            ]
+        },
+        {
+            "name": "singRIGHTmiss",
+            "prefix": "woodman right note miss",
+            "looped": false,
+            "offsets": [
+                89,
+                30
+            ]
+        },
+        {
+            "name": "shock",
+            "prefix": "woodman-shock0",
+            "looped": false,
+            "offsets": [
+                21,
+                11
+            ]
+        }
+    ]
+}

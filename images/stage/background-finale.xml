@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="background-finale.png" width="7780" height="9660">
+	<SubTexture name="finale0000" x="0" y="0" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+	<SubTexture name="finale0001" x="0" y="0" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+	<SubTexture name="finale0002" x="3890" y="0" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+	<SubTexture name="finale0003" x="3890" y="0" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+	<SubTexture name="finale0004" x="0" y="2415" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+	<SubTexture name="finale0005" x="0" y="2415" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+	<SubTexture name="finale0006" x="3890" y="2415" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+	<SubTexture name="finale0007" x="3890" y="2415" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+	<SubTexture name="finale0008" x="0" y="4830" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+	<SubTexture name="finale0009" x="0" y="4830" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+	<SubTexture name="finale0010" x="3890" y="4830" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+	<SubTexture name="finale0011" x="3890" y="4830" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+	<SubTexture name="finale0012" x="0" y="7245" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+	<SubTexture name="finale0013" x="0" y="7245" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+	<SubTexture name="finale0014" x="3890" y="7245" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+	<SubTexture name="finale0015" x="3890" y="7245" width="3890" height="2415" frameX="-0" frameY="-0" frameWidth="3890" frameHeight="2415"/>
+</TextureAtlas>

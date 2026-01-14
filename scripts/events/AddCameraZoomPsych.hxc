@@ -1,0 +1,50 @@
+import funkin.play.PlayState;
+import funkin.play.event.SongEvent;
+
+import funkin.modding.module.Module;
+import funkin.modding.module.ModuleHandler;
+import funkin.Preferences;
+import flixel.FlxCamera;
+import flixel.FlxG;
+
+class AddCameraZoomPsych extends SongEvent {
+
+	public override function handleEvent(data) {
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+        if (Preferences.zoomCamera){
+			var gamezoom = (data.value.gamezoom != '') ? Std.parseFloat(data.value.gamezoom) : 0.015;
+			var hudzoom = (data.value.hudzoom != '') ? Std.parseFloat(data.value.hudzoom) : 0.03;
+			PlayState.instance.cameraBopMultiplier += gamezoom;
+            PlayState.instance.camHUD.zoom += hudzoom;
+        }
+	}
+
+	public function getEventSchema() {
+		return [
+            {
+                name: "gamezoom",
+                title: "Game Zoom",
+				type: "string",
+				defaultValue: "0.015",
+                units: "x"
+            },
+            {
+                name: "hudzoom",
+                title: "HUD Zoom",
+				type: "string",
+				defaultValue: "0.03",
+                units: "x"
+            }
+		];
+	}
+
+	public function getTitle() {
+		return "Add Camera Zoom";
+	}
+	
+	public function new() {
+		super('AddCamZoomPsych');
+	}
+}

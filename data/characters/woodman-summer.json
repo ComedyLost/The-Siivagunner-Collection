@@ -1,0 +1,174 @@
+{
+    "assetPath": "characters/woodmanSUMMER",
+    "name": "Wood Man (Summer)",
+    "singTime": 4,
+    "version": "1.0.0",
+    "flipX": true,
+    "offsets": [40, 280],
+    "cameraOffsets": [220, 7],
+    "healthIcon": {"id": "woodman-summer"},
+    "animations": [
+        {
+            "name": "idle",
+            "prefix": "woodman idle",
+            "looped": false,
+            "offsets": [
+                -5,
+                0
+            ]
+        },
+        {
+            "name": "singLEFT",
+            "prefix": "woodman left note0",
+            "looped": false,
+            "offsets": [
+                62,
+                2
+            ]
+        },
+        {
+            "name": "singDOWN",
+            "prefix": "woodman down note0",
+            "looped": false,
+            "offsets": [
+                8,
+                -47
+            ]
+        },
+        {
+            "name": "singUP",
+            "prefix": "woodman up note0",
+            "looped": false,
+            "offsets": [
+                92,
+                97
+            ]
+        },
+        {
+            "name": "singRIGHT",
+            "prefix": "woodman right note0",
+            "looped": false,
+            "offsets": [
+                -13,
+                -1
+            ]
+        },
+        {
+            "name": "singLEFTmiss",
+            "prefix": "woodman left note miss",
+            "looped": false,
+            "offsets": [
+                67,
+                9
+            ]
+        },
+        {
+            "name": "singDOWNmiss",
+            "prefix": "woodman down note miss",
+            "looped": false,
+            "offsets": [
+                22,
+                -55
+            ]
+        },
+        {
+            "name": "singUPmiss",
+            "prefix": "woodman up note miss",
+            "looped": false,
+            "offsets": [
+                97,
+                107
+            ]
+        },
+        {
+            "name": "singRIGHTmiss",
+            "prefix": "woodman right note miss",
+            "looped": false,
+            "offsets": [
+                5,
+                4
+            ]
+        },
+        {
+            "name": "idle-alt",
+            "prefix": "woodman alt idle0",
+            "looped": false,
+            "offsets": [
+                21,
+                0
+            ]
+        },
+        {
+            "name": "singLEFT-alt",
+            "prefix": "woodman alt left note0",
+            "looped": false,
+            "offsets": [
+                146,
+                2
+            ]
+        },
+        {
+            "name": "singDOWN-alt",
+            "prefix": "woodman alt down note0",
+            "looped": false,
+            "offsets": [
+                40,
+                -47
+            ]
+        },
+        {
+            "name": "singUP-alt",
+            "prefix": "woodman alt up note0",
+            "looped": false,
+            "offsets": [
+                60,
+                102
+            ]
+        },
+        {
+            "name": "singRIGHT-alt",
+            "prefix": "woodman alt right note0",
+            "looped": false,
+            "offsets": [
+                -13,
+                -1
+            ]
+        },
+        {
+            "name": "singLEFTmiss-alt",
+            "prefix": "woodman alt left note miss",
+            "looped": false,
+            "offsets": [
+                146,
+                2
+            ]
+        },
+        {
+            "name": "singDOWNmiss-alt",
+            "prefix": "woodman alt down note miss",
+            "looped": false,
+            "offsets": [
+                36,
+                -40
+            ]
+        },
+        {
+            "name": "singUPmiss-alt",
+            "prefix": "woodman alt up note miss",
+            "looped": false,
+            "offsets": [
+                50,
+                98
+            ]
+        },
+        {
+            "name": "singRIGHTmiss-alt",
+            "prefix": "woodman alt right note miss",
+            "looped": false,
+            "offsets": [
+                5,
+                5
+            ]
+        }
+    ]
+}

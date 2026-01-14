@@ -1,0 +1,41 @@
+import funkin.play.PlayState;
+import funkin.play.event.SongEvent;
+
+import funkin.modding.module.Module;
+import funkin.modding.module.ModuleHandler;
+import funkin.Preferences;
+import flixel.FlxCamera;
+import flixel.FlxG;
+
+class ListenClosely extends SongEvent {
+
+	public override function handleEvent(data) {
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		if (PlayState.instance.currentStageId != 'rotten') return;
+	}
+
+	public function getEventSchema() {
+		return [
+            {
+                name: "value1",
+                title: "Type",
+				type: "string"
+            },
+            {
+                name: "value2",
+                title: "UNUSED",
+				type: "string"
+            }
+		];
+	}
+
+	public function getTitle() {
+		return "Listen Closely (Siiva)";
+	}
+	
+	public function new() {
+		super('Listen Closely');
+	}
+}

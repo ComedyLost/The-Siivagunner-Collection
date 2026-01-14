@@ -1,0 +1,46 @@
+{
+    "assetPath": "default:characters/woodman-dead",
+    "name": "Wood Man (Dead)",
+    "renderType": "multianimateatlas",
+    "singTime": 6.1,
+    "version": "1.0.0",
+    "scale": 0.7,
+    "flipX": true,
+    "offsets": [-830, -490],
+    "cameraOffsets": [-120, 60],
+    "animations": [
+        {
+            "name": "firstDeath",
+            "prefix": "deathStart",
+            "looped": false,
+            "animType": "symbol",
+            "offsets": [
+                0,
+                0
+            ],
+            "frameRate": 24
+        },
+        {
+            "name": "deathConfirm",
+            "prefix": "retry",
+            "looped": false,
+            "animType": "symbol",
+            "offsets": [
+                -23,
+                -44
+            ],
+            "frameRate": 24
+        },
+        {
+            "name": "deathLoop",
+            "prefix": "deathLoop",
+            "looped": true,
+            "animType": "symbol",
+            "offsets": [
+                8,
+                -17
+            ],
+            "frameRate": 24
+        }
+    ]
+}

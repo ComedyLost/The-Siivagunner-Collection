@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="scarfs.png" width="1319" height="956">
+	<SubTexture name="scarfW0005" x="939" y="173" width="373" height="281" frameX="-15" frameY="-0" frameWidth="406" frameHeight="281"/>
+	<SubTexture name="scarfW0003" x="448" y="724" width="397" height="224" frameX="-0" frameY="-28" frameWidth="406" frameHeight="281"/>
+	<SubTexture name="scarfW0007" x="454" y="549" width="389" height="132" frameX="-17" frameY="-108" frameWidth="406" frameHeight="281"/>
+	<SubTexture name="scarfW0011" x="939" y="1" width="379" height="169" frameX="-15" frameY="-62" frameWidth="406" frameHeight="281"/>
+	<SubTexture name="scarfW0001" x="848" y="643" width="341" height="192" frameX="-21" frameY="-35" frameWidth="406" frameHeight="281"/>
+	<SubTexture name="scarfW0009" x="927" y="457" width="349" height="183" frameX="-15" frameY="-69" frameWidth="406" frameHeight="281"/>
+	<SubTexture name="scarfW0002" x="848" y="643" width="341" height="192" frameX="-21" frameY="-35" frameWidth="406" frameHeight="281"/>
+	<SubTexture name="scarfW0004" x="448" y="724" width="397" height="224" frameX="-0" frameY="-28" frameWidth="406" frameHeight="281"/>
+	<SubTexture name="scarfW0006" x="939" y="173" width="373" height="281" frameX="-15" frameY="-0" frameWidth="406" frameHeight="281"/>
+	<SubTexture name="scarfW0008" x="454" y="549" width="389" height="132" frameX="-17" frameY="-108" frameWidth="406" frameHeight="281"/>
+	<SubTexture name="scarfW0010" x="927" y="457" width="349" height="183" frameX="-15" frameY="-69" frameWidth="406" frameHeight="281"/>
+	<SubTexture name="scarfW0012" x="939" y="1" width="379" height="169" frameX="-15" frameY="-62" frameWidth="406" frameHeight="281"/>
+	<SubTexture name="scarfR0000" x="1" y="1" width="476" height="240" frameX="-3" frameY="-28" frameWidth="479" frameHeight="329"/>
+	<SubTexture name="scarfR0001" x="1" y="1" width="476" height="240" frameX="-3" frameY="-28" frameWidth="479" frameHeight="329"/>
+	<SubTexture name="scarfR0002" x="1" y="244" width="472" height="272" frameX="-1" frameY="-26" frameWidth="479" frameHeight="329"/>
+	<SubTexture name="scarfR0003" x="1" y="244" width="472" height="272" frameX="-1" frameY="-26" frameWidth="479" frameHeight="329"/>
+	<SubTexture name="scarfR0004" x="480" y="1" width="456" height="329" frameX="-0" frameY="-0" frameWidth="479" frameHeight="329"/>
+	<SubTexture name="scarfR0005" x="480" y="1" width="456" height="329" frameX="-0" frameY="-0" frameWidth="479" frameHeight="329"/>
+	<SubTexture name="scarfR0006" x="476" y="333" width="448" height="213" frameX="-4" frameY="-72" frameWidth="479" frameHeight="329"/>
+	<SubTexture name="scarfR0007" x="476" y="333" width="448" height="213" frameX="-4" frameY="-72" frameWidth="479" frameHeight="329"/>
+	<SubTexture name="scarfR0008" x="1" y="724" width="444" height="231" frameX="-5" frameY="-78" frameWidth="479" frameHeight="329"/>
+	<SubTexture name="scarfR0009" x="1" y="724" width="444" height="231" frameX="-5" frameY="-78" frameWidth="479" frameHeight="329"/>
+	<SubTexture name="scarfR0010" x="1" y="519" width="450" height="202" frameX="-5" frameY="-61" frameWidth="479" frameHeight="329"/>
+	<SubTexture name="scarfR0011" x="1" y="519" width="450" height="202" frameX="-5" frameY="-61" frameWidth="479" frameHeight="329"/>
+</TextureAtlas>

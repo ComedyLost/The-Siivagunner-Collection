@@ -1,0 +1,45 @@
+import funkin.play.PlayState;
+import funkin.play.event.SongEvent;
+
+import funkin.modding.module.Module;
+import funkin.modding.module.ModuleHandler;
+import funkin.Preferences;
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import funkin.Conductor;
+
+class FlavorStrumsSiiva extends SongEvent {
+
+	public override function handleEvent(data) {
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		return; // Now handled in song
+		PlayState.instance.tweenCameraZoom(data.getString('value1'), (Conductor.instance.stepLengthMs * 8) / 1000, true, FlxEase.circOut);
+	}
+
+	public function getEventSchema() {
+		return [
+            {
+                name: "value1",
+                title: "Enable",
+				type: "string"
+            },
+            {
+                name: "value2",
+                title: "UNUSED",
+				type: "string"
+            }
+		];
+	}
+
+	public function getTitle() {
+		return "Flavor Strums (Siiva)";
+	}
+	
+	public function new() {
+		super('Flavor Strums');
+	}
+}

@@ -1,0 +1,961 @@
+import flixel.FlxG;
+import funkin.play.PlayState;
+import flixel.tweens.FlxTween;
+import flixel.FlxSprite;
+import flixel.util.FlxTimer;
+import funkin.audio.FunkinSound;
+import funkin.graphics.FunkinSprite;
+import flixel.tweens.FlxEase;
+import funkin.Paths;
+import funkin.play.song.Song;
+import funkin.play.Countdown;
+import funkin.util.Constants;
+import funkin.Conductor;
+import funkin.util.FlxTweenUtil;
+import flixel.util.FlxColor;
+import funkin.graphics.FunkinCamera;
+import flixel.FlxCamera;
+import funkin.play.cutscene.VideoCutscene;
+import StringTools;
+import funkin.graphics.video.FunkinVideoSprite;
+import flixel.math.FlxMath;
+import Math;
+import openfl.filters.ShaderFilter;
+import flixel.addons.display.FlxRuntimeShader;
+import flixel.text.FlxText;
+import flixel.addons.text.FlxTypeText;
+import funkin.Preferences;
+import funkin.mobile.input.ControlsHandler;
+
+class RottenSong extends Song
+{
+	function new()
+	{
+		super('rotten');
+	}
+
+	var black:FlxSprite;
+	var listenClosely:FlxSprite;
+	var camOther:FunkinCamera;
+	var camStrum:FunkinCamera; // Extra cam to allow custom note colors
+	var isCameraOnForcedPos:Bool = false;
+    var todokete:FunkinVideoSprite;
+	var filmburn:FunkinVideoSprite;
+	var rotten:FunkinVideoSprite;
+	var flavorStrums:Bool = false;
+	var doomBG:FunkinSprite = null;
+	var summerBG:FunkinSprite = null;
+	var westBG:FunkinSprite = null;
+	var finaleBG:FunkinSprite = null;
+	var dialog:FunkinSprite;
+	var dialogright:FunkinSprite;
+	var neutral:FunkinSprite;
+	
+	var originalPositions = [];
+
+	var originalStrumlineX:Int;
+	
+	var dialogName:FlxText;
+	var dialogText:FlxTypeText;
+	
+	var glitch = new FlxRuntimeShader(Assets.getText(Paths.frag("glitch")), null, 130);
+	var blue = new FlxRuntimeShader(Assets.getText(Paths.frag("blue")));
+	var melt = new FlxRuntimeShader(Assets.getText(Paths.frag("melt")));
+
+	var gloob = new ShaderFilter(glitch);
+	var fnaf = new ShaderFilter(blue);
+	
+	override function onCreate(event) {
+		super.onCreate(event);
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		hasPlayedIntroCutscene = false;
+		isCameraOnForcedPos = false;
+		flavorStrums = false;
+
+		camStrum = quickCreateCam(false);
+		camStrum.copyFrom(PlayState.instance.camHUD);
+		FlxG.cameras.insert(camStrum, FlxG.cameras.list.indexOf(PlayState.instance.camHUD) + 1, false);
+
+		camOther = quickCreateCam(false);
+		camOther.copyFrom(PlayState.instance.camHUD);
+		FlxG.cameras.insert(camOther, FlxG.cameras.list.indexOf(PlayState.instance.camHUD) + 2, false);
+
+		black = new FlxSprite().makeGraphic(FlxG.width + 2, FlxG.height + 2, FlxColor.BLACK);
+		black.cameras = [camOther];
+		black.updateHitbox();
+		black.screenCenter();
+		black.alpha = 0.001;
+		PlayState.instance.add(black);	
+		
+		todokete = new FunkinVideoSprite(200, 200);
+		todokete.cameras = [PlayState.instance.camGame];
+		todokete.antialiasing = true;
+		todokete.scrollFactor.set(1, 1);
+		todokete.zIndex = 100;	
+		PlayState.instance.currentStage.add(todokete);
+		PlayState.instance.currentStage.refresh();
+
+		doomBG = PlayState.instance.currentStage.getNamedProp('DoomFes');
+		summerBG = PlayState.instance.currentStage.getNamedProp('SummerFes');
+		westBG = PlayState.instance.currentStage.getNamedProp('WestFes');
+		finaleBG = PlayState.instance.currentStage.getNamedProp('Finale');
+	
+		if (todokete.load(Assets.getPath(Paths.videos('todokete'), false))) todokete.play();
+
+		todokete.bitmap.onFormatSetup.add(() -> {
+			todokete.setGraphicSize(todokete.width * 2, todokete.height * 2);
+			todokete.updateHitbox();
+			todokete.alpha = 0.5;
+			todokete.zIndex = 100;	
+			todokete.blend = 0;
+			PlayState.instance.currentStage.refresh();
+		});
+
+		todokete.bitmap.onEndReached.add(() -> {        
+			todokete.bitmap.stop();
+			todokete.bitmap.time = 0;
+			todokete.bitmap.play();		  
+		});
+
+		rotten = new FunkinVideoSprite();
+		rotten.bitmap.onFormatSetup.add(()->{
+			rotten.updateHitbox();
+			rotten.screenCenter();
+			rotten.setGraphicSize(1280, 720);
+			rotten.cameras = [PlayState.instance.camHUD];
+			rotten.scrollFactor.set();
+		});
+		rotten.load(Assets.getPath(Paths.videos('rottencutscene')));
+		rotten.zIndex = 0;
+		PlayState.instance.add(rotten);
+	
+		filmburn = createOverlayVideo('filmburn');
+		filmburn.color = 0xFF888888;
+		filmburn.alpha = 0;
+		filmburn.bitmap.rate = 0.5;
+		PlayState.instance.add(filmburn);
+
+		glitch.setFloat('prob', 0.1);
+		glitch.setFloat('time', 0.1);
+		glitch.setFloat('intensityChromatic', 0);
+		
+		blue.setFloat('hue', 0.235);
+		blue.setFloat('pix', 0.00001);
+		blue.setFloat('hueBlend', 1);
+
+		var listenBlue = new FlxRuntimeShader(Assets.getText(Paths.frag("blue")));
+		listenBlue.setFloat('hue', 1.83);
+		listenBlue.setFloat('pix', 0.00001);
+		listenBlue.setFloat('hueBlend', 1);
+		listenClosely = FunkinSprite.createSparrow(-180, -120, 'events/cutscene/Robbie_closeup');
+		// listenClosely = new BGSprite('events/cutscene/Robbie_closeup', -180, -120, 0, 0, ['now listen closely']);
+		listenClosely.animation.addByPrefix('now listen closely', 'now listen closely', 24, false);
+		listenClosely.scale.set(1.6, 1.6);
+		listenClosely.updateHitbox();
+		listenClosely.scrollFactor.set();
+		listenClosely.visible = false;
+		listenClosely.cameras = [camOther];
+		listenClosely.shader = listenBlue; // not working?
+		PlayState.instance.add(listenClosely);
+
+		dialog = FunkinSprite.create(0, 0, 'events/lyrics/dialog');
+		dialog.setGraphicSize(FlxG.width, FlxG.height);
+		dialog.updateHitbox();
+		dialog.cameras = [PlayState.instance.camHUD];
+		dialog.visible = false;
+		dialog.zIndex = 1;
+		PlayState.instance.add(dialog);
+	
+		dialogright = FunkinSprite.create(0, 0, 'events/lyrics/dialog-right');
+		dialogright.setGraphicSize(FlxG.width, FlxG.height);
+		dialogright.updateHitbox();
+		dialogright.cameras = [PlayState.instance.camHUD];
+		dialogright.visible = false;
+		dialogright.zIndex = 1;
+		PlayState.instance.add(dialogright);
+	
+		neutral = FunkinSprite.create(0, 0, 'events/lyrics/neutral');
+		neutral.setGraphicSize(FlxG.width, FlxG.height);
+		neutral.updateHitbox();
+		neutral.cameras = [PlayState.instance.camHUD];
+		neutral.visible = false;
+		neutral.zIndex = 1;
+		PlayState.instance.add(neutral);
+	
+		dialogName = new FlxText(72.5, 477.5, 0, '');
+		dialogName.setFormat(Paths.font('ace_futurism.ttf'), 44, FlxColor.BLACK);
+		dialogName.cameras = [PlayState.instance.camHUD];
+		dialogName.visible = false;
+		dialogName.zIndex = 1;
+		PlayState.instance.add(dialogName);
+	
+		dialogText = new FlxTypeText(71.5, 538, 0, '');
+		dialogText.delay = 0.065;
+		dialogText.setFormat(Paths.font('FOT-SeuratPro-DB.otf'), 26, FlxColor.WHITE);
+		dialogText.cameras = [PlayState.instance.camHUD];
+		dialogText.visible = false;
+		dialogText.zIndex = 1;
+		PlayState.instance.add(dialogText);
+
+		/* var originalPositions = [
+			PlayState.instance.playerStrumline => {
+				x: PlayState.instance.playerStrumline.x,
+			},
+			PlayState.instance.
+		]*/
+		originalStrumlineX = PlayState.instance.playerStrumline.x;
+	}
+
+	function createOverlayVideo(videoName:String):FunkinVideoSprite {
+		var newVid:FunkinVideoSprite;
+		
+		newVid = new FunkinVideoSprite(0, 0, false);
+		newVid.cameras = [camStrum];
+		newVid.bitmap.onFormatSetup.add(()->{
+			newVid.setGraphicSize(FlxG.width, FlxG.height);
+			newVid.updateHitbox();
+			newVid.screenCenter();
+			newVid.blend = 0;
+			newVid.antialiasing = true;
+		});
+
+		newVid.bitmap.onEndReached.add(() -> {        
+			newVid.bitmap.stop();
+			newVid.bitmap.time = 0;
+			newVid.bitmap.play();		  
+		});
+
+		newVid.load(Assets.getPath(Paths.videos(videoName), false));
+		return newVid;
+	}		
+
+	var e = 0;
+	override function onUpdate(event:UpdateScriptEvent) {
+		super.onUpdate(event);
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		if (camOther != null) {
+			camOther?.zoom = PlayState.instance.camHUD.zoom;
+		}
+		if (camStrum != null) {
+			camStrum?.visible = PlayState.instance.camHUD.visible;
+			camStrum?.zoom = PlayState.instance.camHUD.zoom;
+			camStrum?.alpha = PlayState.instance.camHUD.alpha;
+		}
+
+		if (westBG.shader == melt){
+			e += (event.elapsed * 0.1);
+			melt.setFloat('iTime', e);
+		}	
+	}
+
+	function quickCreateCam(add:Bool):FlxCamera {
+		if (add == null) add = true;
+		var cam = new FlxCamera(0, 0, FlxG.width, FlxG.height);
+		cam.bgColor = 0x0;
+	
+		if (add) FlxG.cameras.add(cam, true);
+
+		return cam;
+	}
+
+	function calcSectionLength(duration:Int){
+		var durSeconds = (Conductor.instance.stepLengthMs * (16 * (duration ?? 1))) / 1000;
+		return durSeconds;
+	}
+
+	function onSongRetry(event:ScriptEvent) {
+		super.onSongRetry(event);
+	  
+		FlxTimer.globalManager.clear();
+		FlxTween.globalManager.completeAll();
+		hasPlayedIntroCutscene = true;
+		isCameraOnForcedPos = false;
+		if (rotten != null) {
+			rotten.stop();
+			rotten.visible = false;
+			PlayState.instance.camGame.alpha = 1;
+		}
+		black.alpha = 1;
+	}	  
+
+	override function onPause(event) {
+		super.onPause(event);
+
+		FlxTimer.globalManager.forEach(function(tmr:FlxTimer) if(!tmr.finished) tmr.active = false);
+		FlxTween.globalManager.forEach(function(twn:FlxTween) if(!twn.finished) twn.active = false);
+		if (todokete != null) todokete.pause();
+		if (filmburn != null) filmburn.pause();
+		if (rotten != null) rotten.pause();
+	}
+
+	override function onResume(event) {
+		super.onResume(event);
+
+		FlxTimer.globalManager.forEach(function(tmr:FlxTimer) if(!tmr.finished) tmr.active = true);
+		FlxTween.globalManager.forEach(function(twn:FlxTween) if(!twn.finished) twn.active = true);
+		if (todokete != null) todokete.resume();
+		if (filmburn != null) filmburn.resume();
+		if (rotten != null) rotten.resume();
+	}
+
+	function onStepHit(event:SongTimeScriptEvent):Void {
+		super.onStepHit(event);
+		switch (event.step) {
+			case 2918:
+				westBG.shader = melt;
+				FlxTween.tween(westBG, {alpha: 0}, 15, {startDelay: 10});		
+		}
+	}
+
+	function playVideo() {
+		VideoCutscene.play(Paths.videos('rottenintro'));
+		// VideoCutscene.vid.bitmap.onEndReached.removeAll();
+		/* VideoCutscene.vid.bitmap.onEndReached.add(() -> {
+			var cutsceneType:CutsceneType = VideoCutscene.cutsceneType;
+			if (VideoCutscene.vid != null) {
+				VideoCutscene.vid.stop();
+				PlayState.instance.remove(VideoCutscene.vid);
+				VideoCutscene.vid.destroy();
+				VideoCutscene.vid = null;			  
+			}
+			PlayState.instance.remove(VideoCutscene.blackScreen);
+			VideoCutscene.blackScreen = null;
+			VideoCutscene.onVideoEnded.dispatch();
+			PlayState.instance.startCountdown();
+		});*/
+	}
+	
+	public function onNoteHit(callback) {
+		super.onNoteHit(callback);
+		if (PlayState.instance?.currentStage == null) return;
+		if (!flavorStrums) return;
+		switch (callback.note.noteData.getStrumlineIndex()) {
+			case 0:
+				makeMusicNote(PlayState.instance.currentStage.getBoyfriend(), Std.int(callback.note.noteData.data % 4), [-125, 100]);
+			case 1:
+				makeMusicNote(PlayState.instance.currentStage.getDad(), Std.int(callback.note.noteData.data % 4), [150, -50]);
+		}
+	}
+
+	function makeMusicNote(char:Character, dir:Int, musicNoteOffset:Array<Float>):Void {
+		var musicNote:FunkinSprite = new FunkinSprite().loadGraphic(Paths.image('events/strumnote'));
+		
+		var xPos:Float = musicNoteOffset[0];
+		var noteWidth:Float = (musicNote.width / 2);
+	
+		musicNote.cameras = char.cameras; //This should work>??>? Maybe?????
+		musicNote.setPosition(char.getGraphicMidpoint().x + xPos + noteWidth, char.getGraphicMidpoint().y + musicNoteOffset[1] + (musicNote.height / 2));
+		PlayState.instance.currentStage.add(musicNote);
+	
+		musicNote.scale.set(0.5, 0.5);
+		musicNote.alpha = 1;
+	
+		var randAngle:Float = 0;
+	
+		switch (dir) // DOWN AND UP WERE MIRRORED. FUCK.
+		{
+			case 0:
+				randAngle = FlxG.random.int(240, 300);
+			case 2:
+				randAngle = FlxG.random.int(150, 210);
+			case 1:
+				randAngle = FlxG.random.int(330, 390);
+			case 3:
+				randAngle = FlxG.random.int(60, 120);
+		}
+		if (randAngle > 360) randAngle = randAngle % 360;
+		// i cannot radian properly, go go gadget multiply
+	
+		randAngle *= 0.0174533;
+	
+		musicNote.velocity.x = (FlxG.random.int(200, 400) * Math.sin(randAngle));
+		musicNote.velocity.y = (FlxG.random.int(200, 400) * Math.cos(randAngle));
+		musicNote.angle = musicNote.velocity.x / -40;
+	
+		FlxTween.tween(musicNote.velocity, {x: 0, y:0}, 1, {ease: FlxEase.cubeOut});
+		FlxTween.tween(musicNote.scale, {x: 2, y:2}, 1, {ease: FlxEase.cubeOut});
+		FlxTween.tween(musicNote, {angle: (musicNote.angle * -1)}, 1, {ease: FlxEase.cubeOut});
+		FlxTween.tween(musicNote, {alpha: 0}, 1, {ease: FlxEase.cubeOut, onComplete: function(twn:FlxTween) {
+			musicNote.destroy();
+		}});
+	}
+
+	public function onCountdownStart(event):Void {
+		super.onCountdownStart(event);
+		if (PlayState.instance.isChartingMode) hasPlayedIntroCutscene = true;
+
+		// PlayState.instance.scoreText.visible = true;
+		// PlayState.instance.scoreText.alpha = 1;
+		
+		black.alpha = 1;
+
+		PlayState.instance.scoreText.y = PlayState.instance.healthBarBG.y + 30;
+
+		for (i in [PlayState.instance.iconP1, PlayState.instance.iconP2, PlayState.instance.healthBar, PlayState.instance.healthBarBG, PlayState.instance.scoreText]) {
+			i.alpha = 1;
+			i.visible = true;
+		}
+		
+		for (i in [doomBG, summerBG, westBG, finaleBG]) {
+			i.alpha = 1;
+		}
+
+		westBG.shader = null;
+		melt.setFloat('iTime', 0);
+		e = 0;
+
+		for (i in [dialog, dialogright, neutral, dialogName, dialogText]) {
+			i.alpha = 1;
+			i.visible = false;
+		}
+
+		var playerStrumline:FlxSprite = PlayState.instance.playerStrumline;
+		playerStrumline?.noteHoldCovers.clear();
+
+		if (!(Preferences.controlsScheme == "Arrows" && !ControlsHandler.usingExternalInputDevice)) {
+			if (playerStrumline != null) {
+				playerStrumline.x = originalStrumlineX;
+				playerStrumline.alpha = 1;
+			}	
+		}
+
+		var opponentStrumline:FlxSprite = PlayState.instance.opponentStrumline;
+		if (opponentStrumline != null) {
+			  // playerStrumline.x = FlxG.width / 2 - playerStrumline.width / 2;
+			opponentStrumline.visible = true;
+		}
+		PlayState.instance.playerStrumline.cameras = [camStrum];
+		PlayState.instance.opponentStrumline.cameras = [camStrum];
+		flavorStrums = false;
+
+		if (!hasPlayedIntroCutscene) {
+		  	trace('Pausing countdown to play cutscene.');
+	
+		  	hasPlayedIntroCutscene = true;
+	
+		  	event.cancel(); // CANCEL THE COUNTDOWN!
+	
+		  	playVideo();
+		} else {
+			event.cancel();
+			Countdown.stopCountdown();
+			PlayState.instance.isInCountdown = true;
+			PlayState.instance.isInCutscene = false;
+			Conductor.instance.update(PlayState.instance.startTimestamp);			
+		}
+	}
+
+	public function onSongEvent(event):Void  {
+		super.onSongEvent(event);
+		var game = PlayState.instance;
+
+		switch (event.eventData.eventKind) {
+			case 'ChangeCharacterCL':
+				var character:BaseCharacter;
+				switch (event.eventData.getString('character')) {
+					case 'bf': character = PlayState.instance?.currentStage?.getBoyfriend() ?? null;
+					case 'dad': character = PlayState.instance?.currentStage?.getDad() ?? null;
+					case 'gf': character = PlayState.instance?.currentStage?.getGirlfriend() ?? null;
+				}
+				var ogAnim = character.getCurrentAnimation();
+				FlxTimer.wait(0.001, () -> {
+					if (!StringTools.startsWith(ogAnim, 'idle') && character.hasAnimation(ogAnim)) {
+						character.playAnimation(ogAnim);
+						if (StringTools.startsWith(ogAnim, 'sing')) character.holdTimer = 0;
+					}
+				});
+			case 'FocusCamera':
+				if (isCameraOnForcedPos) event.cancel(); // Don't allow camera movements when enabled
+			case 'Flavor Strums': flavorStrums = (event.eventData.getString('value1') == 'true');
+			case 'Set Cam Zoom', 'Set Cam Zoom Siiva':
+				PlayState.instance.tweenCameraZoom(event.eventData.getString('value1'), (Conductor.instance.stepLengthMs * 8) / 1000, true, FlxEase.circOut);
+			case 'ChangeStageSiiva':
+				for (m in [PlayState.instance.camGame, camStrum]) m?.filters = null;
+				changeStage(event.eventData.getString('value1'));
+			case 'Camera Events', 'Camera Events Siiva':
+				var v1 = event.eventData.getString('value1');
+				var v2 = event.eventData.getString('value2');
+		
+				switch (v1) {
+					case "intro":
+						{
+							// FADE
+							var dur:Float = 5.7;
+							var stageRef = PlayState.instance.currentStage.getNamedProp('DoomFes');
+							var dad = PlayState.instance.currentStage.getDad();
+			
+							black.alpha = 1;
+							FlxTween.tween(black, {alpha : 0}, dur, {ease : FlxEase.sineInOut, startDelay : 0.5});
+			
+							// CAMGAME
+							PlayState.instance.currentCameraZoom = 0.4;
+							FlxTween.tween(PlayState.instance, {currentCameraZoom : 0.55}, dur - 3, {ease : FlxEase.quadInOut, startDelay : dur - 2.7});
+			
+							isCameraOnForcedPos = true;
+							PlayState.instance.tweenCameraToPosition(stageRef.getMidpoint().x, stageRef.getMidpoint().y - 50, 0);
+							
+							FlxTimer.wait(dur - 2.7, () -> {
+								PlayState.instance.tweenCameraToPosition(dad.cameraFocusPoint.x + 160, dad.cameraFocusPoint.y - 80, dur - 3, FlxEase.sineInOut);
+							});
+			
+							// CAMHUD
+							PlayState.instance.camHUD.alpha = 0.001;
+							FlxTween.tween(PlayState.instance.camHUD, {alpha : 0.3}, dur - 4.5, {ease : FlxEase.sineOut, startDelay : dur - 1.2});
+						}
+			
+					case "release camera":
+						{
+							isCameraOnForcedPos = false;
+						}
+			
+					case "set fade":
+						{
+							black.alpha = Std.parseFloat(v2);
+						}
+			
+					case "tween fade":
+						{		
+							var args:Array<Dynamic> = getArgsFromValue(v2);
+							FlxTween.cancelTweensOf(black, ["alpha"]);
+							FlxTween.tween(black, {alpha : args[0]}, args[1], {ease : args[2]});
+						}
+			
+					case "tween default zoom":
+						{
+							var args:Array<Dynamic> = getArgsFromValue(v2);
+							// FlxTween.cancelTweensOf(PlayState.instance, ["currentCameraZoom"]);
+							PlayState.instance.tweenCameraZoom(args[0], args[1], true, args[2]);
+							// FlxTween.tween(PlayState.instance, {currentCameraZoom : args[0]}, args[1], {ease : args[2]});
+						}
+			
+					case "tween zoom":
+						{
+							var args:Array<Dynamic> = getArgsFromValue(v2);
+			
+							// FlxTween.cancelTweensOf(PlayState.instance, ["currentCameraZoom"]);
+							PlayState.instance.tweenCameraZoom(args[0], args[1], true, args[2]);
+							/*FlxTween.tween(PlayState.instance, {currentCameraZoom : args[0]}, args[1], {ease : args[2], onComplete : function(twn:FlxTween) {
+								PlayState.instance.currentCameraZoom = args[0];
+							}});*/
+						}
+			
+					case "tween x":
+						{
+							isCameraOnForcedPos = true;
+			
+							var args:Array<Dynamic> = getArgsFromValue(v2);
+			
+							// FlxTween.cancelTweensOf(FlxG.camera.scroll, ["x"]);
+			
+							PlayState.instance.tweenCameraToPosition(args[0], PlayState.instance.cameraFollowPoint.y, args[1], args[2]);
+						}
+			
+					case "tween y":
+						{		
+							isCameraOnForcedPos = true;
+			
+							var args:Array<Dynamic> = getArgsFromValue(v2);
+			
+							// FlxTween.cancelTweensOf(FlxG.camera.scroll, ["y"]);
+			
+							PlayState.instance.tweenCameraToPosition(PlayState.instance.cameraFollowPoint.x, args[0], args[1], args[2]);
+						}
+			
+					case "tween cam":
+						{		
+							isCameraOnForcedPos = true;
+			
+							var args:Array<Dynamic> = getArgsFromValue(v2);
+			
+							if (args.length >= 4)
+							{
+								
+								// FlxTween.cancelTweensOf(camFollow);
+			
+								PlayState.instance.tweenCameraToPosition(args[0], args[1], args[2], args[3]);
+							}
+							else 
+							{
+								trace("tween cam event has an incorrect amount of arguments! (4 expected) " + Std.string(args));
+							}
+							
+						}
+			
+					case "tween hud":
+						{
+							var args:Array<Dynamic> = getArgsFromValue(v2);
+							FlxTween.cancelTweensOf(PlayState.instance.camHUD, ["alpha"]);
+							FlxTween.tween(PlayState.instance.camHUD, {alpha : args[0]}, args[1], {ease : args[2]});
+						}
+				}
+			case 'Glitch':
+				var value1 = event.eventData.getString('value1');
+				var value2 = event.eventData.getString('value2');
+				var poop = [doomBG, summerBG, finaleBG];
+				if (value1 != 'finale') poop.push(westBG);
+				// else 
+				//     westBG.shader = null;
+	
+				for(m in poop) m.shader = glitch;
+	
+				var time = getTime(value1);
+	
+				FlxTween.num(0.1, 4, time[0], {
+					onStart: ()->{
+						PlayState.instance.camGame.fade(0xFF000000, time[0]);
+						if (value1 == 'west')
+						{
+							filmburn.alpha = 0.75;
+							FlxTween.tween(filmburn, {alpha: 0}, time[0]);
+						}
+					},
+					onUpdate: (t)->{
+						glitch.setFloat('prob', t.value);
+					},
+					onComplete: ()->{
+						FlxTween.num(4, 0.00001, time[1], {
+							onUpdate: (t)->{
+								glitch.setFloat('prob', t.value);
+							},
+							onStart: ()->{
+								changeStage(value1);
+								switch(value1){
+									default:
+										PlayState.instance.camGame.filters = [];
+									case 'west':
+										filmburn.alpha = 0;
+										FlxTween.tween(filmburn, {alpha: 0.75}, time[1]);
+									case 'finale':
+										// blue.setFloat('hueBlend', 0);
+										blue.setFloat('hue', 1.83);
+										// FlxTween.num(0, 1, 0.75, {onUpdate: (t)->{ blue.setFloat('hueBlend', t.value); }});
+										PlayState.instance.camGame.filters = [/*boob, */fnaf];
+								}
+								PlayState.instance.camGame.fade(0xFF000000, time[1], true);
+							}, onComplete: ()->{
+								glitch.setFloat('prob', 0);
+								// switch(value1){
+								//     case 'west':
+								//         westBG.shader = melt;
+								// }
+							},
+							startDelay: 1
+						});
+					}
+				});
+			case 'Listen Closely':
+				trace('Triggered Event');
+				var value1 = event.eventData.getString('value1');
+				var value2 = event.eventData.getString('value2');
+				var dad = PlayState.instance.currentStage.getDad();
+				var boyfriend = PlayState.instance.currentStage.getBoyfriend();
+				switch (value1)
+				{
+					case 'robbie melt':
+						dad.playAnimation("melt", true, true);
+						dad.isDead = true;
+					case 'woodman shock':
+						boyfriend.playAnimation("shock", true, true);
+						boyfriend.isDead = true;
+					case 'showtext':
+						black.alpha = 0;
+						listenClosely.visible = true;
+						listenClosely.alpha = 1;
+						listenClosely.animation.play("now listen closely", true);
+					case 'video':
+						FlxTween.tween(listenClosely, {alpha: 0}, 0.5, {ease: FlxEase.sineInOut, startDelay: 0.1});
+						PlayState.instance.camGame.alpha = 0.001;
+						rotten.visible = true;
+						rotten.play();
+						dad.isDead = false;
+						boyfriend.isDead = false;
+						PlayState.instance.cameraZoomRate = 200000; // No bopping
+				}
+			case 'CCC Textbox':
+				var value1 = event.eventData.getString('value1');
+				var value2 = event.eventData.getString('value2');
+				switch (value1) {
+					case 'fade hud': // rest in peace this tweening code was awesome but became obsolete. i shall miss you
+						var downscrollMult:Int = Preferences.downscroll ? -1 : 1;
+						for (i in [PlayState.instance.iconP1, PlayState.instance.iconP2, PlayState.instance.healthBar, PlayState.instance.healthBarBG]) {
+							i.visible = false;
+							/*FlxTween.tween(i, {y : i.y + (300 * downscrollMult)}, 0.5, {ease : FlxEase.circIn, onComplete : function(twn:FlxTween) {
+								i.alpha = 0.0001;
+							}});*/
+						}
+						return; // Not updated yet
+						// var oldTimeY:Float = playHUD.timeTxt.y;
+						// if (ClientPrefs.downScroll) oldTimeY += 20;
+		
+						modManager.queueEase(curStep + 1, curStep + 12, "opponentSwap", 0.5, "circIn");
+						modManager.queueEase(curStep + 1, curStep + 12, "transformX", -2000, "circIn", 1);
+						modManager.queueEase(curStep + 1, curStep + 8, "alpha", 1, "circIn", 1);
+		
+						var stepLength:Float = Conductor.instance.stepLengthMs / 1000;
+						FlxTween.tween(getVar('comboText'), {x: 250}, stepLength * 11, {ease: FlxEase.circIn, startDelay: stepLength});
+				
+						for (i in [playHUD.timeBar, playHUD.timeTxt])
+						{
+							FlxTween.tween(i, {y : i.y - (100 * downscrollMult)}, 0.5, {ease : FlxEase.circIn, onComplete : function(twn:FlxTween) {
+								i.alpha = 0.0001;
+							}});
+						}
+				
+						FlxTween.tween(playHUD.scoreTxt, {y : playHUD.scoreTxt.y + (300 * downscrollMult)}, 0.5, {ease : FlxEase.circIn, onComplete : function(twn:FlxTween) {
+							playHUD.scoreTxt.y = oldTimeY - (50 * downscrollMult);
+							FlxTween.tween(playHUD.scoreTxt, {y : oldTimeY}, 1, {ease : FlxEase.circOut, onComplete : function(twn:FlxTween) {
+								// ClientPrefs.scoreZoom = playerScoreZoom;
+							}});
+						}});
+					
+					case 'set hud to video':
+						// return; // Not updated yet
+						var downscrollMult:Int = Preferences.downScroll ? -1 : 1;
+						var oldTimeY:Float = 20;
+						if (Preferences.downScroll) oldTimeY += 20;
+		
+						// modManager.setValue("opponentSwap", 0.5);
+						// modManager.setValue("transformX", -2000, 1);
+						// modManager.setValue("alpha", 1, 1);
+
+						if (!(Preferences.controlsScheme == "Arrows" && !ControlsHandler.usingExternalInputDevice)) {
+							var playerStrumline:FlxSprite = PlayState.instance.playerStrumline;
+							if (playerStrumline != null) {
+							  	playerStrumline.x = FlxG.width / 2 - playerStrumline.width / 2;
+								playerStrumline.noteHoldCovers.clear();
+							}
+
+							var opponentStrumline:FlxSprite = PlayState.instance.opponentStrumline;
+							if (opponentStrumline != null) {
+							  	// playerStrumline.x = FlxG.width / 2 - playerStrumline.width / 2;
+								opponentStrumline.visible = false;
+							}
+						}
+		
+						for (i in [PlayState.instance.iconP1, PlayState.instance.iconP2, PlayState.instance.healthBar, PlayState.instance.healthBarBG]) {
+							i.visible = false;
+							/*FlxTween.tween(i, {y : i.y + (300 * downscrollMult)}, 0.5, {ease : FlxEase.circIn, onComplete : function(twn:FlxTween) {
+								i.alpha = 0.0001;
+							}});*/
+						}
+						/*for (i in [PlayState.instance.iconP1, PlayState.instance.iconP2, PlayState.instance.healthBar, PlayState.instance.healthBarBG])
+						{
+							i.y = i.y + (300 * downscrollMult);
+						}*/
+				
+						// ClientPrefs.scoreZoom = false;
+		
+						PlayState.instance.scoreText.y = oldTimeY;
+		
+					case 'hide':
+						dialog.visible = false;
+						dialogright.visible = false;
+						neutral.visible = false;
+						dialogName.visible = false;
+						dialogText.visible = false;
+					case 'show':
+						dialogText.visible = true;
+						switch (value2)
+						{
+							default:
+								dialog.visible = false;
+								dialogright.visible = false;
+								neutral.visible = true;
+								dialogName.visible = false;
+							case 'left':
+								dialog.visible = true;
+								dialogright.visible = false;
+								neutral.visible = false;
+								dialogName.visible = true;
+								dialogName.alignment = 'left';
+								dialogName.x = 72.5;
+							case 'right':
+								dialog.visible = false;
+								dialogright.visible = true;
+								neutral.visible = false;
+								dialogName.visible = true;
+								dialogName.alignment = 'right';
+								dialogName.x = 1078.5;
+						}
+					case 'name':
+						dialogName.text = value2;
+					case 'text':
+						dialogText.resetText(value2);
+						dialogText.start();
+					case 'fadeout':
+						var stepLength:Float = Conductor.instance.stepLengthMs / 1000;
+		
+						for (i in [dialog, dialogright, neutral, dialogName, dialogText, /*getVar('comboText'), */PlayState.instance.scoreText])
+						{
+							FlxTween.tween(i, {alpha: 0.0001}, stepLength * 44, {ease : FlxEase.circIn, onComplete : function(twn:FlxTween) {
+								i.visible = false;
+							}});
+						}
+		
+						FlxTween.tween(PlayState.instance.playerStrumline, {alpha: 0.0001}, stepLength * 44, {ease : FlxEase.circIn});
+						// modManager.queueEase(curStep + 1, curStep + 44, "alpha", 1, "circOut");
+				}		
+		}
+	}
+
+	function getTime(val){
+		var stepSize = Conductor.instance.stepLengthMs / 1000;
+		switch(val){
+			case 'summer':
+				return [stepSize * 16, stepSize * 8];
+			case 'west':
+				return [stepSize * 8, stepSize * 16];
+			case 'finale':
+				return [stepSize * 16, stepSize * 16];
+			default:
+				return [stepSize * 16, stepSize * 16];
+		}
+	}
+
+	function getArgsFromValue(value:String):Array<Dynamic>
+		{
+			var valueStrs:Array<String> = value.split(",");
+			var output:Array<Dynamic> = [];
+		
+			switch (valueStrs.length)
+			{
+				case 1:
+				{
+					// target value
+					output.push(Std.parseFloat(valueStrs[0]));
+					// fallback duration
+					output.push(1);
+					// fallback ease
+					output.push(FlxEase.linear);
+				}
+		
+				case 2:
+				{
+					// target value
+					output.push(Std.parseFloat(valueStrs[0]));
+					// fallback duration
+					output.push(Std.parseFloat(valueStrs[1]));
+					// fallback ease
+					output.push(FlxEase.linear);
+				}
+		
+				case 3:
+				{
+					// target value
+					output.push(Std.parseFloat(valueStrs[0]));
+					// duration
+					output.push(Std.parseFloat(valueStrs[1]));
+					// ease
+					output.push(getEaseFromString(valueStrs[2]));
+				}
+		
+				default:
+				{
+					// target x
+					output.push(Std.parseFloat(valueStrs[0]));
+					// target y
+					output.push(Std.parseFloat(valueStrs[1]));
+					// duration
+					output.push(Std.parseFloat(valueStrs[2]));
+					// ease
+					output.push(getEaseFromString(valueStrs[3]));
+				}
+			}
+		
+			return output;
+	}
+
+	function changeStage(value1:String) {
+		switch (value1) {
+			case 'doom': // doomBG
+				// ModuleHandler.getModule('SwappingNotestyles').scriptCall('swapStrumlines', ['doomfes']);
+				doomBG.visible = true;
+				summerBG.visible = false;
+				westBG.visible = false;
+				finaleBG.visible = false;
+				filmburn?.visible = false;
+				todokete?.visible = true;
+				filmburn?.stop();
+				todokete?.play();
+			case 'summer':
+				// ModuleHandler.getModule('SwappingNotestyles').scriptCall('swapStrumlines', ['summerfes']);
+				doomBG.visible = false;
+				summerBG.visible = true;
+				westBG.visible = false;
+				finaleBG.visible = false;
+				filmburn?.visible = false;
+				todokete?.visible = false;
+				filmburn?.stop();
+				todokete?.stop();
+			case 'west':
+				// ModuleHandler.getModule('SwappingNotestyles').scriptCall('swapStrumlines', ['westernfes']);
+				doomBG.visible = false;
+				summerBG.visible = false;
+				westBG.visible = true;
+				finaleBG.visible = false;
+				filmburn?.visible = true;
+				todokete?.visible = false;
+				filmburn?.play();
+				todokete?.stop();
+			case 'finale':
+				// ModuleHandler.getModule('SwappingNotestyles').scriptCall('swapStrumlines', ['doomfes-finale']);
+				doomBG.visible = false;
+				summerBG.visible = false;
+				westBG.visible = false;
+				finaleBG.visible = true;
+				filmburn?.visible = false;
+				todokete?.visible = true;
+				filmburn?.stop();
+				todokete?.play();
+		}		
+	}
+
+	function getEaseFromString(ease:Null<String>)
+		{
+			if (ease == null) return FlxEase.linear;
+			return switch (ease.toLowerCase())
+			{
+				case 'backin': FlxEase.backIn;
+				case 'backinout': FlxEase.backInOut;
+				case 'backout': FlxEase.backOut;
+				case 'bouncein': FlxEase.bounceIn;
+				case 'bounceinout': FlxEase.bounceInOut;
+				case 'bounceout': FlxEase.bounceOut;
+				case 'circin': FlxEase.circIn;
+				case 'circinout': FlxEase.circInOut;
+				case 'circout': FlxEase.circOut;
+				case 'cubein': FlxEase.cubeIn;
+				case 'cubeinout': FlxEase.cubeInOut;
+				case 'cubeout': FlxEase.cubeOut;
+				case 'elasticin': FlxEase.elasticIn;
+				case 'elasticinout': FlxEase.elasticInOut;
+				case 'elasticout': FlxEase.elasticOut;
+				case 'expoin': FlxEase.expoIn;
+				case 'expoinout': FlxEase.expoInOut;
+				case 'expoout': FlxEase.expoOut;
+				case 'quadin': FlxEase.quadIn;
+				case 'quadinout': FlxEase.quadInOut;
+				case 'quadout': FlxEase.quadOut;
+				case 'quartin': FlxEase.quartIn;
+				case 'quartinout': FlxEase.quartInOut;
+				case 'quartout': FlxEase.quartOut;
+				case 'quintin': FlxEase.quintIn;
+				case 'quintinout': FlxEase.quintInOut;
+				case 'quintout': FlxEase.quintOut;
+				case 'sinein': FlxEase.sineIn;
+				case 'sineinout': FlxEase.sineInOut;
+				case 'sineout': FlxEase.sineOut;
+				case 'smoothstepin': FlxEase.smoothStepIn;
+				case 'smoothstepinout': FlxEase.smoothStepInOut;
+				case 'smoothstepout': FlxEase.smoothStepOut;
+				case 'smootherstepin': FlxEase.smootherStepIn;
+				case 'smootherstepinout': FlxEase.smootherStepInOut;
+				case 'smootherstepout': FlxEase.smootherStepOut;
+				default: FlxEase.linear;
+			}
+		}	
+}

@@ -1,0 +1,27 @@
+import funkin.play.notes.notekind.ScriptedNoteKind;
+
+/**
+ * A custom note kind which has custom functionality, playing a note animation with a suffix.
+ */
+class AltAnimSiivaNoteKind extends ScriptedNoteKind
+{
+	public function new()
+	{
+		super("altSiiva", "Alt Animation (Siiva)", null, []);
+		this.params = [
+			{
+				name: "altsuffix",
+				description: "Alt Suffix",
+				type: "String",
+				data: {
+					defaultValue: "alt"
+				}
+			}
+		];
+	}
+
+	public function onNoteIncoming(event) {
+		super.onNoteIncoming(event);
+		this.suffix = this.params[0].data.defaultValue;
+	}
+}

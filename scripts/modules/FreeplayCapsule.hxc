@@ -17,23 +17,30 @@ import flixel.FlxSprite;
 import openfl.display.Bitmap;
 import funkin.input.Cursor;
 import funkin.modding.ModStore;
+import funkin.save.Save;
 
 using StringTools;
 using Lambda;
 
-class FreeplayCapsule extends Module {
+class SiivaGunnerFreeplayCapsule extends Module {
 
 	public function new(){
-		super('FreeplayCapsule');
+		super('SiivaGunnerFreeplayCapsule');
 	}
-
-	var changeSelectionCallback:String->Void;
 
 	override function onSubStateOpenEnd(event) {
         super.onSubStateOpenEnd(event);
 		if (!Std.isOfType(event.targetState, FreeplayState)) return;
 		var baseSongs = LevelRegistry.instance.listBaseGameEntryIds();
 		insertAfterWeek(baseSongs[baseSongs.length - 1], listBaseSiivaEntryIds());
+		if (!Save.instance.hasBeatenSong('rotten', ['siiva'])) {
+			var albumId = FlxG.state.subState.currentCapsule?.freeplayData?.data?.getAlbumId(FlxG.state.subState.currentDifficulty, FlxG.state.subState.currentVariation);
+			event.targetState?.dj?.onIntroDone.add(() -> {
+				if (albumId == 'volumeROTTEN') {
+					FlxG.state.subState.albumRoll.albumId = 'volumeHQ'; // Hide 
+				}
+			});	
+		}
 	}
 
 	function listBaseSiivaEntryIds() {
@@ -164,6 +171,8 @@ class FreeplayCapsule extends Module {
 				};
 			case 'eggnog-unused-mix':
 				cap.pixelIcon.origin.x = 140;
+			case 'rotten':
+				if (!Save.instance.hasBeatenSong('rotten', ['siiva'])) cap.songText.text = '??????';
 		}
 	}
 
@@ -182,6 +191,14 @@ class FreeplayCapsule extends Module {
 	}
 
 	public function onCapsuleSelected(event:CapsuleScriptEvent):Void { // Fix Eggnog Unused Mix icon being offset incorrectly
-		if (event.capsule?.freeplayData?.data?.id == 'eggnog-unused-mix') event.capsule?.pixelIcon?.origin.x = 140;
+		switch (event.capsule?.freeplayData?.data?.id) {
+			case 'eggnog-unused-mix': event.capsule?.pixelIcon?.origin.x = 140;
+			case 'rotten': if (!Save.instance.hasBeatenSong('rotten', ['siiva'])) {
+				FlxG.state.subState.clearPreviews();
+				event.capsule?.songText.text = '??????';
+				if (FlxG.state.subState.albumRoll.albumId == null) return;
+				FlxG.state.subState.albumRoll.albumId = 'volumeHQ';
+			}
+		}
 	}
 }

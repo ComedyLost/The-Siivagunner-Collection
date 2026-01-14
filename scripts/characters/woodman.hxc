@@ -1,0 +1,81 @@
+import funkin.play.character.CharacterType;
+import funkin.play.character.SparrowCharacter;
+import flixel.util.FlxTimer;
+import funkin.play.PlayState;
+import funkin.util.Constants;
+import funkin.util.HapticUtil;
+import funkin.play.GameOverSubState;
+import funkin.audio.FunkinSound;
+import haxe.ds.StringMap;
+import flixel.math.FlxPoint;
+import flixel.FlxSprite;
+import funkin.graphics.FunkinSprite;
+import StringTools;
+
+class WoodMan extends SparrowCharacter
+{
+	var scarf:FlxSprite;
+	var bfPos:FlxPoint = FlxPoint.get();
+	var offsets = new StringMap();
+
+	public function new()
+	{
+		super('woodman');
+	}
+
+	function getMidPointOld(spr:FlxSprite, ?point:FlxPoint):FlxPoint {
+		if (point == null) point = FlxPoint.get();
+		return point.set(spr.x + spr.frameWidth * 0.5 * spr.scale.x, spr.y + spr.frameHeight * 0.5 * spr.scale.y);
+	}
+
+	override function playAnimation(name:String, restart:Bool = false, ignoreOther:Bool = false, reversed:Bool = false) {
+		super.playAnimation(name, restart, ignoreOther, reversed);
+		if (PlayState.instance?.currentStage == null) return;
+
+		var thisOffset:Null<Array<Float>> = offsets.get(name);
+
+		if (thisOffset != null) {
+			scarf?.offset.set(thisOffset[0], thisOffset[1]);
+		}
+
+		scarf?.visible = !StringTools.endsWith(name, 'miss');
+	}
+
+	public function onNoteHit(event:HitNoteScriptEvent) {
+		super.onNoteHit(event);
+	}
+
+	public function onNoteMiss(event:NoteScriptEvent) {
+		super.onNoteMiss(event);
+	}
+
+	public function onAdd(event:ScriptEvent) {
+		super.onAdd(event);
+		bfPos = getMidPointOld(this);
+
+		if (PlayState.instance?.currentStage == null) return;
+		scarf = FunkinSprite.createSparrow(bfPos.x + globalOffsets[0], bfPos.y + globalOffsets[1], 'characters/scarfs');
+		scarf.animation.addByPrefix('scarfR', 'scarfR', 24, true);
+		scarf.animation.addByPrefix('scarfW', 'scarfW', 24, true);
+		scarf.scrollFactor.set(1, 1);
+		scarf.scale.set(0.8, 0.8);
+		scarf.visible = true;
+		scarf.updateHitbox();
+		scarf.zIndex = this.zIndex - 1;
+		PlayState.instance.currentStage.add(scarf);
+		PlayState.instance.currentStage.refresh();
+		scarf.animation.play('scarfR', true);
+		scarf.offset.set(50, 355);
+
+		offsets.set('singLEFT', [125, 360]);
+		offsets.set('singDOWN', [55, 275]);
+		offsets.set('singUP', [70, 415]);
+		offsets.set('singRIGHT', [-25, 315]);
+		offsets.set('idle', [50, 355]);    
+	}
+
+	public override function destroy(event:ScriptEvent) {
+		super.destroy(event);
+		scarf.destroy();
+	}
+}

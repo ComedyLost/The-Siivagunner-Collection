@@ -1,0 +1,270 @@
+import funkin.play.PlayState;
+import funkin.play.event.SongEvent;
+
+import funkin.modding.module.Module;
+import funkin.modding.module.ModuleHandler;
+import funkin.Preferences;
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import funkin.Conductor;
+import flixel.util.FlxTimer;
+
+class CameraEventsSiiva extends SongEvent {
+
+	public override function handleEvent(data) {
+		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+		if (PlayState.instance.isMinimalMode) return;
+
+		return; // Now handled in song
+		var v1 = data.getString('value1');
+		var v2 = data.getString('value2');
+
+		switch (v1) {
+			case "intro":
+				{
+					// FADE
+					var dur:Float = 5.7;
+					var stageRef = PlayState.instance.currentStage.getNamedProp('DoomFes');
+					var dad = PlayState.instance.currentStage.getDad();
+	
+					// black.alpha = 1;
+					// FlxTween.tween(black, {alpha : 0}, dur, {ease : FlxEase.sineInOut, startDelay : 0.5});
+	
+					// CAMGAME
+					PlayState.instance.currentCameraZoom = 0.4;
+					FlxTween.tween(PlayState.instance, {currentCameraZoom : 0.55}, dur - 3, {ease : FlxEase.quadInOut, startDelay : dur - 2.7});
+	
+					PlayState.instance.tweenCameraToPosition(stageRef.getMidpoint().x, stageRef.getMidpoint().y - 50, 0);
+					
+					FlxTimer.wait(dur - 2.7, () -> {
+						PlayState.instance.tweenCameraToPosition(dad.getMidpoint().x + 160, dad.getMidpoint().y - 80, dur - 3, FlxEase.sineInOut);
+					});
+	
+					// CAMHUD
+					PlayState.instance.camHUD.alpha = 0.001;
+					FlxTween.tween(PlayState.instance.camHUD, {alpha : 0.3}, dur - 4.5, {ease : FlxEase.sineOut, startDelay : dur - 1.2});
+				}
+	
+			case "release camera":
+				{
+					isCameraOnForcedPos = false;
+				}
+	
+			case "set fade":
+				{
+					return; // No updated code yet
+
+					black.alpha = Std.parseFloat(v2);
+				}
+	
+			case "tween fade":
+				{
+					return; // No updated code yet
+
+					var args:Array<Dynamic> = getArgsFromValue(v2);
+					FlxTween.cancelTweensOf(black, ["alpha"]);
+					FlxTween.tween(black, {alpha : args[0]}, args[1], {ease : args[2]});
+				}
+	
+			case "tween default zoom":
+				{
+					var args:Array<Dynamic> = data.getString(v2);
+					FlxTween.cancelTweensOf(PlayState.instance, ["currentCameraZoom"]);
+					FlxTween.tween(PlayState.instance, {currentCameraZoom : args[0]}, args[1], {ease : args[2]});
+				}
+	
+			case "tween zoom":
+				{
+					var args:Array<Dynamic> = getArgsFromValue(v2);
+	
+					FlxTween.cancelTweensOf(PlayState.instance, ["currentCameraZoom"]);
+					FlxTween.tween(PlayState.instance, {currentCameraZoom : args[0]}, args[1], {ease : args[2], onComplete : function(twn:FlxTween) {
+						PlayState.instance.currentCameraZoom = args[0];
+					}});
+				}
+	
+			case "tween x":
+				{
+					return; // No updated code yet
+					isCameraOnForcedPos = true;
+	
+					var args:Array<Dynamic> = getArgsFromValue(v2);
+	
+					FlxTween.cancelTweensOf(camFollow, ["x"]);
+	
+					FlxTween.tween(camFollow, {x : args[0]}, args[1], {ease : args[2], onUpdate : function(twn:FlxTween) {
+						FlxG.camera.snapToTarget();
+					}});
+				}
+	
+			case "tween y":
+				{
+					return; // No updated code yet
+
+					isCameraOnForcedPos = true;
+	
+					var args:Array<Dynamic> = getArgsFromValue(v2);
+	
+					FlxTween.cancelTweensOf(camFollow, ["y"]);
+	
+					FlxTween.tween(camFollow, {y : args[0]}, args[1], {ease : args[2], onUpdate : function(twn:FlxTween) {
+						FlxG.camera.snapToTarget();
+					}});
+				}
+	
+			case "tween cam":
+				{
+					return; // No updated code yet
+
+					isCameraOnForcedPos = true;
+	
+					var args:Array<Dynamic> = getArgsFromValue(v2);
+	
+					if (args.length >= 4)
+					{
+						
+						FlxTween.cancelTweensOf(camFollow);
+	
+						FlxTween.tween(camFollow, {x : args[0], y : args[1]}, args[2], {ease : args[3], onUpdate : function(twn:FlxTween) {
+							FlxG.camera.snapToTarget();
+						}});
+					}
+					else 
+					{
+						trace("tween cam event has an incorrect amount of arguments! (4 expected) " + Std.string(args));
+					}
+					
+				}
+	
+			case "tween hud":
+				{
+					var args:Array<Dynamic> = getArgsFromValue(v2);
+					FlxTween.cancelTweensOf(PlayState.instance.camHUD, ["alpha"]);
+					FlxTween.tween(PlayState.instance.camHUD, {alpha : args[0]}, args[1], {ease : args[2]});
+				}
+		}	
+	}
+
+	function getArgsFromValue(value:String):Array<Dynamic>
+		{
+			var valueStrs:Array<String> = value.split(",");
+			var output:Array<Dynamic> = [];
+		
+			switch (valueStrs.length)
+			{
+				case 1:
+				{
+					// target value
+					output.push(Std.parseFloat(valueStrs[0]));
+					// fallback duration
+					output.push(1);
+					// fallback ease
+					output.push(FlxEase.linear);
+				}
+		
+				case 2:
+				{
+					// target value
+					output.push(Std.parseFloat(valueStrs[0]));
+					// fallback duration
+					output.push(Std.parseFloat(valueStrs[1]));
+					// fallback ease
+					output.push(FlxEase.linear);
+				}
+		
+				case 3:
+				{
+					// target value
+					output.push(Std.parseFloat(valueStrs[0]));
+					// duration
+					output.push(Std.parseFloat(valueStrs[1]));
+					// ease
+					output.push(getEaseFromString(valueStrs[2]));
+				}
+		
+				default:
+				{
+					// target x
+					output.push(Std.parseFloat(valueStrs[0]));
+					// target y
+					output.push(Std.parseFloat(valueStrs[1]));
+					// duration
+					output.push(Std.parseFloat(valueStrs[2]));
+					// ease
+					output.push(getEaseFromString(valueStrs[3]));
+				}
+			}
+		
+			return output;
+	}
+
+	function getEaseFromString(ease:Null<String>)
+		{
+			if (ease == null) return FlxEase.linear;
+			return switch (ease.toLowerCase())
+			{
+				case 'backin': FlxEase.backIn;
+				case 'backinout': FlxEase.backInOut;
+				case 'backout': FlxEase.backOut;
+				case 'bouncein': FlxEase.bounceIn;
+				case 'bounceinout': FlxEase.bounceInOut;
+				case 'bounceout': FlxEase.bounceOut;
+				case 'circin': FlxEase.circIn;
+				case 'circinout': FlxEase.circInOut;
+				case 'circout': FlxEase.circOut;
+				case 'cubein': FlxEase.cubeIn;
+				case 'cubeinout': FlxEase.cubeInOut;
+				case 'cubeout': FlxEase.cubeOut;
+				case 'elasticin': FlxEase.elasticIn;
+				case 'elasticinout': FlxEase.elasticInOut;
+				case 'elasticout': FlxEase.elasticOut;
+				case 'expoin': FlxEase.expoIn;
+				case 'expoinout': FlxEase.expoInOut;
+				case 'expoout': FlxEase.expoOut;
+				case 'quadin': FlxEase.quadIn;
+				case 'quadinout': FlxEase.quadInOut;
+				case 'quadout': FlxEase.quadOut;
+				case 'quartin': FlxEase.quartIn;
+				case 'quartinout': FlxEase.quartInOut;
+				case 'quartout': FlxEase.quartOut;
+				case 'quintin': FlxEase.quintIn;
+				case 'quintinout': FlxEase.quintInOut;
+				case 'quintout': FlxEase.quintOut;
+				case 'sinein': FlxEase.sineIn;
+				case 'sineinout': FlxEase.sineInOut;
+				case 'sineout': FlxEase.sineOut;
+				case 'smoothstepin': FlxEase.smoothStepIn;
+				case 'smoothstepinout': FlxEase.smoothStepInOut;
+				case 'smoothstepout': FlxEase.smoothStepOut;
+				case 'smootherstepin': FlxEase.smootherStepIn;
+				case 'smootherstepinout': FlxEase.smootherStepInOut;
+				case 'smootherstepout': FlxEase.smootherStepOut;
+				default: FlxEase.linear;
+			}
+		}	
+
+	public function getEventSchema() {
+		return [
+            {
+                name: "value1",
+                title: "Camera Event Type",
+				type: "string"
+            },
+            {
+                name: "value2",
+                title: "UNUSED",
+				type: "string"
+            }
+		];
+	}
+
+	public function getTitle() {
+		return "Camera Events (Siiva)";
+	}
+	
+	public function new() {
+		super('Camera Events');
+	}
+}

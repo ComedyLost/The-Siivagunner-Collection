@@ -1,0 +1,46 @@
+{
+ "version": "2.2.4",
+ "songName": "ROTTEN",
+ "artist": "eden_essence & lunaisuppose (ft. RedTV53, Wrathstetic, and Chase Beck)",
+ "charter": "Nafun",
+ "divisions": 96,
+ "looped": false,
+ "offsets": {
+  "instrumental": 0,
+  "altInstrumentals": {  },
+  "vocals": {  },
+  "altVocals": {  }
+ },
+ "playData": {
+  "songVariations": [],
+  "difficulties": [
+   "siiva"
+  ],
+  "characters": {
+   "player": "woodman",
+   "girlfriend": "",
+   "opponent": "robbie",
+   "instrumental": "",
+   "altInstrumentals": []
+  },
+  "album": "volumeROTTEN",
+  "stage": "rotten",
+  "noteStyle": "funkin",
+  "ratings": {
+   "siiva": 7
+  },
+  "previewStart": 0,
+  "previewEnd": 15000
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.1",
+ "timeFormat": "ms",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 170,
+   "n": 4,
+   "d": 4
+  }
+ ]
+}

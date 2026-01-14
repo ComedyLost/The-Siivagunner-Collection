@@ -1,0 +1,66 @@
+{
+    "assetPath": "characters/Robbie_Assets",
+    "name": "Robbie?",
+    "singTime": 6.1,
+    "version": "1.0.0",
+    "scale": 1.3,
+    "offsets": [100, 110],
+    "cameraOffsets": [0, 50],
+    "healthIcon": {"id": "robbie"},
+    "animations": [
+        {
+            "name": "idle",
+            "prefix": "robbie idle",
+            "looped": true,
+            "offsets": [
+                0,
+                0
+            ]
+        },
+        {
+            "name": "singLEFT",
+            "prefix": "robbie left note",
+            "looped": false,
+            "offsets": [
+				123,
+				5
+            ]
+        },
+        {
+            "name": "singDOWN",
+            "prefix": "robbie down note",
+            "looped": false,
+            "offsets": [
+				60,
+				-129
+            ]
+        },
+        {
+            "name": "singRIGHT",
+            "prefix": "robbie right note",
+            "looped": false,
+            "offsets": [
+				-4,
+				-45
+            ]
+        },
+        {
+            "name": "singUP",
+            "prefix": "robbie up note",
+            "looped": false,
+            "offsets": [
+				68,
+				58
+            ]
+        },
+        {
+            "name": "melt",
+            "prefix": "robbie melt0",
+            "looped": false,
+            "offsets": [
+				84,
+				-34
+            ]
+        }
+    ]
+}

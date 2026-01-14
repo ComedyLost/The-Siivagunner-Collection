@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="Robbie_closeup.png" width="4451" height="4052">
+	<SubTexture name="now listen closely0000" x="3650" y="1934" width="288" height="141" frameX="-201" frameY="-124" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0001" x="2499" y="3016" width="292" height="160" frameX="-199" frameY="-106" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0002" x="2499" y="3016" width="292" height="160" frameX="-199" frameY="-106" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0003" x="2499" y="3016" width="292" height="160" frameX="-199" frameY="-106" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0004" x="2499" y="3016" width="292" height="160" frameX="-199" frameY="-106" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0005" x="2499" y="3016" width="292" height="160" frameX="-199" frameY="-106" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0006" x="2499" y="3179" width="289" height="153" frameX="-204" frameY="-109" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0007" x="2499" y="3179" width="289" height="153" frameX="-204" frameY="-109" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0008" x="2499" y="3179" width="289" height="153" frameX="-204" frameY="-109" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0009" x="2499" y="3179" width="289" height="153" frameX="-204" frameY="-109" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0010" x="2499" y="3179" width="289" height="153" frameX="-204" frameY="-109" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0011" x="3657" y="509" width="634" height="180" frameX="-199" frameY="-106" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0012" x="3650" y="1548" width="643" height="190" frameX="-199" frameY="-96" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0013" x="3650" y="1548" width="643" height="190" frameX="-199" frameY="-96" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0014" x="3650" y="1548" width="643" height="190" frameX="-199" frameY="-96" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0015" x="3650" y="1548" width="643" height="190" frameX="-199" frameY="-96" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0016" x="3650" y="1741" width="638" height="190" frameX="-204" frameY="-96" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0017" x="3640" y="2611" width="626" height="206" frameX="-204" frameY="-97" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0018" x="3640" y="2611" width="626" height="206" frameX="-204" frameY="-97" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0019" x="3640" y="2611" width="626" height="206" frameX="-204" frameY="-97" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0020" x="3640" y="2611" width="626" height="206" frameX="-204" frameY="-97" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0021" x="2836" y="2103" width="631" height="206" frameX="-199" frameY="-97" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0022" x="3650" y="1087" width="669" height="458" frameX="-186" frameY="-96" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0023" x="1" y="1" width="894" height="647" frameX="-0" frameY="-49" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0024" x="1" y="1" width="894" height="647" frameX="-0" frameY="-49" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0025" x="2836" y="1087" width="811" height="505" frameX="-90" frameY="-43" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0026" x="3640" y="2103" width="810" height="505" frameX="-90" frameY="-43" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0027" x="2836" y="1595" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0028" x="2825" y="2922" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0029" x="871" y="3009" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0030" x="871" y="3009" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0031" x="1" y="3038" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0032" x="1685" y="3016" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0033" x="815" y="3517" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0034" x="815" y="3517" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0035" x="1" y="3546" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0036" x="2499" y="3430" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0037" x="1629" y="3524" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0038" x="871" y="3009" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0039" x="2825" y="2922" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0040" x="2825" y="2922" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0041" x="3631" y="1" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0042" x="3313" y="3430" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0043" x="3639" y="2922" width="811" height="505" frameX="-90" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0044" x="2825" y="2413" width="812" height="506" frameX="-89" frameY="-42" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0045" x="2835" y="568" width="819" height="516" frameX="-85" frameY="-40" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0046" x="2788" y="1" width="840" height="564" frameX="-70" frameY="-36" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0047" x="1" y="2461" width="867" height="574" frameX="-56" frameY="-26" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0048" x="946" y="2415" width="892" height="591" frameX="-56" frameY="-9" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0049" x="1891" y="2413" width="931" height="600" frameX="-56" frameY="-0" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0050" x="946" y="1209" width="942" height="600" frameX="-56" frameY="-0" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0051" x="1" y="1255" width="942" height="600" frameX="-56" frameY="-0" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0052" x="1" y="651" width="942" height="601" frameX="-56" frameY="-0" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0053" x="946" y="605" width="941" height="601" frameX="-56" frameY="-0" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0054" x="898" y="1" width="942" height="601" frameX="-56" frameY="-0" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0055" x="946" y="1812" width="942" height="600" frameX="-56" frameY="-0" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0056" x="1" y="1858" width="942" height="600" frameX="-56" frameY="-0" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0057" x="1843" y="1" width="942" height="600" frameX="-56" frameY="-0" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0058" x="1890" y="604" width="942" height="600" frameX="-56" frameY="-0" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0059" x="1891" y="1207" width="942" height="600" frameX="-56" frameY="-0" frameWidth="998" frameHeight="697"/>
+	<SubTexture name="now listen closely0060" x="1891" y="1810" width="942" height="600" frameX="-56" frameY="-0" frameWidth="998" frameHeight="697"/>
+</TextureAtlas>

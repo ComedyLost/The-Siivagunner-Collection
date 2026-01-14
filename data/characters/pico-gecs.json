@@ -10,17 +10,17 @@
     {
       "name": "idle",
       "prefix": "Pico Idle Dance",
-      "offsets": [0, 0]
+      "offsets": [50, 0]
     },
     {
       "name": "singRIGHT",
       "prefix": "Pico NOTE LEFT0",
-      "offsets": [-46, -10]
+      "offsets": [-51, -10]
     },
     {
       "name": "singDOWN",
       "prefix": "Pico Down Note0",
-      "offsets": [243, -67]
+      "offsets": [223, -82]
     },
     {
       "name": "singUP",
@@ -30,7 +30,7 @@
     {
       "name": "singLEFT",
       "prefix": "Pico Note Right0",
-      "offsets": [91, 2]
+      "offsets": [106, 2]
     }
   ]
 }

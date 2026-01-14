@@ -57,6 +57,8 @@ class SiivagunnerDeath extends Module
 		
 		if (PlayState.instance.currentDifficulty != 'siiva') return;
 
+		if (PlayState.instance.currentSong.id.toLowerCase() == 'rotten') return;
+
 		if (!hasPlayedCutscene && (!PlayStatePlaylist.isStoryMode || (PlayStatePlaylist.isStoryMode && PlayStatePlaylist.playlistSongIds.copy().shift() == null))) {
 			if (event.eventCanceled) return;
 			hasPlayedCutscene = true;

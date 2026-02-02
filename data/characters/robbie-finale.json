@@ -15,8 +15,7 @@
             "offsets": [
                 0,
                 0
-            ],
-            "frameRate": 24
+            ]
         },
         {
             "name": "singLEFT",
@@ -25,8 +24,7 @@
             "offsets": [
 				123,
 				5
-            ],
-            "frameRate": 24
+            ]
         },
         {
             "name": "singDOWN",
@@ -35,8 +33,7 @@
             "offsets": [
 				60,
 				-129
-            ],
-            "frameRate": 24
+            ]
         },
         {
             "name": "singRIGHT",
@@ -44,29 +41,26 @@
             "looped": false,
             "offsets": [
                 -4,
-                -60
-            ],
-            "frameRate": 24
+				-45
+            ]
         },
         {
             "name": "singUP",
             "prefix": "robbie up note",
             "looped": false,
             "offsets": [
-                83,
-                73
-            ],
-            "frameRate": 24
+				68,
+				58
+            ]
         },
         {
             "name": "melt",
             "prefix": "robbie melt0",
             "looped": false,
             "offsets": [
-                89,
-                -34
-            ],
-            "frameRate": 24
+				84,
+				-34
+            ]
         }
     ]
 }

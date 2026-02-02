@@ -51,19 +51,20 @@ class FreeplayCapsule extends Module {
 		  ];
 	}
 
-	function insertAfterWeek(weekName:String, songs:Array<String>) { // Holy shit
+	function insertAfterWeek(weekName:String, songs:Array<String>) {
 		var levels = [];
 		var hasSeenWeek = false;
 		for (song in FlxG.state.subState.songs.copy()) {
-			if (song != null && (songs.indexOf(song?.levelId) ?? -1) != -1) {
+			if (song != null && songs.contains(song?.levelId)) {
 				FlxG.state.subState.songs.remove(song);
 				levels.push(song);
 			}
 		}
+		if (levels.length == 0) return; // Don't do custom positioning if the song isn't even there
 		var levelIds = [];
 		for (song in FlxG.state.subState.songs) {
 			if ((song?.levelId ?? '') == weekName && !hasSeenWeek) hasSeenWeek = true;
-			if ((levelIds.indexOf(song?.levelId) ?? -1) == -1) levelIds.push(song?.levelId);
+			if (!levelIds.contains(song?.levelId)) levelIds.push(song?.levelId);
 			if (hasSeenWeek && (song?.levelId) != weekName) {
 				for (item in levels) {
 					FlxG.state.subState.songs.insert(FlxG.state.subState.songs.indexOf(song), item);
@@ -82,7 +83,7 @@ class FreeplayCapsule extends Module {
 		var hasSeenCapsule = false;
 		for (capsule in FlxG.state.subState.grpCapsules.members.copy()) {
 			if (capsule?.freeplayData == null) continue;
-			if ((songs.indexOf(capsule?.freeplayData?.levelId) ?? -1) != -1) {
+			if (songs.contains(capsule?.freeplayData?.levelId)) {
 				FlxG.state.subState.grpCapsules.members.remove(capsule);
 				capsules.push(capsule);
 			}
@@ -92,7 +93,7 @@ class FreeplayCapsule extends Module {
 			var insertedCapsules:Bool = false;
 			for (capsule in FlxG.state.subState.grpCapsules.members) {
 				if (capsule?.freeplayData == null) continue;
-				if (levelIds.indexOf(capsule?.freeplayData?.levelId) != -1 && levelIds.indexOf(capsule?.freeplayData?.levelId) <= levelIds.indexOf(weekName))
+				if (levelIds.contains(capsule?.freeplayData?.levelId) && levelIds.indexOf(capsule?.freeplayData?.levelId) <= levelIds.indexOf(weekName))
 					continue;
 				else {
 					insertedCapsules = true;

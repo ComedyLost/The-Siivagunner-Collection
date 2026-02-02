@@ -1,0 +1,12 @@
+[
+    {"op": "add", "path": "/songs/-", "value": {"songName": "rotten", "credits": {
+        "Vocalists": "Chase Beck + RedTV53",
+        "Lyrics Writer": "Wrathstetic"
+    }}},
+    {"op": "add", "path": "/songs/-", "value": {"songName": "dadbattle-ambient-mix", "credits": {
+        "Sprite Artist": "meatku"
+    }}},
+    {"op": "add", "path": "/songs/-", "value": {"songName": "bopeebo-siiva", "credits": {
+        "Sprite Artist": "vanzz"
+    }}}
+]

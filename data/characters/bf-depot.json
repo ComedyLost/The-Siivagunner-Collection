@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "name": "Boyfriend",
+  "name": "Boyfriend (Home Depot)",
   "renderType": "multianimateatlas",
   "assetPath": "shared:characters/bf",
   "flipX": true,

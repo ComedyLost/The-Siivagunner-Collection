@@ -63,6 +63,8 @@ class SiivagunnerDeath extends Module
 
 		if (PlayState.instance.currentSong.id.toLowerCase() == 'rotten') return;
 
+		if (!PlayState.instance.currentStage.getBoyfriend()?.hasAnimation('firstDeath')) return;
+		
 		if (!hasPlayedCutscene && (!PlayStatePlaylist.isStoryMode || (PlayStatePlaylist.isStoryMode && PlayStatePlaylist.playlistSongIds.copy().shift() == null))) {
 			if (event.eventCanceled) return;
 			hasPlayedCutscene = true;

@@ -22,9 +22,7 @@ class MonsterInGameSong extends Song
   function onCreate(event:ScriptEvent):Void
   {
     super.onCreate(event);
-    PlayState.instance.currentStage.getNamedProp('halloweenBG').loadSparrow('inGame/halloween_bg');
-    PlayState.instance.currentStage.getNamedProp('halloweenBG').animation.addByPrefix('idle', 'halloweem bg0', 24, false);
-    PlayState.instance.currentStage.getNamedProp('halloweenBG').animation.addByPrefix('lightning', 'halloweem bg lightning strike', 24, false);
+    PlayState.instance.currentStage.getNamedProp('halloweenBG').shader = new Grayscale();
     //PlayState.instance.currentStage.getNamedProp('halloweenBG').animation.play('idle', true);
   }  
 }

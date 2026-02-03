@@ -6,6 +6,7 @@ import funkin.save.Save;
 import funkin.audio.VoicesGroup;
 import funkin.audio.FunkinSound;
 import flixel.FlxG;
+import flixel.util.FlxSave;
 
 class TutorialSiivaSong extends Song
 {
@@ -14,6 +15,9 @@ class TutorialSiivaSong extends Song
   public function new()
   {
 	super('tutorial-siiva');
+
+	save = new FlxSave();
+	save.bind("SiivaOptions", "FunkinCrew");
   }
 
 	override function onSongLoaded(event) {
@@ -21,7 +25,7 @@ class TutorialSiivaSong extends Song
 		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
 		if (PlayState.instance.isMinimalMode) return;
 
-		if (FlxG.save.data.siivavocals) { // Swap to new BF vocals using the new BF samples introduced in the Weekend update
+		if (save.data.siivavocals) { // Swap to new BF vocals using the new BF samples introduced in the Weekend update
 			PlayState.instance.vocals.stop();
 			PlayState.instance.vocals = buildVocals();
 		}

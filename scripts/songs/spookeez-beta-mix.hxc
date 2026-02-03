@@ -18,11 +18,15 @@ import funkin.util.FlxTweenUtil;
 import flixel.FlxSprite;
 import funkin.modding.ModStore;
 import funkin.graphics.FunkinSprite;
+import flixel.util.FlxSave;
 
 class SpookeezBetaMixSong extends Song
 {
   	public function new() {
 		super('spookeez-beta-mix');
+
+		save = new FlxSave();
+		save.bind("SiivaOptions", "FunkinCrew");
  	}
 
 	var camMini:FlxCamera;
@@ -41,7 +45,7 @@ class SpookeezBetaMixSong extends Song
 		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
 		if (PlayState.instance.isMinimalMode) return;
 
-		if (!FlxG.save.data.siivaexfx) return;
+		if (!save.data.siivaexfx) return;
 		if (camMini != null) camMini?.zoom = PlayState.instance.camGame.zoom;
 		if (camScroll != null) {
 			camScroll?.zoom = PlayState.instance.camGame.zoom / 3;
@@ -61,7 +65,7 @@ class SpookeezBetaMixSong extends Song
 
 	override function onPause(event) {
 		super.onPause(event);
-		if (!FlxG.save.data.siivaexfx) return;
+		if (!save.data.siivaexfx) return;
 
 		if (camMini != null) FlxTweenUtil.pauseTweensOf(camMini);
 		if (camScroll != null) FlxTweenUtil.pauseTweensOf(camScroll);
@@ -71,7 +75,7 @@ class SpookeezBetaMixSong extends Song
 
 	override function onResume(event) {
 		super.onResume(event);
-		if (!FlxG.save.data.siivaexfx) return;
+		if (!save.data.siivaexfx) return;
 
 		if (camMini != null) FlxTweenUtil.resumeTweensOf(camMini);
 		if (camScroll != null) FlxTweenUtil.resumeTweensOf(camScroll);
@@ -81,7 +85,7 @@ class SpookeezBetaMixSong extends Song
 
 	override function onSongRetry(event) {
 		super.onSongRetry(event);
-		if (!FlxG.save.data.siivaexfx) return;
+		if (!save.data.siivaexfx) return;
 
 		shouldScroll = false;
 		shouldFreeplay = false;
@@ -104,7 +108,7 @@ class SpookeezBetaMixSong extends Song
 
 	override function onSongEnd(event:ScriptEvent) {
 		super.onSongEnd(event);
-		if (!FlxG.save.data.siivaexfx) return;
+		if (!save.data.siivaexfx) return;
 
 		shouldScroll = false;
 		camMini?.visible = false;
@@ -115,7 +119,7 @@ class SpookeezBetaMixSong extends Song
 
 	override function onGameOver(event) {
 		super.onGameOver(event);
-		if (!FlxG.save.data.siivaexfx) return;
+		if (!save.data.siivaexfx) return;
 
 		shouldScroll = false;
 		camMini?.visible = false;
@@ -126,7 +130,7 @@ class SpookeezBetaMixSong extends Song
 
 	override function onStepHit(event) {
 		super.onStepHit(event);
-		if (!FlxG.save.data.siivaexfx) return;
+		if (!save.data.siivaexfx) return;
 
 		switch (event.step) {
 			case 64:
@@ -204,7 +208,7 @@ class SpookeezBetaMixSong extends Song
 	function onCreate(event:ScriptEvent):Void {
 		super.onCreate(event);
 
-		if (!FlxG.save.data.siivaexfx) return;
+		if (!save.data.siivaexfx) return;
 
 		shouldScroll = false;
 

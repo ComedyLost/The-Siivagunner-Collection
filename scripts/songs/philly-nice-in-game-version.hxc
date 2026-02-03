@@ -4,6 +4,7 @@ import funkin.play.cutscene.VideoCutscene;
 import funkin.play.PlayStatePlaylist;
 import funkin.save.Save;
 import flixel.FlxG;
+import flixel.util.FlxSave;
 
 class PhillyNiceIGVersionSong extends Song
 {
@@ -13,13 +14,16 @@ class PhillyNiceIGVersionSong extends Song
 	{
 		super('philly-nice-in-game-version');
 
+		save = new FlxSave();
+		save.bind("SiivaOptions", "FunkinCrew");
+
 		hasPlayedCutscene = false;
 	}
 
 	public override function onCountdownStart(event:CountdownScriptEvent):Void
 	{
 		super.onCountdownStart(event);
-		if (Save.instance.hasBeatenSong(this.id, ['siiva']) && !FlxG.save.data.siivacutscenes) hasPlayedCutscene = true;
+		if (Save.instance.hasBeatenSong(this.id, ['siiva']) && !save.data.siivacutscenes) hasPlayedCutscene = true;
 
 		if (!hasPlayedCutscene)
 		{

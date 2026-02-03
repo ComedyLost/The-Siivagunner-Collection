@@ -4,6 +4,7 @@ import funkin.modding.module.Module;
 
 import funkin.Paths;
 import flixel.FlxG;
+import flixel.util.FlxSave;
 
 using StringTools;
 
@@ -12,6 +13,9 @@ class OldSchoolStrum extends Module
 	function new()
 	{
 		super('OldSchoolStrum', 1, {state: PlayState});
+
+		save = new FlxSave();
+		save.bind("SiivaOptions", "FunkinCrew");
 	}
 
 	override function onCountdownStart(event) {
@@ -19,7 +23,7 @@ class OldSchoolStrum extends Module
 		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
 		if (PlayState.instance.isMinimalMode) return;
 
-		if (!FlxG.save.data.siivastrum) return;
+		if (!save.data.siivastrum) return;
 
 		if (PlayState.instance.currentDifficulty != 'siiva') return;
 

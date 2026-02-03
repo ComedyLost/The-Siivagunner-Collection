@@ -17,6 +17,7 @@ import funkin.save.Save;
 import funkin.audio.FunkinSound;
 import funkin.play.cutscene.VideoCutscene;
 import funkin.play.cutscene.CutsceneType;
+import flixel.util.FlxSave;
 
 import funkin.play.PlayStatePlaylist;
 
@@ -28,6 +29,9 @@ class DarnellSiivaSong extends Song {
 
 	public function new() {
 		super('darnell-siiva');
+
+		save = new FlxSave();
+		save.bind("SiivaOptions", "FunkinCrew");
 
 		hasPlayedInGameCutscene = false;
 	}
@@ -50,7 +54,7 @@ class DarnellSiivaSong extends Song {
 	public override function onCountdownStart(event:CountdownScriptEvent):Void {
 		super.onCountdownStart(event);
 
-		if ((Save.instance.hasBeatenSong(this.id, ['siiva']) && !FlxG.save.data.siivacutscenes) || PlayState.instance.currentVariation == 'bf')
+		if ((Save.instance.hasBeatenSong(this.id, ['siiva']) && !save.data.siivacutscenes) || PlayState.instance.currentVariation == 'bf')
 			hasPlayedInGameCutscene = true;
 
 		if(!hasPlayedInGameCutscene){

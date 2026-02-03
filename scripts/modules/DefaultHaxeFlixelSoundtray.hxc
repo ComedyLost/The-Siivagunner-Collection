@@ -14,6 +14,7 @@ import openfl.display.Sprite;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 import flixel.system.FlxAssets;
+import flixel.util.FlxSave;
 
 class DefaultSoundTray extends Module
 {
@@ -21,6 +22,9 @@ class DefaultSoundTray extends Module
 		super('DefaultSoundTray');
 
 		active = false;
+
+		save = new FlxSave();
+		save.bind("SiivaOptions", "FunkinCrew");
 
 		// Disable on mobile since mobile doesn't have a sound tray
 		if (!FlxG.onMobile) {
@@ -54,7 +58,7 @@ class DefaultSoundTray extends Module
 	//Bring back the classic cuz I am evil >:)
 	override function createSoundTray()
 	{
-		if (!FlxG.save.data.siivatray) return;
+		if (!save.data.siivatray) return;
 		FlxG.sound.soundTray.volumeUpSound = FlxG.sound.soundTray.volumeDownSound = FlxG.sound.soundTray.volumeMaxSound = Paths.sound("soundtray/beep");
 		FlxG.sound.soundTray.removeChildren();
 		scaleX = _defaultScale;

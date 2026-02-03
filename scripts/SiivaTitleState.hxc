@@ -17,7 +17,6 @@ import funkin.ui.options.OptionsState;
 import funkin.ui.title.TitleState;
 import funkin.ui.MusicBeatState;
 import funkin.ui.story.StoryMenuState;
-import funkin.ui.title.FlxSpriteOverlay;
 import funkin.Conductor;
 
 import funkin.ui.transition.LoadingState;
@@ -35,6 +34,7 @@ import funkin.modding.module.Module;
 
 import funkin.Paths;
 import funkin.FunkinMemory;
+import flixel.util.FlxSave;
 
 import Std;
 class SiivaTitleState extends Module
@@ -43,6 +43,9 @@ class SiivaTitleState extends Module
 	public function new()
 	{
 		super('SiivaTitleState');
+
+		save = new FlxSave();
+		save.bind("SiivaOptions", "FunkinCrew");
 	}
 	
 	var ringtone:String;
@@ -112,7 +115,7 @@ class SiivaTitleState extends Module
 	function onStateChangeEnd(event:StateChangeScriptEvent)
 		{
 			super.onStateChangeEnd(event);
-			if (Std.isOfType(FlxG.state, TitleState) && FlxG.save.data.siivatitle) {
+			if (Std.isOfType(FlxG.state, TitleState) && save.data.siivatitle) {
 				var ringtones:Array<String> = ["antonymph"];
 				ringtone = ringtones[FlxG.random.int(0, ringtones.length - 1)];
 

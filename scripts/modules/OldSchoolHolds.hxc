@@ -8,11 +8,15 @@ import funkin.save.Save;
 import funkin.Conductor;
 import flixel.FlxG;
 import StringTools;
+import flixel.util.FlxSave;
 
 class OldSchoolHolds extends Module
 {
     function new() {
         super('OldSchoolHolds');
+
+		save = new FlxSave();
+		save.bind("SiivaOptions", "FunkinCrew");
     }
 
 	//Only stutter on a step (same way Psych Engine / Pre 0.3 did it)
@@ -20,7 +24,7 @@ class OldSchoolHolds extends Module
 		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
 		if (PlayState.instance.isMinimalMode) return;
 
-		if (!FlxG.save.data.siivastutter) return;
+		if (!save.data.siivastutter) return;
 
 		if (PlayState.instance.currentDifficulty != 'siiva') return;
 

@@ -71,10 +71,8 @@ class SiivagunnerDeath extends Module
     		FlxTransitionableState.skipNextTransIn = true;
     		FlxTransitionableState.skipNextTransOut = true;
     		PlayState.instance.openSubState(gameOverSubState);
+			gameOverSubState.mustNotExit = true;
 			PlayState.instance.camHUD.visible = false;
-			new FlxTimer().start(0.1, function(_) {
-				GameOverSubState.instance.mustNotExit = true;
-			});
 			PlayState.instance.currentStage.getBoyfriend().animation.onFinish.add((name) -> if (name == 'firstDeath') {
 				FlxG.camera.fade(FlxColor.BLACK, 1.3);
 				new FlxTimer().start(0.2, function(_) {

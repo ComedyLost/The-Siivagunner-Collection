@@ -8,12 +8,19 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxTimer;
 import funkin.save.Save;
+import funkin.FunkinMemory;
 
 class PhillyNiceSiivaSong extends Song
 {
   public function new()
   {
     super('philly-nice-siiva');
+  }
+
+  public function onCreate(event)
+  {
+    FunkinMemory.cacheTexture(Paths.image('characters/GF_assets_cow'));
+    FunkinMemory.cacheTexture(Paths.image('characters/GF_assets_cowbop'));
   }
 
   public override function onCountdownStart(event:CountdownScriptEvent):Void

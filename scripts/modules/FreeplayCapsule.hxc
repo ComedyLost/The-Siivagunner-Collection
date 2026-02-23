@@ -41,6 +41,9 @@ class SiivaGunnerFreeplayCapsule extends Module {
 				}
 			});	
 		}
+		for (dot in event.targetState.difficultyDots.members) {
+			if (dot.difficultyId == 'siiva') dot.normalColors = [0xFF484848, 0xFFE57462, 0xFF919191, 0xFF484848];
+		}
 	}
 
 	function listBaseSiivaEntryIds() {
@@ -174,6 +177,21 @@ class SiivaGunnerFreeplayCapsule extends Module {
 			case 'rotten':
 				if (!Save.instance.hasBeatenSong('rotten', ['siiva'])) cap.songText.text = '??????';
 		}
+	}
+
+	/**
+	 * Gets the original (non-rip) version of the song
+	 * @param siivaSong The id of the rip verson of the song
+	 */
+	public function getOriginalSong(siivaSong:String) {
+		var swagGoodArray:Array<String> = [];
+		var extractedSongID:String;
+		swagGoodArray = siivaSong.split('-');
+		if (siivaSong.contains('philly-nice') || siivaSong.contains('winter-horrorland') || siivaSong.contains('satin-panties') || siivaSong.contains('lit-up')) 
+			extractedSongID = swagGoodArray[0] + '-' + swagGoodArray[1]; 
+		else 
+			extractedSongID = swagGoodArray[0];
+		return extractedSongID;
 	}
 
 	public function onDifficultySwitch(event:CapsuleScriptEvent):Void {

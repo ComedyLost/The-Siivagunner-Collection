@@ -2,5 +2,5 @@
 <TextureAtlas imagePath="freeplaylyrics.png">
 	<!-- Created with Adobe Animate version 22.0.5.191 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="idle0000" x="0" y="0" width="235" height="73" frameX="8" frameY="0" frameWidth="235" frameHeight="73"/>
+	<SubTexture name="idle0000" x="0" y="0" width="234" height="73" frameX="8" frameY="0" frameWidth="234" frameHeight="73"/>
 </TextureAtlas>

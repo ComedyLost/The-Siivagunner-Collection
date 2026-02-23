@@ -1,0 +1,36 @@
+{
+ "version": "2.2.4",
+ "songName": "Spookeez (In-Game Version)",
+ "artist": "Kawai Sprite / SiivaGunner",
+ "offsets": { },
+ "playData": {
+  "ratings": { "siiva": 2 },
+  "difficulties": [
+   "siiva"
+  ],
+  "characters": {
+   "player": "bf-slam",
+   "girlfriend": "gf",
+   "opponent": "spooky-slam",
+   "opponentVocals": [
+    "spooky"
+   ],
+   "playerVocals": [
+    "bf"
+   ]
+  },
+  "album": "volumeHQ",
+  "stage": "spookyMansion",
+  "noteStyle": "funkinslam",
+  "previewEnd": 0
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.1",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 150,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

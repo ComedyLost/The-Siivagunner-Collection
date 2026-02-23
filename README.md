@@ -55,6 +55,7 @@ Feel free to port any songs that aren't ported yet and open a [Pull Request](htt
 - Spookeez
     - [HQ](https://www.youtube.com/watch?v=9OGj1pdBLm0)
     - [Beta Mix](https://www.youtube.com/watch?v=UeKB3pwynQA)
+    - [In-Game Version](https://www.youtube.com/watch?v=-a5JbDQ3zgA)
     - [JPN Version](https://www.youtube.com/watch?v=FE-H3jrd6uI)
 - South (COMPLETED)
     - [HQ](https://www.youtube.com/watch?v=IPPX54LN51Y)
@@ -139,6 +140,7 @@ Feel free to port any songs that aren't ported yet and open a [Pull Request](htt
 - [DaBigJ](https://twitter.com/DaBigJ_Twit) - Album / Logo Artist
 - [meatku](https://twitter.com/meatku_) - Made Sonic Sprite
 - [vanzz](https://twitter.com/Da_ArtistFunkin) - Made Bopeebo (HQ) Sprite
+- [ChazbillYT](https://youtube.com/@chazbillyt) - Made Difficulty Sprite
 - [KoloInDaCrib](https://twitter.com/KoloInDaCrib) - Contributor
 - [The SiivaGunner Team](https://www.youtube.com/@SiIvaGunner) - Made the rips
 

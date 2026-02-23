@@ -26,23 +26,28 @@ class SiivagunnerStageEdits extends Module
 
 		switch (PlayState.instance.currentSong.id.toLowerCase()) { // Replace some stage assets so we don't have to make new stages for small edits
 			case "bopeebo-newgrounds-build":
+				if (PlayState.instance.currentStageId != 'mainStage') return;
 				PlayState.instance.currentStage.getNamedProp('stageBack').loadTexture('newgrounds/stageback');
 				PlayState.instance.currentStage.getNamedProp('stageFront').loadTexture('newgrounds/stagefront');
 				PlayState.instance.currentStage.getNamedProp('stageCurtains').loadTexture('newgrounds/stagecurtains');
 			case "bopeebo-in-game-version":
+				if (PlayState.instance.currentStageId != 'mainStage') return;
 				PlayState.instance.currentStage.getNamedProp('stageBack').loadTexture('inGame/stageback');
 				PlayState.instance.currentStage.getNamedProp('stageFront').loadTexture('inGame/stagefront');
 				PlayState.instance.currentStage.getNamedProp('stageCurtains').loadTexture('inGame/stagecurtains');
 			case "pico-in-game-version":
+				if (PlayState.instance.currentStageId != 'phillyTrain') return;
 				PlayState.instance.currentStage.getNamedProp('stageBack').loadTexture('picoInGame/stageback');
 				PlayState.instance.currentStage.getNamedProp('stageFront').loadTexture('picoInGame/stagefront');
 				PlayState.instance.currentStage.getNamedProp('stageCurtains').loadTexture('picoInGame/stagecurtains');
 
 			case "high-eu-version":
+				if (PlayState.instance.currentStageId != 'limoRide') return;
 				PlayState.instance.currentStage.getNamedProp('limo').loadSparrow('limo/limoDriveEU');
 				PlayState.instance.currentStage.getNamedProp('limo').animation.addByPrefix('drive', 'Limo stage', 24, true);
 				PlayState.instance.currentStage.getNamedProp('limo').animation.play('drive', true);
 			case "high-in-game-version":
+				if (PlayState.instance.currentStageId != 'limoRide') return;
 				for (i in 1...6) {
 					PlayState.instance.currentStage.getNamedProp('limoDancer' + i).loadSparrow('limo/limoDancerElement');
 					PlayState.instance.currentStage.getNamedProp('limoDancer' + i).animation.addByIndices('danceLeft', 'bg dancer sketch PINK', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], '', 24);
@@ -51,8 +56,10 @@ class SiivagunnerStageEdits extends Module
 					PlayState.instance.currentStage.getNamedProp('limoDancer' + i).dance(true);
 				}
 			case "roses-siiva", "ice-roses":
+				if (PlayState.instance.currentStageId != 'school') return;
 				PlayState.instance.currentStage.getNamedProp('freaks').idleSuffix = '-scared';
 			case "ugh-siiva":
+				if (PlayState.instance.currentStageId != 'tankmanBattlefield') return;
 				PlayState.instance.currentStage.getNamedProp('buildings').loadGraphic(Paths.image('depot/tankBuildings', 'week7'));
 				PlayState.instance.currentStage.getNamedProp('ruins').loadGraphic(Paths.image('depot/tankRuins', 'week7'));
 				PlayState.instance.currentStage.getNamedProp('tankRolling').loadSparrow('depot/tankRolling');
@@ -62,6 +69,7 @@ class SiivagunnerStageEdits extends Module
 				PlayState.instance.currentStage.getNamedProp('watchtower').animation.addByPrefix('idle', 'watchtower gradient color instance 1', 24, false);
 				PlayState.instance.currentStage.getNamedProp('watchtower').dance(true);
 			case "guns-short-version":
+				if (PlayState.instance.currentStageId != 'tankmanBattlefield') return;
 				PlayState.instance.currentStage.getNamedProp('watchtower').loadSparrow('offset/tankWatchtower');
 				PlayState.instance.currentStage.getNamedProp('watchtower').animation.addByPrefix('idle', 'watchtower gradient color instance 1', 24, false);
 				PlayState.instance.currentStage.getNamedProp('watchtower').dance(true);

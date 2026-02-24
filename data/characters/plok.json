@@ -1,0 +1,37 @@
+{
+  "version": "1.0.0",
+  "name": "Plok",
+  "assetPath": "characters/Pico_FNF_assetss_plok",
+  "flipX": true,
+  "offsets": [0, 15],
+  "healthIcon": {
+    "id": "plok"
+  },
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "Plok Idle Dance",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "Plok NOTE LEFT0",
+      "offsets": [-86, -10]
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "Plok Down Note0",
+      "offsets": [183, -72]
+    },
+    {
+      "name": "singUP",
+      "prefix": "Plok Up note0",
+      "offsets": [-32, 28]
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "Plok Note Right0",
+      "offsets": [61, 2]
+    }
+  ]
+}

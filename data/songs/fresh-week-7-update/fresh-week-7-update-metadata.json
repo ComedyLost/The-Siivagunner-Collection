@@ -1,0 +1,36 @@
+{
+ "version": "2.2.4",
+ "songName": "Fresh (Week 7 Update)",
+ "artist": "Kawai Sprite / SiivaGunner",
+ "offsets": { },
+ "playData": {
+  "ratings": { "siiva": 3 },
+  "difficulties": [
+   "siiva"
+  ],
+  "characters": {
+   "player": "bf",
+   "girlfriend": "gf",
+   "opponent": "plok",
+   "opponentVocals": [
+    "pico"
+   ],
+   "playerVocals": [
+    "bf"
+   ]
+  },
+  "album": "volumeHQ",
+  "stage": "mainStage",
+  "noteStyle": "funkin",
+  "previewEnd": 0
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.2",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 120,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Pico_FNF_assetss.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Plok Down Note0000" x="0" y="0" width="388" height="460" frameX="195" frameY="73" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note0001" x="0" y="0" width="388" height="460" frameX="195" frameY="73" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note0002" x="392" y="0" width="379" height="462" frameX="191" frameY="75" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note0003" x="392" y="0" width="379" height="462" frameX="191" frameY="75" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note0004" x="392" y="0" width="379" height="462" frameX="191" frameY="75" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note0005" x="392" y="0" width="379" height="462" frameX="191" frameY="75" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note0006" x="392" y="0" width="379" height="462" frameX="191" frameY="75" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note0007" x="392" y="0" width="379" height="462" frameX="191" frameY="75" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note0008" x="392" y="0" width="379" height="462" frameX="191" frameY="75" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note0009" x="392" y="0" width="379" height="462" frameX="191" frameY="75" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note0010" x="392" y="0" width="379" height="462" frameX="191" frameY="75" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note0011" x="392" y="0" width="379" height="462" frameX="191" frameY="75" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note MISS0000" x="0" y="0" width="388" height="460" frameX="0" frameY="-2" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note MISS0001" x="0" y="0" width="388" height="460" frameX="0" frameY="-2" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note MISS0002" x="392" y="0" width="379" height="462" frameX="-4" frameY="0" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note MISS0003" x="392" y="0" width="379" height="462" frameX="-4" frameY="0" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note MISS0004" x="392" y="0" width="379" height="462" frameX="-4" frameY="0" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note MISS0005" x="392" y="0" width="379" height="462" frameX="-4" frameY="0" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note MISS0006" x="392" y="0" width="379" height="462" frameX="-4" frameY="0" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note MISS0007" x="392" y="0" width="379" height="462" frameX="-4" frameY="0" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note MISS0008" x="392" y="0" width="379" height="462" frameX="-4" frameY="0" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note MISS0009" x="392" y="0" width="379" height="462" frameX="-4" frameY="0" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note MISS0010" x="392" y="0" width="379" height="462" frameX="-4" frameY="0" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Down Note MISS0011" x="392" y="0" width="379" height="462" frameX="-4" frameY="0" frameWidth="388" frameHeight="462"/>
+	<SubTexture name="Plok Idle Dance0000" x="775" y="0" width="362" height="497" frameX="0" frameY="40" frameWidth="368" frameHeight="502"/>
+	<SubTexture name="Plok Idle Dance0001" x="775" y="0" width="362" height="497" frameX="0" frameY="40" frameWidth="368" frameHeight="502"/>
+	<SubTexture name="Plok Idle Dance0002" x="1141" y="0" width="357" height="497" frameX="-2" frameY="40" frameWidth="368" frameHeight="502"/>
+	<SubTexture name="Plok Idle Dance0003" x="1141" y="0" width="357" height="497" frameX="-2" frameY="40" frameWidth="368" frameHeight="502"/>
+	<SubTexture name="Plok Idle Dance0004" x="1502" y="0" width="361" height="499" frameX="-3" frameY="42" frameWidth="368" frameHeight="502"/>
+	<SubTexture name="Plok Idle Dance0005" x="1502" y="0" width="361" height="499" frameX="-3" frameY="42" frameWidth="368" frameHeight="502"/>
+	<SubTexture name="Plok Idle Dance0006" x="0" y="503" width="361" height="501" frameX="-4" frameY="44" frameWidth="368" frameHeight="502"/>
+	<SubTexture name="Plok Idle Dance0007" x="0" y="503" width="361" height="501" frameX="-4" frameY="44" frameWidth="368" frameHeight="502"/>
+	<SubTexture name="Plok Idle Dance0008" x="365" y="503" width="364" height="502" frameX="-4" frameY="45" frameWidth="368" frameHeight="502"/>
+	<SubTexture name="Plok Idle Dance0009" x="365" y="503" width="364" height="502" frameX="-4" frameY="45" frameWidth="368" frameHeight="502"/>
+	<SubTexture name="Plok Idle Dance0010" x="365" y="503" width="364" height="502" frameX="-4" frameY="45" frameWidth="368" frameHeight="502"/>
+	<SubTexture name="Plok Idle Dance0011" x="365" y="503" width="364" height="502" frameX="-4" frameY="45" frameWidth="368" frameHeight="502"/>
+	<SubTexture name="Plok Idle Dance0012" x="365" y="503" width="364" height="502" frameX="-4" frameY="45" frameWidth="368" frameHeight="502"/>
+	<SubTexture name="Plok Idle Dance0013" x="365" y="503" width="364" height="502" frameX="-4" frameY="45" frameWidth="368" frameHeight="502"/>
+	<SubTexture name="Plok NOTE LEFT0000" x="733" y="503" width="516" height="501" frameX="-56" frameY="52" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT0001" x="733" y="503" width="516" height="501" frameX="-56" frameY="52" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT0002" x="1253" y="503" width="510" height="504" frameX="-64" frameY="55" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT0003" x="1253" y="503" width="510" height="504" frameX="-64" frameY="55" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT0004" x="1253" y="503" width="510" height="504" frameX="-64" frameY="55" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT0005" x="1253" y="503" width="510" height="504" frameX="-64" frameY="55" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT0006" x="1253" y="503" width="510" height="504" frameX="-64" frameY="55" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT0007" x="1253" y="503" width="510" height="504" frameX="-64" frameY="55" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT0008" x="1253" y="503" width="510" height="504" frameX="-64" frameY="55" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT0009" x="1253" y="503" width="510" height="504" frameX="-64" frameY="55" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT0010" x="1253" y="503" width="510" height="504" frameX="-64" frameY="55" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT0011" x="1253" y="503" width="510" height="504" frameX="-64" frameY="55" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT miss0000" x="733" y="503" width="516" height="501" frameX="0" frameY="-3" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT miss0001" x="733" y="503" width="516" height="501" frameX="0" frameY="-3" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT miss0002" x="1253" y="503" width="510" height="504" frameX="-8" frameY="0" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT miss0003" x="1253" y="503" width="510" height="504" frameX="-8" frameY="0" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT miss0004" x="1253" y="503" width="510" height="504" frameX="-8" frameY="0" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT miss0005" x="1253" y="503" width="510" height="504" frameX="-8" frameY="0" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT miss0006" x="1253" y="503" width="510" height="504" frameX="-8" frameY="0" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT miss0007" x="1253" y="503" width="510" height="504" frameX="-8" frameY="0" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT miss0008" x="1253" y="503" width="510" height="504" frameX="-8" frameY="0" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT miss0009" x="1253" y="503" width="510" height="504" frameX="-8" frameY="0" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT miss0010" x="1253" y="503" width="510" height="504" frameX="-8" frameY="0" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok NOTE LEFT miss0011" x="1253" y="503" width="510" height="504" frameX="-8" frameY="0" frameWidth="518" frameHeight="504"/>
+	<SubTexture name="Plok Note Right0000" x="0" y="1011" width="447" height="492" frameX="-2" frameY="43" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right0001" x="0" y="1011" width="447" height="492" frameX="-2" frameY="43" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right0002" x="451" y="1011" width="443" height="491" frameX="-2" frameY="42" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right0003" x="451" y="1011" width="443" height="491" frameX="-2" frameY="42" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right0004" x="451" y="1011" width="443" height="491" frameX="-2" frameY="42" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right0005" x="451" y="1011" width="443" height="491" frameX="-2" frameY="42" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right0006" x="451" y="1011" width="443" height="491" frameX="-2" frameY="42" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right0007" x="451" y="1011" width="443" height="491" frameX="-2" frameY="42" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right0008" x="451" y="1011" width="443" height="491" frameX="-2" frameY="42" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right0009" x="451" y="1011" width="443" height="491" frameX="-2" frameY="42" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right0010" x="451" y="1011" width="443" height="491" frameX="-2" frameY="42" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right Miss0000" x="0" y="1011" width="447" height="492"/>
+	<SubTexture name="Plok Note Right Miss0001" x="0" y="1011" width="447" height="492"/>
+	<SubTexture name="Plok Note Right Miss0002" x="451" y="1011" width="443" height="491" frameX="0" frameY="-1" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right Miss0003" x="451" y="1011" width="443" height="491" frameX="0" frameY="-1" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right Miss0004" x="451" y="1011" width="443" height="491" frameX="0" frameY="-1" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right Miss0005" x="451" y="1011" width="443" height="491" frameX="0" frameY="-1" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right Miss0006" x="451" y="1011" width="443" height="491" frameX="0" frameY="-1" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right Miss0007" x="451" y="1011" width="443" height="491" frameX="0" frameY="-1" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right Miss0008" x="451" y="1011" width="443" height="491" frameX="0" frameY="-1" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right Miss0009" x="451" y="1011" width="443" height="491" frameX="0" frameY="-1" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right Miss0010" x="451" y="1011" width="443" height="491" frameX="0" frameY="-1" frameWidth="447" frameHeight="492"/>
+	<SubTexture name="Plok Note Right Miss0011" x="0" y="1011" width="447" height="492"/>
+	<SubTexture name="Plok Up note0000" x="898" y="1011" width="376" height="526" frameX="-6" frameY="43" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note0001" x="898" y="1011" width="376" height="526" frameX="-6" frameY="43" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note0002" x="1278" y="1011" width="379" height="524" frameX="0" frameY="41" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note0003" x="1278" y="1011" width="379" height="524" frameX="0" frameY="41" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note0004" x="1278" y="1011" width="379" height="524" frameX="0" frameY="41" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note0005" x="1278" y="1011" width="379" height="524" frameX="0" frameY="41" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note0006" x="1278" y="1011" width="379" height="524" frameX="0" frameY="41" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note0007" x="1278" y="1011" width="379" height="524" frameX="0" frameY="41" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note0008" x="1278" y="1011" width="379" height="524" frameX="0" frameY="41" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note0009" x="1278" y="1011" width="379" height="524" frameX="0" frameY="41" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note0010" x="1278" y="1011" width="379" height="524" frameX="0" frameY="41" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note0011" x="1278" y="1011" width="379" height="524" frameX="0" frameY="41" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note miss0000" x="898" y="1011" width="376" height="526" frameX="-6" frameY="0" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note miss0001" x="898" y="1011" width="376" height="526" frameX="-6" frameY="0" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note miss0002" x="1278" y="1011" width="379" height="524" frameX="0" frameY="-2" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note miss0003" x="1278" y="1011" width="379" height="524" frameX="0" frameY="-2" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note miss0004" x="1278" y="1011" width="379" height="524" frameX="0" frameY="-2" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note miss0005" x="1278" y="1011" width="379" height="524" frameX="0" frameY="-2" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note miss0006" x="1278" y="1011" width="379" height="524" frameX="0" frameY="-2" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note miss0007" x="1278" y="1011" width="379" height="524" frameX="0" frameY="-2" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note miss0008" x="1278" y="1011" width="379" height="524" frameX="0" frameY="-2" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note miss0009" x="1278" y="1011" width="379" height="524" frameX="0" frameY="-2" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note miss0010" x="1278" y="1011" width="379" height="524" frameX="0" frameY="-2" frameWidth="382" frameHeight="526"/>
+	<SubTexture name="Plok Up note miss0011" x="1278" y="1011" width="379" height="524" frameX="0" frameY="-2" frameWidth="382" frameHeight="526"/>
+</TextureAtlas>

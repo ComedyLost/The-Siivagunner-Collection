@@ -22,16 +22,17 @@ class SiivaOptions extends Module
 
 		save = new FlxSave();
 		save.bind("SiivaOptions", "FunkinCrew");
-		if (save.data.siivatitle == null) save.data.siivatitle = true;
-		if (save.data.siivacutscenes == null) save.data.siivacutscenes = false;
-		if (save.data.siivavocals == null) save.data.siivavocals = true;
-		if (save.data.siivaexfx == null) save.data.siivaexfx = true;
-		if (save.data.siivatray == null) save.data.siivatray = true;
-		if (save.data.siivadeath == null) save.data.siivadeath = true;
-		if (save.data.siivalunch == null) save.data.siivalunch = true;
-		if (save.data.siivaresults == null) save.data.siivaresults = true;
-		if (save.data.siivastutter == null) save.data.siivastutter = false;
-		if (save.data.siivastrum == null) save.data.siivastrum = false;
+		save.data.siivatitle ??= true;
+		save.data.siivacutscenes ??= false;
+		save.data.siivavocals ??= true;
+		save.data.siivaexfx ??= true;
+		save.data.rottenshader ??= (FlxG.onMobile ? false : true); // Mobile seems to have a hard time with the shader
+		save.data.siivatray ??= true;
+		save.data.siivadeath ??= true;
+		save.data.siivalunch ??= true;
+		save.data.siivaresults ??= true;
+		save.data.siivastutter ??= false;
+		save.data.siivastrum ??= false;
 
 		save.flush();
     }
@@ -77,10 +78,14 @@ class SiivaOptions extends Module
 				save.data.siivavocals = value;
 				save.flush();
 			}, save.data.siivavocals);
-			prefs.createPrefItemCheckbox("Extreme Effects", "Enables extreme effects for rips (Ex. Spookeez (Beta Mix)).\nWARNING: MAY CAUSE LAG", (value) -> {
+			prefs.createPrefItemCheckbox("Extreme Effects", "Enables extreme effects for rips (Ex. Spookeez (Beta Mix)).\n(WARNING: MAY CAUSE LAG)", (value) -> {
 				save.data.siivaexfx = value;
 				save.flush();
 			}, save.data.siivaexfx);
+			prefs.createPrefItemCheckbox("Rotten Glitch Shader", "Enables the glitch shaders for ROTTEN.\n(WARNING: MAY CRASH YOUR GAME ON SOME DEVICES IF ENABLED)", (value) -> {
+				save.data.rottenshader = value;
+				save.flush();
+			}, save.data.rottenshader);
 			// Don't exist yet
 			/*prefs.createPrefItemCheckbox("Siiva Results Music", "Replaces the results music with custom rips made by me.", (value) -> {
 				save.data.siivaresults = value;

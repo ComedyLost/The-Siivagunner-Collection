@@ -26,12 +26,16 @@ import flixel.text.FlxText;
 import flixel.addons.text.FlxTypeText;
 import funkin.Preferences;
 import funkin.mobile.input.ControlsHandler;
+import flixel.util.FlxSave;
 
 class RottenSong extends Song
 {
 	function new()
 	{
 		super('rotten');
+
+		save = new FlxSave();
+		save.bind("SiivaOptions", "FunkinCrew");
 	}
 
 	var black:FlxSprite;
@@ -461,6 +465,7 @@ class RottenSong extends Song
 					case 'dad': character = PlayState.instance?.currentStage?.getDad() ?? null;
 					case 'gf': character = PlayState.instance?.currentStage?.getGirlfriend() ?? null;
 				}
+				return; // Doesn't fucking work lmao
 				var ogAnim = character?.getCurrentAnimation();
 				if (ogAnim == null || character == null) return;
 				FlxTimer.wait(0.001, () -> {
@@ -604,7 +609,7 @@ class RottenSong extends Song
 				// else 
 				//     westBG.shader = null;
 	
-				for(m in poop) m.shader = glitch;
+				for(m in poop) if (save.data.rottenshader) m.shader = glitch;
 	
 				var time = getTime(value1);
 	

@@ -33,9 +33,6 @@ class OldSchoolStrum extends Module
 				if (!anims.contains('static')) strums.animation.remove(anims);
 			}
 		}
-		PlayState.instance.opponentStrumline.noteHoldCovers.visible = false;
-		for (holdNote in PlayState.instance.opponentStrumline.holdNotes.members){
-			holdNote.alpha = 0.6;
-		}
+		PlayState.instance.opponentStrumline.showNotesplash = false;
 	}
 }

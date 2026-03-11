@@ -461,15 +461,19 @@ class RottenSong extends Song
 					case 'dad': character = PlayState.instance?.currentStage?.getDad() ?? null;
 					case 'gf': character = PlayState.instance?.currentStage?.getGirlfriend() ?? null;
 				}
-				var ogAnim = character.getCurrentAnimation();
+				var ogAnim = character?.getCurrentAnimation();
+				if (ogAnim == null || character == null) return;
 				FlxTimer.wait(0.001, () -> {
-					if (!StringTools.startsWith(ogAnim, 'idle') && character.hasAnimation(ogAnim)) {
+					if (!StringTools.startsWith(ogAnim, 'idle') && character?.hasAnimation(ogAnim)) {
 						character.playAnimation(ogAnim);
 						if (StringTools.startsWith(ogAnim, 'sing')) character.holdTimer = 0;
 					}
 				});
 			case 'FocusCamera':
-				if (isCameraOnForcedPos) event.cancel(); // Don't allow camera movements when enabled
+				if (isCameraOnForcedPos) {
+					event.cancel(); // Don't allow camera movements when enabled
+					event.eventData.activated = true;
+				}
 			case 'Flavor Strums': flavorStrums = (event.eventData.getString('value1') == 'true');
 			case 'Set Cam Zoom', 'Set Cam Zoom Siiva':
 				PlayState.instance.tweenCameraZoom(event.eventData.getString('value1'), (Conductor.instance.stepLengthMs * 8) / 1000, true, FlxEase.circOut);

@@ -3,6 +3,7 @@
     "name": "Wood Man (West)",
     "singTime": 4,
     "version": "1.0.0",
+    "renderType": "multisparrow",
     "flipX": true,
     "offsets": [40, 280],
     "cameraOffsets": [220, 31],

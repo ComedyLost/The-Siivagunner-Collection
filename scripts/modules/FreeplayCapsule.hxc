@@ -175,7 +175,14 @@ class SiivaGunnerFreeplayCapsule extends Module {
 			case 'eggnog-unused-mix':
 				cap.pixelIcon.origin.x = 140;
 			case 'rotten':
-				if (!Save.instance.hasBeatenSong('rotten', ['siiva'])) cap.songText.text = '??????';
+				if (Save.instance.hasBeatenSong('rotten', ['siiva'])) return;
+				cap?.songText.text = '';
+				for (length in 0...cap?.freeplayData?.fullSongName.length) {
+					switch (cap?.freeplayData?.fullSongName.charAt(length)) {
+						case ' ', '(', ')', '-': cap?.songText.text += cap?.freeplayData?.fullSongName.charAt(length);
+						default: cap?.songText.text += '?';
+					}
+				}
 		}
 	}
 
@@ -196,6 +203,22 @@ class SiivaGunnerFreeplayCapsule extends Module {
 
 	public function onDifficultySwitch(event:CapsuleScriptEvent):Void {
 		super.onDifficultySwitch(event);
+		if (event.difficultyId == 'siiva') {
+			if (FlxG.state.subState.ostName.text != "GRAND OST") {
+				FlxG.state.subState.ostName.text = "GRAND OST";
+				FlxG.state.subState.ostName.shader.width = FlxG.state.subState.ostName.shader.height = 2;
+				FlxTimer.wait(1.5 / 24, () -> {
+					FlxG.state.subState.ostName.shader.width = FlxG.state.subState.ostName.shader.height = 0;
+				});
+			}
+		} else if (FlxG.state.subState.ostName.text == "GRAND OST") {
+			FlxG.state.subState.ostName.text = "OFFICIAL OST";
+			FlxG.state.subState.ostName.shader.width = FlxG.state.subState.ostName.shader.height = 2;
+			FlxTimer.wait(1.5 / 24, () -> {
+				FlxG.state.subState.ostName.shader.width = FlxG.state.subState.ostName.shader.height = 0;
+			});
+		}
+
 		if (event.difficultyId != 'siiva') return;
 		var filteredCapsules:Array<SongMenuItem> = FlxG.state.subState.grpCapsules.members.filter(function(cap:SongMenuItem) {
 			   // Dead capsules are ones which were removed from the list when changing filters.
@@ -211,12 +234,20 @@ class SiivaGunnerFreeplayCapsule extends Module {
 	public function onCapsuleSelected(event:CapsuleScriptEvent):Void { // Fix Eggnog Unused Mix icon being offset incorrectly
 		switch (event.capsule?.freeplayData?.data?.id) {
 			case 'eggnog-unused-mix': event.capsule?.pixelIcon?.origin.x = 140;
-			case 'rotten': if (!Save.instance.hasBeatenSong('rotten', ['siiva'])) {
+			case 'rotten': 
+				if (Save.instance.hasBeatenSong('rotten', ['siiva'])) return;
+				FlxTimer.globalManager._timers.pop().cancel();
 				FlxG.state.subState.clearPreviews();
-				event.capsule?.songText.text = '??????';
+				event.capsule?.songText.text = '';
+				for (length in 0...event.capsule?.freeplayData?.fullSongName.length) {
+					switch (event.capsule?.freeplayData?.fullSongName.charAt(length)) {
+						case ' ', '(', ')', '-': event.capsule?.songText.text += event.capsule?.freeplayData?.fullSongName.charAt(length);
+						default: event.capsule?.songText.text += '?';
+					}
+				}
+				//event.capsule?.songText.text = '??????';
 				if (FlxG.state.subState.albumRoll.albumId == null) return;
 				FlxG.state.subState.albumRoll.albumId = 'volumeHQ';
-			}
 		}
 	}
 }

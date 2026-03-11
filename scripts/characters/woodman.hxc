@@ -1,5 +1,5 @@
 import funkin.play.character.CharacterType;
-import funkin.play.character.SparrowCharacter;
+import funkin.play.character.MultiSparrowCharacter;
 import flixel.util.FlxTimer;
 import funkin.play.PlayState;
 import funkin.util.Constants;
@@ -12,7 +12,7 @@ import flixel.FlxSprite;
 import funkin.graphics.FunkinSprite;
 import StringTools;
 
-class WoodMan extends SparrowCharacter
+class WoodMan extends MultiSparrowCharacter
 {
 	var scarf:FlxSprite;
 	var bfPos:FlxPoint = FlxPoint.get();
@@ -74,8 +74,8 @@ class WoodMan extends SparrowCharacter
 		offsets.set('idle', [50, 355]);    
 	}
 
-	public override function destroy(event:ScriptEvent) {
-		super.destroy(event);
-		scarf.destroy();
+	public override function destroy() {
+		super.destroy();
+		scarf?.destroy();
 	}
 }

@@ -142,24 +142,11 @@ class SiivaGunnerFreeplayCapsule extends Module {
 
 	function weekText(cap:SongMenuItem) {
 		if (cap?.freeplayData == null) return;
-		var songID = cap.freeplayData.data.id;
-		//trace(songID);
-		var swagGoodArray:Array<String> = [];
-		var extractedSongID:String;
-		swagGoodArray = songID.split('-');
-		if (songID.contains('philly-nice') || songID.contains('winter-horrorland') || songID.contains('satin-panties') || songID.contains('lit-up')) 
-			extractedSongID = swagGoodArray[0] + '-' + swagGoodArray[1]; 
-		else 
-			extractedSongID = swagGoodArray[0];
-		if (!cap.weekType.graphic.key.contains('freeplay/freeplayCapsule/weektypes')) {
-	   		cap.weekType.frames = Paths.getSparrowAtlas('freeplay/freeplayCapsule/weektypes');
-		    cap.weekType.animation.addByPrefix('WEEK', 'WEEK text instance 1', 24, false);
-	    	cap.weekType.animation.addByPrefix('WEEKEND', 'WEEKEND text instance 1', 24, false);
-		}
-		cap.checkWeek(extractedSongID);
-		switch (songID) {
-			case 'ice-roses': cap.checkWeek('roses');
-			case 'smooth-sherbet-alpha-mix': cap.checkWeek('eggnog');
+		var levelId = cap.freeplayData.levelId.replace('Siiva', '');
+		setFreeplayCapsuleLabel(cap, levelId);
+		switch (cap.freeplayData?.data?.id) {
+			case 'ice-roses': setFreeplayCapsuleLabel(cap, 'week 6');
+			case 'smooth-sherbet-alpha-mix': setFreeplayCapsuleLabel(cap, 'week 5');
 			case 'spookeez-beta-mix': // Override the confirm to take a screenshot of the game to use in the song
 				var onConfirmOG:Void->Void = cap.onConfirm;
 				cap.onConfirm = () -> {
@@ -172,9 +159,10 @@ class SiivaGunnerFreeplayCapsule extends Module {
 					}
 					onConfirmOG();
 				};
-			case 'eggnog-unused-mix':
-				cap.pixelIcon.origin.x = 140;
-			case 'rotten':
+			case 'eggnog-unused-mix': cap.pixelIcon.origin.x = 140;
+			case 'rotten': 
+				setFreeplayCapsuleLabel(cap, 'ROTTEN');
+				cap.weekText.loadGraphic(FlxG.bitmap.get('ROTTEN'));		
 				if (Save.instance.hasBeatenSong('rotten', ['siiva'])) return;
 				cap?.songText.text = '';
 				for (length in 0...cap?.freeplayData?.fullSongName.length) {
@@ -183,7 +171,29 @@ class SiivaGunnerFreeplayCapsule extends Module {
 						default: cap?.songText.text += '?';
 					}
 				}
+			case 'test-siiva', 'test-in-game-version': setFreeplayCapsuleLabel(cap, 'test');
+			case 'blammed-siiva-extended': setFreeplayCapsuleLabel(cap, 'week3');
 		}
+	}
+
+	function setFreeplayCapsuleLabel(cap:SongMenuItem, levelId:String) {
+		var levelIdClean:String = "";
+		for (i in 0...levelId.length) {
+			if (i == 0) {
+				levelIdClean += levelId.charAt(i);
+				continue;
+			}
+			var previousChar:String = levelId.charAt(i - 1);
+			var currentChar:String = levelId.charAt(i);
+	  
+			if (previousChar.toLowerCase() == previousChar && currentChar.toLowerCase() != currentChar) levelIdClean += " ";
+			if (Std.parseInt(previousChar) == null && Std.parseInt(currentChar) != null) levelIdClean += " ";
+			if (Std.parseInt(previousChar) != null && Std.parseInt(currentChar) == null) levelIdClean += " ";
+	  
+			levelIdClean += currentChar;	  	  
+		}	
+		cap.createWeekTextGraphic(levelIdClean);
+		cap.weekText.loadGraphic(FlxG.bitmap.get(levelIdClean));	
 	}
 
 	/**
@@ -223,7 +233,7 @@ class SiivaGunnerFreeplayCapsule extends Module {
 		var filteredCapsules:Array<SongMenuItem> = FlxG.state.subState.grpCapsules.members.filter(function(cap:SongMenuItem) {
 			   // Dead capsules are ones which were removed from the list when changing filters.
 			return cap != null && cap.alive && cap.freeplayData != null;
-		  });
+		});
 		for (capsule in filteredCapsules){
 			if (capsule == null || !capsule.alive) continue;
 

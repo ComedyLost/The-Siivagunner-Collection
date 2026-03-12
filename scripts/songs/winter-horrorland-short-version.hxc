@@ -1,21 +1,27 @@
-import flixel.tweens.FlxEase;
 import funkin.graphics.FunkinSprite;
-import flixel.tweens.FlxTween;
-import funkin.play.PlayState;
-import funkin.play.PlayStatePlaylist;
-import funkin.play.song.Song;
-import flixel.FlxG;
-import funkin.save.Save;
 import flixel.FlxSprite;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import funkin.play.cutscene.VanillaCutscenes;
+import funkin.Paths;
+import funkin.audio.FunkinSound;
+import funkin.play.song.Song;
+import funkin.play.PlayState;
+import funkin.util.HapticUtil;
 
 class WinterHorrorlandShortSong extends Song
 {
-  var hasPlayedCutscene:Bool;
+  static var blackScreen:FlxSprite;
+  static var TWEEN_DURATION:Float = 2.0;
 
-  public function new(){
+  var hasPlayedCutscene:Bool = false;
+
+  public function new()
+  {
     super('winter-horrorland-short-version');
+
+    hasPlayedCutscene = false;
   }
 
   public override function onCountdownStart(event:CountdownScriptEvent):Void
@@ -24,26 +30,59 @@ class WinterHorrorlandShortSong extends Song
 		PlayState.instance.currentStage.getNamedProp('evilTree').loadGraphic(Paths.image('christmas/evilTreeBean', 'week5'));
     if (!hasPlayedCutscene)
     {
-      trace('Pausing countdown to play cutscene.');
-
       hasPlayedCutscene = true;
 
-      event.cancel(); // CANCEL THE COUNTDOWN!
+      event.cancel();
 
-      //  pausing is breaking a lot in the erect stage for some reason disabling this for the sake of not running into issues atm
-      //  PlayState.instance.currentStage.pause();
-			VanillaCutscenes.playHorrorStartCutscene();
+      playHorrorStartCutscene();
     }
   }
 
-  /**
-   * Replay the cutscene after leaving the song.
-   */
-  function onCreate(event:ScriptEvent):Void
+  override public function onCreate(event:ScriptEvent):Void
   {
     super.onCreate(event);
 
     hasPlayedCutscene = false;
   }
 
+  /**
+   * Plays the cutscene that appears at the start of Winter Horrorland.
+   */
+  public function playHorrorStartCutscene():Void
+  {
+    PlayState.instance.isInCutscene = true;
+    PlayState.instance.camHUD.visible = false;
+
+    blackScreen = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+    blackScreen.scrollFactor.set(0, 0);
+    blackScreen.zIndex = 1000000;
+    PlayState.instance.add(blackScreen);
+
+    new FlxTimer().start(0.1, function(_)
+    {
+      trace('Playing horrorland cutscene...');
+      PlayState.instance.remove(blackScreen);
+
+      // Force set the camera position and zoom.
+      PlayState.instance.cameraFollowPoint.setPosition(400, -2050);
+      PlayState.instance.resetCamera();
+      FlxG.camera.zoom = 2.5;
+
+      // Play the Sound effect.
+      HapticUtil.vibrate(0.1, 0.5, 1, 1);
+      FunkinSound.playOnce(Paths.sound('Lights_Turn_On'), 1.0, function()
+      {
+        // Fade in the HUD.
+        trace('SFX done...');
+        PlayState.instance.camHUD.visible = true;
+        PlayState.instance.camHUD.alpha = 0.0; // Use alpha rather than visible to let us fade it in.
+        FlxTween.tween(PlayState.instance.camHUD, {alpha: 1.0}, TWEEN_DURATION, {ease: FlxEase.quadInOut});
+
+        // Start the countdown.
+        trace('Zoom out done...');
+        trace('Begin countdown (ends cutscene)');
+        PlayState.instance.startCountdown();
+      });
+    });
+  }
 }

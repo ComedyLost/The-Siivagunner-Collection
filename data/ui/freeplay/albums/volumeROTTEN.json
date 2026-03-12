@@ -2,6 +2,7 @@
   "version": "1.0.0",
   "name": "HQF' ROTTEN",
   "artists": ["Siivagunner"],
+  "albumOSTName": "GRAND OST",
   "albumArtAsset": "freeplay/albumRoll/rottenCover",
   "albumTitleAsset": "freeplay/albumRoll/volumeHQRotten-text"
 }

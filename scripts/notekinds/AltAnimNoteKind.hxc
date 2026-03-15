@@ -22,6 +22,6 @@ class AltAnimSiivaNoteKind extends ScriptedNoteKind
 
 	public function onNoteIncoming(event) {
 		super.onNoteIncoming(event);
-		this.suffix = this.params[0].data.defaultValue;
+		this.suffix = event.note.noteData.params[0]?.value;
 	}
 }

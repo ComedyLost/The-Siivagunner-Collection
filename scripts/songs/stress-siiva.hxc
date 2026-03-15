@@ -20,38 +20,40 @@ class StressSiivaSong extends Song
   {
     super.onCountdownStart(event);
 
-    if (tankmanGroup != null && !tankmanGroup.scriptCall('isValid'))
+    if (!PlayState.instance.isMinimalMode)
     {
-      // Destroy the tankman group if it's not valid.
-      tankmanGroup.destroy();
-      PlayState.instance.currentStage.remove(tankmanGroup);
-      tankmanGroup = null;
-    }
+      if (tankmanGroup != null && !tankmanGroup.isValid())
+      {
+        // Destroy the tankman group if it's not valid.
+        cleanupTankmanGroup();
+      }
 
-    if (tankmanGroup == null)
-    {
-      // Initialize the tankman group if it's not available.
-      trace('Initializing tankman group... ' + PlayState.instance.currentVariation);
-      tankmanGroup = ScriptedFlxSpriteGroup.init('TankmanSpriteGroup');
-    }
+      if (tankmanGroup == null)
+      {
+        // Initialize the tankman group if it's not available.
+        trace('Initializing tankman group... ' + PlayState.instance.currentVariation);
+        tankmanGroup = new TankmanSpriteGroup();
+      }
 
-    if (tankmanGroup != null)
-    {
-      // resets the tankmen!
-      tankmanGroup.scriptCall('reset');
+      if (tankmanGroup != null)
+      {
+        // resets the tankmen!
+        tankmanGroup.reset(0, 0);
 
-      tankmanGroup.zIndex = 30;
-      PlayState.instance.currentStage.add(tankmanGroup);
-      PlayState.instance.currentStage.refresh();
-    }
-    else
-    {
-      trace('Failed to initialize tankman group!');
+        tankmanGroup.zIndex = 30;
+        PlayState.instance.currentStage.add(tankmanGroup);
+        PlayState.instance.currentStage.refresh();
+      }
+      else
+      {
+        trace('Failed to initialize tankman group!');
+      }
     }
   }
 
-  function kill():Void
+  function onDestroy(event:ScriptEvent):Void
   {
+    super.onDestroy(event);
     cleanupTankmanGroup();
   }
 
@@ -59,8 +61,7 @@ class StressSiivaSong extends Song
   {
     if (tankmanGroup != null)
     {
-      PlayState.instance.currentStage.remove(tankmanGroup);
-      tankmanGroup.destroy();
+      PlayState.instance.currentStage.remove(tankmanGroup, true);
       tankmanGroup = null;
     }
   }

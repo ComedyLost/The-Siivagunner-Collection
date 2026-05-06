@@ -2,8 +2,6 @@ import funkin.play.PlayState;
 
 import funkin.modding.module.Module;
 
-import funkin.Paths;
-import flixel.FlxG;
 
 class SiivagunnerStageEdits extends Module
 {
@@ -36,7 +34,7 @@ class SiivagunnerStageEdits extends Module
 				PlayState.instance.currentStage.getNamedProp('stageFront').loadTexture('inGame/stagefront');
 				PlayState.instance.currentStage.getNamedProp('stageCurtains').loadTexture('inGame/stagecurtains');
 			case "pico-in-game-version":
-				if (PlayState.instance.currentStageId != 'phillyTrain') return;
+				if (PlayState.instance.currentStageId != 'mainStage') return;
 				PlayState.instance.currentStage.getNamedProp('stageBack').loadTexture('picoInGame/stageback');
 				PlayState.instance.currentStage.getNamedProp('stageFront').loadTexture('picoInGame/stagefront');
 				PlayState.instance.currentStage.getNamedProp('stageCurtains').loadTexture('picoInGame/stagecurtains');

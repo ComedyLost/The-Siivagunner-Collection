@@ -21,7 +21,7 @@ This mod was made with love for SiivaGunner and their community
 
 # Contributing
 
-Feel free to port any songs that aren't ported yet and open a [Pull Request](https://github.com/ComedyLost/The-Siivagunner-Collection/pulls)
+Feel free to port any song that isn't ported yet and open a [Pull Request](https://github.com/ComedyLost/The-Siivagunner-Collection/pulls)
 
 # Current Playable Song List
 ### Tutorial (COMPLETED)
@@ -45,6 +45,7 @@ Feel free to port any songs that aren't ported yet and open a [Pull Request](htt
     - [HQ](https://www.youtube.com/watch?v=IwFtWJ8miG8)
     - [Alternative Mix](https://www.youtube.com/watch?v=vVmZqoHKIkk)
     - [Vinyl Mix](https://www.youtube.com/watch?v=98Mf-1JVdJs)
+    - [Week 7 Update](https://www.youtube.com/watch?v=7qHtw5Xsk_o)
     - [Pico Mix](https://www.youtube.com/watch?v=YFUf-BBOa60)
 - DadBattle
     - [HQ](https://www.youtube.com/watch?v=mz8vkDckGXg)
@@ -67,14 +68,14 @@ Feel free to port any songs that aren't ported yet and open a [Pull Request](htt
 
 ### Week 3
 - Pico
-    - [HQ](https://www.youtube.com/watch?v=YPo_MJKf-rE)
+    - [In-Game Version](https://www.youtube.com/watch?v=YPo_MJKf-rE)
 - Philly Nice (COMPLETED)
     - [HQ](https://www.youtube.com/watch?v=RYeOVxq1Lgc)
-    - [In-Game Version](https://www.youtube.com/watch?v=twftPkHdcxE)
+    - [In-Game Version](https://www.youtube.com/watch?v=twftPkHdcxE) (NEEDS SUBTITLES)
 - Blammed (COMPLETED)
     - [HQ](https://www.youtube.com/watch?v=RRqv_qSsgMQ)
     - [Extended Version](https://www.youtube.com/watch?v=GgrHwf0Gd_I)
-    - [In-Game Mix](https://www.youtube.com/watch?v=7OKH0AM-PBE)
+    - [In-Game Mix](https://www.youtube.com/watch?v=7OKH0AM-PBE) (NEEDS SUBTITLES)
     - [In-Game Version](https://www.youtube.com/watch?v=RKB3IaUsYjE)
     - [OST Version](https://www.youtube.com/watch?v=VYx3Qs_TjwU) (NEEDS SUBTITLES)
     - [Week 4 Update](https://www.youtube.com/watch?v=hK08xaVgqgw)
@@ -114,6 +115,7 @@ Feel free to port any songs that aren't ported yet and open a [Pull Request](htt
     - [Itch.io Build](https://www.youtube.com/watch?v=ch_DcoVlAeo)
 - Thorns
     - [HQ](https://www.youtube.com/watch?v=41zMnE_UoGU)
+    - [Beta Mix](https://www.youtube.com/watch?v=B8UY9h-ZK_c)
 
 ### Week 7
 - Ugh (COMPLETED)
@@ -132,16 +134,30 @@ Feel free to port any songs that aren't ported yet and open a [Pull Request](htt
     - [BF Mix](https://www.youtube.com/watch?v=T3zk4TDcXr4)
     - [Erect](https://www.youtube.com/watch?v=lmCKAX6FOMU)
 
+### Extras (COMPLETED)
+- Test (COMPLETED)
+    - [HQ](https://www.youtube.com/watch?v=pUNrvOfjS4U)
+    - [In-Game Version](https://www.youtube.com/watch?v=Bc6ViFRnGs8)
+
+### Non-FNF Rips
+- [shop (boombox ver.)](https://www.youtube.com/watch?v=XDRqU5d90zk)
+    - [Chart by Hundrec](https://www.youtube.com/watch?v=e5ma5V806r0)
+
+### ???
+- [??????](https://www.youtube.com/watch?v=hNctMHYK0sA)
+
 ### Unofficial
 - Ice Roses
+- Blammed [HQ Extended]
 
-## Credits 
+# Credits 
 - [Comedy Lost](https://twitter.com/C0MEDYLOST) - Main Programmer / Porter
 - [DaBigJ](https://twitter.com/DaBigJ_Twit) - Album / Logo Artist
 - [meatku](https://twitter.com/meatku_) - Made Sonic Sprite
 - [vanzz](https://twitter.com/Da_ArtistFunkin) - Made Bopeebo (HQ) Sprite
 - [ChazbillYT](https://youtube.com/@chazbillyt) - Made Difficulty Sprite
 - [KoloInDaCrib](https://twitter.com/KoloInDaCrib) - Contributor
+- [Hundrec](https://www.youtube.com/@Hundrec) - Permission to use chart + Playtester
 - [The SiivaGunner Team](https://www.youtube.com/@SiIvaGunner) - Made the rips
 
 ## Special Thanks

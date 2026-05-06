@@ -1,4 +1,3 @@
-import flixel.FlxG;
 import funkin.play.PlayState;
 import flixel.tweens.FlxTween;
 import flixel.FlxSprite;
@@ -6,10 +5,8 @@ import flixel.util.FlxTimer;
 import funkin.audio.FunkinSound;
 import funkin.graphics.FunkinSprite;
 import flixel.tweens.FlxEase;
-import funkin.Paths;
 import funkin.play.song.Song;
 import funkin.play.Countdown;
-import funkin.util.Constants;
 import funkin.Conductor;
 import funkin.util.FlxTweenUtil;
 import flixel.util.FlxColor;
@@ -24,7 +21,6 @@ import openfl.filters.ShaderFilter;
 import flixel.addons.display.FlxRuntimeShader;
 import flixel.text.FlxText;
 import flixel.addons.text.FlxTypeText;
-import funkin.Preferences;
 import funkin.mobile.input.ControlsHandler;
 import flixel.util.FlxSave;
 
@@ -69,6 +65,8 @@ class RottenSong extends Song
 	var gloob = new ShaderFilter(glitch);
 	var fnaf = new ShaderFilter(blue);
 	
+	var isPlaying:Bool = false;
+
 	override function onCreate(event) {
 		super.onCreate(event);
 		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
@@ -77,6 +75,7 @@ class RottenSong extends Song
 		hasPlayedIntroCutscene = false;
 		isCameraOnForcedPos = false;
 		flavorStrums = false;
+		isPlaying = false;
 
 		camStrum = quickCreateCam(false);
 		camStrum.copyFrom(PlayState.instance.camHUD);
@@ -298,7 +297,7 @@ class RottenSong extends Song
 
 	override function onResume(event) {
 		super.onResume(event);
-
+		if (isPlaying && VideoCutscene.vid == null) cutsceneFinishVideo();
 		FlxTimer.globalManager.forEach(function(tmr:FlxTimer) if(!tmr.finished) tmr.active = true);
 		FlxTween.globalManager.forEach(function(twn:FlxTween) if(!twn.finished) twn.active = true);
 		if (todokete != null) todokete.resume();
@@ -316,21 +315,30 @@ class RottenSong extends Song
 	}
 
 	function playVideo() {
+		isPlaying = true;
 		VideoCutscene.play(Paths.videos('rottenintro'));
-		// VideoCutscene.vid.bitmap.onEndReached.removeAll();
-		/* VideoCutscene.vid.bitmap.onEndReached.add(() -> {
-			var cutsceneType:CutsceneType = VideoCutscene.cutsceneType;
-			if (VideoCutscene.vid != null) {
-				VideoCutscene.vid.stop();
-				PlayState.instance.remove(VideoCutscene.vid);
-				VideoCutscene.vid.destroy();
-				VideoCutscene.vid = null;			  
+		VideoCutscene.vid.bitmap.onEncounteredError.add(cutsceneFinishVideo);    
+        VideoCutscene.vid.bitmap.onEndReached.add(cutsceneFinishVideo);
+		VideoCutscene.onVideoEnded.add(() -> {
+			isPlaying = false;
+		});	
+	}
+	
+	public function cutsceneFinishVideo():Void {
+		FlxTween.cancelTweensOf(FlxG.camera, ["zoom"]);
+		FlxTween.cancelTweensOf(VideoCutscene.blackScreen, ["alpha"]);
+	
+		var cutsceneType:CutsceneType = VideoCutscene.cutsceneType;
+	
+		FlxTween.tween(VideoCutscene.blackScreen, {alpha: 0}, 0.5, {
+			ease: FlxEase.quadInOut,
+			onComplete: function(twn:FlxTween) {
+				PlayState.instance.remove(VideoCutscene.blackScreen);
+				VideoCutscene.blackScreen = null;
 			}
-			PlayState.instance.remove(VideoCutscene.blackScreen);
-			VideoCutscene.blackScreen = null;
-			VideoCutscene.onVideoEnded.dispatch();
-			PlayState.instance.startCountdown();
-		});*/
+		});
+		VideoCutscene.onVideoEnded.dispatch();
+		VideoCutscene.onCutsceneFinish(cutsceneType);
 	}
 	
 	public function onNoteHit(callback) {

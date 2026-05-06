@@ -15,33 +15,17 @@ class SpiritGariwaldCharacter extends PackerCharacter
     super.onCreate(event);
 
     // Weird workaround because `this` is a PolymodScriptClass and not a ScriptedPackerCharacter.
-    var evilTrail = new FunkTrail(this.superClass, null, 4, 24, 0.3, 0.069);
+    var evilTrail = new FunkTrail(this.superClass, null, 4, 0.4, 0.3, 0.069);
 
     // Go behind Spirit.
     evilTrail.zIndex = 190;
     addToStage(evilTrail);
   }
 
-  function onDestroy(event:ScriptEvent)
-  {
-    super.onDestroy(event);
-    // Should hopefully fix crashes with mods that respawn characters
-    if (evilTrail != null) {
-      evilTrail.kill();
-      evilTrail = null;
-    }
-  }
-
   function addToStage(sprite:FlxSprite)
   {
-    if (this.debug)
-    {
-      // We are in the chart editor or something.
-      FlxG.stage.add(sprite);
-    }
-    else
-    {
-      PlayState.instance.currentStage.add(sprite);
-    }
+    if (this.debug) return;
+
+    currentStage.add(sprite);
   }
 }

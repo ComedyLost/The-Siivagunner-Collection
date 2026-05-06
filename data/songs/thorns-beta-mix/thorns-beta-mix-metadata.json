@@ -1,0 +1,37 @@
+{
+ "version": "2.2.4",
+ "songName": "Thorns (Beta Mix)",
+ "artist": "Kawai Sprite / SiivaGunner",
+ "offsets": { },
+ "playData": {
+  "difficulties": [
+   "siiva"
+  ],
+  "characters": {
+   "player": "bf-pixel-earthbound",
+   "girlfriend": "gf-pixel-earthbound",
+   "opponent": "spirit-earthbound",
+   "opponentVocals": [
+    "spirit-earthbound"
+   ],
+   "playerVocals": [
+    "bf-pixel-earthbound"
+   ]
+  },
+  "ratings": {
+    "siiva": 8
+  },
+  "album": "volumeHQ",
+  "stage": "schoolEvilBetaMix",
+  "noteStyle": "pixel"
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.4",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 190,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

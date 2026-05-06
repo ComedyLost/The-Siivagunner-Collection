@@ -3,7 +3,6 @@ import funkin.play.PlayState;
 import funkin.play.cutscene.VideoCutscene;
 import funkin.play.PlayStatePlaylist;
 import funkin.save.Save;
-import flixel.FlxG;
 import flixel.util.FlxSave;
 
 class PhillyNiceIGVersionSong extends Song

@@ -4,7 +4,6 @@ import flixel.tweens.FlxTween;
 import funkin.play.PlayState;
 import funkin.play.PlayStatePlaylist;
 import funkin.play.song.Song;
-import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxTimer;
 import funkin.save.Save;

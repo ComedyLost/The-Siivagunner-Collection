@@ -7,6 +7,27 @@ import funkin.play.character.CharacterDataParser;
 import funkin.play.character.CharacterType;
 import funkin.play.components.HealthIcon;
 import funkin.FunkinMemory;
+import haxe.ds.StringMap;
+
+import funkin.modding.events.ScriptEvent;
+import funkin.modding.events.ScriptEventDispatcher;
+
+// Fecth Character recreation
+import funkin.play.character.ScriptedAnimateAtlasCharacter;
+import funkin.play.character.ScriptedBaseCharacter;
+import funkin.play.character.ScriptedMultiSparrowCharacter;
+import funkin.play.character.ScriptedMultiAnimateAtlasCharacter;
+import funkin.play.character.ScriptedPackerCharacter;
+import funkin.play.character.ScriptedSparrowCharacter;
+import funkin.play.character.AnimateAtlasCharacter;
+import funkin.play.character.BaseCharacter;
+import funkin.play.character.SparrowCharacter;
+import funkin.play.character.MultiSparrowCharacter;
+import funkin.play.character.MultiAnimateAtlasCharacter;
+import funkin.play.character.PackerCharacter;
+import funkin.play.character.CharacterDataParser;
+import funkin.data.character.CharacterRenderType;
+using StringTools;
 
 class CharacterResetHandlerCL extends Module {
 
@@ -16,28 +37,21 @@ class CharacterResetHandlerCL extends Module {
 
 	private var currentCharacterData;
 	private var characterZIndexes = null;
-	private var bfIndex;
-	private var gfIndex;
-	private var dadIndex;
+
 	var useEvent:Bool = false; // Prevent a reset if the event is never used
+
+	var cachedCharacters:Map<String, BaseCharacter> = new StringMap();
 
 	override function onSongLoaded(event) {
 		super.onSongLoaded(event);
 		useEvent = false;
+		cachedCharacters?.clear();
 		for (events in event.events){
 			if (events.eventKind == 'ChangeCharacterCL'){
 				useEvent = true;
-				var _data = CharacterDataParser.fetchCharacterData(events.value.newchar);
-				FunkinMemory.cacheTexture(Paths.image(_data.assetPath));
-				if (Std.string(_data.renderType) == 'MultiSparrow'){
-					var assetList = [];
-					for (anim in _data.animations) {
-						if (anim.assetPath != null && !assetList.contains(anim.assetPath)){
-							assetList.push(anim.assetPath);
-							FunkinMemory.cacheTexture(Paths.image(anim.assetPath));
-						}
-					}
-				}
+				var character = fetchCharacter(events.value.newchar);
+				if (!cachedCharacters.exists(events.value.newchar)) cachedCharacters.set(events.value.newchar, []);
+				cachedCharacters.get(events.value.newchar).push(character);
 			}
 		}
 	}	
@@ -46,69 +60,112 @@ class CharacterResetHandlerCL extends Module {
 		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
 		if (PlayState.instance.isMinimalMode) return;
 
-		if (PlayState.instance.currentStage.getBoyfriend() != null){
-			bfIndex = PlayState.instance.currentStage.getBoyfriend().zIndex;
-		} else {
-			bfIndex = 0;
-		}
-		if (PlayState.instance.currentStage.getGirlfriend() != null){
-			gfIndex = PlayState.instance.currentStage.getGirlfriend().zIndex;
-		} else {
-			gfIndex = 0;
-		}
-		if (PlayState.instance.currentStage.getDad() != null){
-			dadIndex = PlayState.instance.currentStage.getDad().zIndex;
-		} else {
-			dadIndex = 0;
-		}
+		var bfIndex = PlayState.instance.currentStage.getBoyfriend()?.zIndex ?? 0;
+		var gfIndex = PlayState.instance.currentStage.getGirlfriend()?.zIndex ?? 0;
+		var dadIndex = PlayState.instance.currentStage.getDad()?.zIndex ?? 0;
 
 		characterZIndexes = ["bf" => bfIndex, "gf" => gfIndex, "dad" => dadIndex];
 
-		// trace("ZINDEXES: " + characterZIndexes);
-
 		super.onCountdownStart(event);
 
-		currentCharacterData = PlayState.instance.get_currentChart().characters;
+		currentCharacterData = PlayState.instance.currentChart.characters;
 	}
 
 	override function onSongRetry(event) {
+        super.onSongRetry(event);
 		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
 		if (PlayState.instance.isMinimalMode) return;
-		super.onSongRetry(event);
 		
-		// GF reset
-
 		if (!useEvent) return;
-		
-		if (PlayState.instance.currentStage.getGirlfriend() != null) PlayState.instance.currentStage.getGirlfriend().destroy();
-		var girlfriend = CharacterDataParser.fetchCharacter(currentCharacterData.girlfriend);
-		if (girlfriend != null) {
-			girlfriend.set_characterType(CharacterType.GF);
-			PlayState.instance.currentStage.addCharacter(girlfriend, CharacterType.GF);
-			girlfriend.zIndex = characterZIndexes["gf"];
-		}
 
-		// BF reset
-
-		if (PlayState.instance.currentStage.getBoyfriend() != null) PlayState.instance.currentStage.getBoyfriend().destroy();
-		var boyfriend = CharacterDataParser.fetchCharacter(currentCharacterData.player);
-		if (boyfriend != null) {
-			boyfriend.set_characterType(CharacterType.BF);
-			boyfriend.initHealthIcon(false);
-			PlayState.instance.currentStage.addCharacter(boyfriend, CharacterType.BF);
-			boyfriend.zIndex = characterZIndexes["bf"];
-		}
-
-		// DAD reset
-
-		if (PlayState.instance.currentStage.getDad() != null) PlayState.instance.currentStage.getDad().destroy();
-		var dad = CharacterDataParser.fetchCharacter(currentCharacterData.opponent);
-		if (dad != null) {
-			dad.set_characterType(CharacterType.DAD);
-			dad.initHealthIcon(true);
-			PlayState.instance.currentStage.addCharacter(dad, CharacterType.DAD);
-			dad.zIndex = characterZIndexes["dad"];
-		}
+        setCharacter('bf', currentCharacterData.player);
+        setCharacter('gf', currentCharacterData.girlfriend);
+        setCharacter('dad', currentCharacterData.opponent);
 		PlayState.instance.currentStage.refresh();
+	}
+
+	function setCharacter(character:String = 'bf', newChar:String, ?currentZIndex:Bool = false, ?fromCache:Bool = false) {
+        var characterData = switch (character) {
+            case 'bf': [PlayState.instance?.currentStage?.getBoyfriend(), CharacterType.BF];
+            case 'gf': [PlayState.instance?.currentStage?.getGirlfriend(), CharacterType.GF];
+            case 'dad': [PlayState.instance?.currentStage?.getDad(), CharacterType.DAD];
+        }
+        var curZIndex:Int = characterZIndexes[character];
+        if (characterData[0] != null) {
+            if (currentZIndex) curZIndex = characterData[0].zIndex;
+            characterData[0].destroy();
+        }
+        var newCharacter = (fromCache ? cachedCharacters.get(newChar).shift() : CharacterDataParser.fetchCharacter(newChar));
+        if (newCharacter != null) {
+			PlayState.instance.currentStage.addCharacter(newCharacter, characterData[1]);
+			newCharacter.zIndex = curZIndex;
+        }
+    }
+
+	function fetchCharacter(charId:String, debug:Bool = false):Null<BaseCharacter> {
+		if (charId == null || charId == '' || !CharacterDataParser.characterCache.exists(charId)) {
+			// Gracefully handle songs that don't use this character,
+			// or throw an error if the character is missing.
+	
+			if (charId != null && charId != '')
+				trace('Failed to build character, not found in cache: ${charId}');
+			return null;
+		}
+	
+		var charData:Null<CharacterData> = CharacterDataParser.characterCache.get(charId);
+		var charScriptClass:Null<String> = CharacterDataParser.characterScriptedClass.get(charId);
+	
+		var char:Null<BaseCharacter> = null;
+	
+		if (charScriptClass != null) {
+			if (charData != null)
+				switch (charData.renderType) {
+					case CharacterRenderType.AnimateAtlas:
+						char = ScriptedAnimateAtlasCharacter.scriptInit(charScriptClass, charId);
+					case CharacterRenderType.MultiSparrow:
+						char = ScriptedMultiSparrowCharacter.scriptInit(charScriptClass, charId);
+					case CharacterRenderType.Sparrow:
+						char = ScriptedSparrowCharacter.scriptInit(charScriptClass, charId);
+					case CharacterRenderType.Packer:
+						char = ScriptedPackerCharacter.scriptInit(charScriptClass, charId);
+					case CharacterRenderType.MultiAnimateAtlas:
+						char = ScriptedMultiAnimateAtlasCharacter.scriptInit(charScriptClass, charId);
+					default:
+						// We're going to assume that the script class does the rendering.
+						char = ScriptedBaseCharacter.scriptInit(charScriptClass, charId, CharacterRenderType.Custom);
+				}
+		} else {
+			if (charData != null)
+				switch (charData.renderType) {
+					case CharacterRenderType.AnimateAtlas:
+						char = new AnimateAtlasCharacter(charId);
+					case CharacterRenderType.MultiSparrow:
+						char = new MultiSparrowCharacter(charId);
+					case CharacterRenderType.Sparrow:
+						char = new SparrowCharacter(charId);
+					case CharacterRenderType.Packer:
+						char = new PackerCharacter(charId);
+					case CharacterRenderType.MultiAnimateAtlas:
+						char = new MultiAnimateAtlasCharacter(charId);
+					default:
+						trace(' WARNING '.warning() + ' Creating character with undefined renderType ${charData.renderType}');
+						char = new BaseCharacter(charId, CharacterRenderType.Custom);
+				}
+		}
+	
+		if (char == null) {
+			trace('Failed to instantiate character: ${charId}');
+			return null;
+		}
+	
+		trace('Successfully instantiated character (${debug ? 'debug' : 'stable'}): ${charId}');
+	
+		char.debug = debug;
+
+		var event = new ScriptEvent('CREATE', true);
+		ScriptEventDispatcher.callEvent(char, event);
+		event.stopPropagation(); // Don't let the default scripts run
+		
+		return char;
 	}
 }

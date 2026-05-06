@@ -1,23 +1,14 @@
 import funkin.modding.module.Module;
-import flixel.FlxG;
-import funkin.Paths;
 import funkin.ui.freeplay.FreeplayState;
-import funkin.util.ReflectUtil;
 import funkin.ui.freeplay.SongMenuItem;
-import funkin.audio.FunkinSound;
-import funkin.modding.base.ScriptedMusicBeatSubState;
-import StringTools;
 import flixel.util.FlxTimer;
-import funkin.PlayerSettings;
-import funkin.util.TouchUtil;
-import funkin.util.SwipeUtil;
 import funkin.data.story.level.LevelRegistry;
 import openfl.display.BitmapData;
-import flixel.FlxSprite;
 import openfl.display.Bitmap;
 import funkin.input.Cursor;
 import funkin.modding.ModStore;
 import funkin.save.Save;
+import flixel.text.FlxText;
 
 using StringTools;
 using Lambda;
@@ -25,7 +16,7 @@ using Lambda;
 class SiivaGunnerFreeplayCapsule extends Module {
 
 	public function new(){
-		super('SiivaGunnerFreeplayCapsule');
+		super('SiivaGunnerFreeplayCapsule', null, {state: FreeplayState});
 	}
 
 	override function onSubStateOpenEnd(event) {
@@ -34,10 +25,10 @@ class SiivaGunnerFreeplayCapsule extends Module {
 		var baseSongs = LevelRegistry.instance.listBaseGameEntryIds();
 		insertAfterWeek(baseSongs[baseSongs.length - 1], listBaseSiivaEntryIds());
 		if (!Save.instance.hasBeatenSong('rotten', ['siiva'])) {
-			var albumId = FlxG.state.subState.currentCapsule?.freeplayData?.data?.getAlbumId(FlxG.state.subState.currentDifficulty, FlxG.state.subState.currentVariation);
+			var albumId = event.targetState.currentCapsule?.freeplayData?.data?.getAlbumId(event.targetState.currentDifficulty, event.targetState.currentVariation);
 			event.targetState?.dj?.onIntroDone.add(() -> {
 				if (albumId == 'volumeROTTEN') {
-					FlxG.state.subState.albumRoll.albumId = 'volumeHQ'; // Hide 
+					event.targetState.albumRoll.albumId = 'volumeHQ'; // Hide 
 				}
 			});	
 		}
@@ -142,11 +133,13 @@ class SiivaGunnerFreeplayCapsule extends Module {
 
 	function weekText(cap:SongMenuItem) {
 		if (cap?.freeplayData == null) return;
-		var levelId = cap.freeplayData.levelId.replace('Siiva', '');
-		setFreeplayCapsuleLabel(cap, levelId);
+		if (listBaseSiivaEntryIds().contains(cap.freeplayData.levelId)) {
+			var levelId = cap.freeplayData.levelId.replace('Siiva', '');
+			setFreeplayCapsuleLabel(cap, levelId);	
+		}
 		switch (cap.freeplayData?.data?.id) {
-			case 'ice-roses': setFreeplayCapsuleLabel(cap, 'week 6');
-			case 'smooth-sherbet-alpha-mix': setFreeplayCapsuleLabel(cap, 'week 5');
+			case 'ice-roses': setFreeplayCapsuleLabel(cap, 'week6');
+			case 'smooth-sherbet-alpha-mix': setFreeplayCapsuleLabel(cap, 'week5');
 			case 'spookeez-beta-mix': // Override the confirm to take a screenshot of the game to use in the song
 				var onConfirmOG:Void->Void = cap.onConfirm;
 				cap.onConfirm = () -> {
@@ -162,7 +155,6 @@ class SiivaGunnerFreeplayCapsule extends Module {
 			case 'eggnog-unused-mix': cap.pixelIcon.origin.x = 140;
 			case 'rotten': 
 				setFreeplayCapsuleLabel(cap, 'ROTTEN');
-				cap.weekText.loadGraphic(FlxG.bitmap.get('ROTTEN'));		
 				if (Save.instance.hasBeatenSong('rotten', ['siiva'])) return;
 				cap?.songText.text = '';
 				for (length in 0...cap?.freeplayData?.fullSongName.length) {
@@ -173,10 +165,12 @@ class SiivaGunnerFreeplayCapsule extends Module {
 				}
 			case 'test-siiva', 'test-in-game-version': setFreeplayCapsuleLabel(cap, 'test');
 			case 'blammed-siiva-extended': setFreeplayCapsuleLabel(cap, 'week3');
+			case 'shop-boombox-version': 
+				setFreeplayCapsuleLabel(cap, 'Nico\'s NXTBTs', [15, 0]);
 		}
 	}
 
-	function setFreeplayCapsuleLabel(cap:SongMenuItem, levelId:String) {
+	function setFreeplayCapsuleLabel(cap:SongMenuItem, levelId:String, ?offsets:Array<Float>) {
 		var levelIdClean:String = "";
 		for (i in 0...levelId.length) {
 			if (i == 0) {
@@ -191,9 +185,13 @@ class SiivaGunnerFreeplayCapsule extends Module {
 			if (Std.parseInt(previousChar) != null && Std.parseInt(currentChar) == null) levelIdClean += " ";
 	  
 			levelIdClean += currentChar;	  	  
-		}	
+		}
 		cap.createWeekTextGraphic(levelIdClean);
-		cap.weekText.loadGraphic(FlxG.bitmap.get(levelIdClean));	
+		cap.weekText.loadGraphic(FlxG.bitmap.get(levelIdClean));
+		if (offsets != null) {
+			cap.weekText.centerOffsets();
+			cap.weekText.offset.set(offsets[0], offsets[1]);
+		}
 	}
 
 	/**
@@ -213,22 +211,6 @@ class SiivaGunnerFreeplayCapsule extends Module {
 
 	public function onDifficultySwitch(event:CapsuleScriptEvent):Void {
 		super.onDifficultySwitch(event);
-		if (event.difficultyId == 'siiva') {
-			if (FlxG.state.subState.ostName.text != "GRAND OST") {
-				FlxG.state.subState.ostName.text = "GRAND OST";
-				FlxG.state.subState.ostName.shader.width = FlxG.state.subState.ostName.shader.height = 2;
-				FlxTimer.wait(1.5 / 24, () -> {
-					FlxG.state.subState.ostName.shader.width = FlxG.state.subState.ostName.shader.height = 0;
-				});
-			}
-		} else if (FlxG.state.subState.ostName.text == "GRAND OST") {
-			FlxG.state.subState.ostName.text = "OFFICIAL OST";
-			FlxG.state.subState.ostName.shader.width = FlxG.state.subState.ostName.shader.height = 2;
-			FlxTimer.wait(1.5 / 24, () -> {
-				FlxG.state.subState.ostName.shader.width = FlxG.state.subState.ostName.shader.height = 0;
-			});
-		}
-
 		if (event.difficultyId != 'siiva') return;
 		var filteredCapsules:Array<SongMenuItem> = FlxG.state.subState.grpCapsules.members.filter(function(cap:SongMenuItem) {
 			   // Dead capsules are ones which were removed from the list when changing filters.
@@ -246,8 +228,12 @@ class SiivaGunnerFreeplayCapsule extends Module {
 			case 'eggnog-unused-mix': event.capsule?.pixelIcon?.origin.x = 140;
 			case 'rotten': 
 				if (Save.instance.hasBeatenSong('rotten', ['siiva'])) return;
-				FlxTimer.globalManager._timers.pop().cancel();
 				FlxG.state.subState.clearPreviews();
+				FlxTimer.wait(0.255, () -> {
+					if (FlxG.state.subState.currentCapsule != event.capsule) return;
+					FlxG.state.subState.clearPreviews();
+					FlxG.sound.music?.stop();
+				});
 				event.capsule?.songText.text = '';
 				for (length in 0...event.capsule?.freeplayData?.fullSongName.length) {
 					switch (event.capsule?.freeplayData?.fullSongName.charAt(length)) {

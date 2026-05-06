@@ -1,28 +1,27 @@
 import funkin.modding.module.Module;
 import funkin.play.PlayState;
-import funkin.Preferences;
 import funkin.PlayerSettings;
 import funkin.Highscore;
-import funkin.audio.FunkinSound;
-import funkin.Paths;
-import flixel.FlxG;
 import funkin.ui.options.OptionsState;
-import flixel.FlxG;
 import funkin.save.Save;
 import funkin.ui.options.PreferencesMenu;
 import flixel.util.FlxSave;
+import lime.app.Application;
+import funkin.modding.ModStore;
+import funkin.ui.Prompt;
+import funkin.ui.ButtonStyle;
 
 class SiivaOptions extends Module
 {
-
 	var save:FlxSave;
 
-    function new(){
-        super("siivaOptions");
+	function new(){
+		super("siivaOptions");
 
 		save = new FlxSave();
 		save.bind("SiivaOptions", "FunkinCrew");
 		save.data.siivatitle ??= true;
+		save.data.siivarechart ??= true;
 		save.data.siivacutscenes ??= false;
 		save.data.siivavocals ??= true;
 		save.data.siivaexfx ??= true;
@@ -34,11 +33,10 @@ class SiivaOptions extends Module
 		save.data.siivastutter ??= false;
 		save.data.siivastrum ??= false;
 
-		save.flush();
-    }
-		
-	function onStateChangeEnd(callback)
-	{
+		save.flush();		
+	}
+
+	function onStateChangeEnd(callback) {
 		super.onStateChangeEnd(callback);
 		if (!Std.is(callback.targetState, OptionsState))
 			return;
@@ -46,7 +44,6 @@ class SiivaOptions extends Module
 		prefs.onExit.add(function() {
 			FlxG.state.optionsCodex.switchPage('options');
 		});
-
 		prefs.preferenceDesc = [];
 		prefs.items.clear();	
 		prefs.preferenceItems.clear();
@@ -62,15 +59,19 @@ class SiivaOptions extends Module
 			item.y = 100 + i * 100;
 		}
 		if (prefs != null) {
-			prefs.createPrefItemCheckbox("Siiva Titlescreen", "Randomly changes the titlescreen to one of two SiIvagunner Rips.", (value) -> {
+			prefs.createPrefItemCheckbox("Titlescreen Edits", "Randomly changes the titlescreen to one of two SiIvagunner Rips.", (value) -> {
 				save.data.siivatitle = value;
 				save.flush();
 			}, save.data.siivatitle);
+			prefs.createPrefItemCheckbox("Recharted Songs", "Enables recharts for some songs with bad charting.\n(E.g., DadBattle (In-Game Version), Thorns (Beta Mix))", (value) -> {
+				save.data.siivarechart = value;
+				save.flush();
+			}, save.data.siivarechart);
 			prefs.createPrefItemCheckbox("Replay Cutscenes", "Allows cutscenes to play again after beating a song.", (value) -> {
 				save.data.siivacutscenes = value;
 				save.flush();
 			}, save.data.siivacutscenes);
-			prefs.createPrefItemCheckbox("Siiva Death", "Blueballs the player at the end of the song.", (value) -> {
+			prefs.createPrefItemCheckbox("Death on Game Over", "Blueballs the player at the end of the song.\n(Only visual. Will still continue to results screen)", (value) -> {
 				save.data.siivatitle = value;
 				save.flush();
 			}, save.data.siivatitle);
@@ -78,7 +79,7 @@ class SiivaOptions extends Module
 				save.data.siivavocals = value;
 				save.flush();
 			}, save.data.siivavocals);
-			prefs.createPrefItemCheckbox("Extreme Effects", "Enables extreme effects for rips (Ex. Spookeez (Beta Mix)).\n(WARNING: MAY CAUSE LAG)", (value) -> {
+			prefs.createPrefItemCheckbox("Extreme Effects", "Enables extreme effects for rips (E.g., Spookeez (Beta Mix)).\n(WARNING: MAY CAUSE LAG)", (value) -> {
 				save.data.siivaexfx = value;
 				save.flush();
 			}, save.data.siivaexfx);
@@ -91,17 +92,17 @@ class SiivaOptions extends Module
 				save.data.siivaresults = value;
 				save.flush();
 			}, save.data.siivaresults);*/
-			prefs.createPrefItemCheckbox("Siiva Lunchbox Rips", "Enables a random Lunchbox rip during Senpai's dialogue.", (value) -> {
+			prefs.createPrefItemCheckbox("Lunchbox Rips", "Enables a random Lunchbox rip during Senpai's dialogue.", (value) -> {
 				save.data.siivalunch = value;
 				save.flush();
 			}, save.data.siivalunch);
-			if (!FlxG.onMobile){ // Mobile doesn't have a soundtray
-				prefs.createPrefItemCheckbox("Old School Soundtray", "Brings back the original sound tray seen in FNF versions before The Weekend Update. (REQUIRES GAME RESTART)", (value) -> {
-					save.data.siivatray = value;
-					//DefaultSoundTray.soundTrayVersion(value);
-					save.flush();
-				}, save.data.siivatray);
-			}
+			#if !mobile
+			prefs.createPrefItemCheckbox("Old School Soundtray", "Brings back the original sound tray seen in FNF versions before The Weekend Update. (REQUIRES GAME RESTART)", (value) -> {
+				save.data.siivatray = value;
+				//DefaultSoundTray.soundTrayVersion(value);
+				save.flush();
+			}, save.data.siivatray);
+			#end
 			prefs.createPrefItemCheckbox("Old School Stutter", "Re-adds the removed note stutter from pre-Weekend 1.", (value) -> {
 				save.data.siivastutter = value;
 				save.flush();

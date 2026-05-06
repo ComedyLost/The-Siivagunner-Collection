@@ -1,0 +1,82 @@
+import funkin.play.PlayState;
+import funkin.play.stage.Stage;
+import funkin.graphics.shaders.WiggleEffectRuntime;
+import funkin.graphics.shaders.WiggleEffectType;
+import flixel.addons.effects.FlxTrail;
+import funkin.play.Countdown;
+import funkin.graphics.FunkinCamera;
+import openfl.filters.ShaderFilter;
+import flixel.addons.display.FlxBackdrop;
+import flixel.addons.display.FlxRuntimeShader;
+
+class SchoolEvilBetaMixStage extends Stage
+{
+  function new()
+  {
+    super('schoolEvilBetaMix');
+  }
+
+  var wiggleBack:FlxRuntimeShader = null;
+  var wiggleGround:FlxRuntimeShader = null;
+  var camBG:FunkinCamera;
+	var giygasBackdrop:FlxBackdrop;
+
+  override function buildStage()
+  {
+    super.buildStage();
+
+    camBG = new FunkinCamera('playStateCamBG');
+		camBG.bgColor = 0x000000;
+
+		camBG.copyFrom(PlayState.instance.camGame);
+		camBG.focusOn(PlayState.instance.cameraFollowPoint.getPosition());
+		camBG.follow(PlayState.instance.cameraFollowPoint, null, Constants.DEFAULT_CAMERA_FOLLOW_RATE);
+
+		FlxG.cameras.insert(camBG, FlxG.cameras.list.indexOf(PlayState.instance.camGame), false);
+		PlayState.instance.camGame.bgColor = 0x0;
+
+    giygasBackdrop = new FlxBackdrop(Paths.image('week6BetaMix/weeb/evilBetaMix/Giygas_BG3'));
+		giygasBackdrop.scrollFactor.set(1, 1);
+		giygasBackdrop.velocity.set(40, 40);
+    giygasBackdrop.setGraphicSize(Std.int(giygasBackdrop.width * 2));
+    giygasBackdrop.antialiasing = false;
+		giygasBackdrop.zIndex = 10;
+		add(giygasBackdrop);
+		giygasBackdrop.cameras = [camBG];
+
+    wiggleBack = new WiggleEffectRuntime(2 * 0.8, 4 * 0.4, 0.1, WiggleEffectType.DREAMY);
+    wiggleGround = new WiggleEffectRuntime(2, 4, 0.007, WiggleEffectType.DREAMY);
+
+    var wiggleFilter = new ShaderFilter(wiggleBack);
+    camBG.filters = [wiggleFilter];
+
+		camBG?.flashSprite.scaleX = camBG?.flashSprite.scaleY = 1.5;
+
+    getNamedProp('street').shader = wiggleGround;
+  }
+
+  override function addCharacter(char:BaseCharacter, charType:CharacterType)
+  {
+    super.addCharacter(char, charType);
+  }
+
+  override function onUpdate(event:UpdateScriptEvent)
+  {
+    super.onUpdate(event);
+
+    camBG?.zoom = PlayState.instance.camGame.zoom;
+		camBG?.targetOffset = FlxG.camera.targetOffset;
+
+    if (wiggleBack != null)
+    {
+      wiggleBack.update(event.elapsed);
+      wiggleGround.update(event.elapsed);
+    }
+  }
+
+  function kill()
+  {
+    super.kill();
+    wiggleGround = null;
+  }
+}

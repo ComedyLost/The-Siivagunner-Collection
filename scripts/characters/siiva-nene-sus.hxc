@@ -1,10 +1,8 @@
 import funkin.play.character.SparrowCharacter;
 import funkin.play.PlayState;
-import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxTypedSpriteGroup;
 import funkin.graphics.FunkinSprite;
-import funkin.Paths;
 import funkin.modding.base.ScriptedFunkinSprite;
 import funkin.modding.base.ScriptedFlxSprite;
 import funkin.modding.base.ScriptedFlxSpriteGroup;

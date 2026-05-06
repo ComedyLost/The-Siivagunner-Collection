@@ -1,10 +1,8 @@
 import funkin.graphics.adobeanimate.FlxAtlasSprite;
-import flixel.FlxG;
 import funkin.audio.FunkinSound;
 import funkin.play.character.MultiSparrowCharacter;
 import funkin.play.GameOverSubState;
 import funkin.play.PlayState;
-import funkin.Preferences;
 
 class BoyfriendDiddyKongCharacter extends MultiSparrowCharacter {
 	function new() {

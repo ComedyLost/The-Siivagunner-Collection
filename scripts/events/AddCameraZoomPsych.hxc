@@ -3,9 +3,7 @@ import funkin.play.event.SongEvent;
 
 import funkin.modding.module.Module;
 import funkin.modding.module.ModuleHandler;
-import funkin.Preferences;
 import flixel.FlxCamera;
-import flixel.FlxG;
 
 class AddCameraZoomPsych extends SongEvent {
 

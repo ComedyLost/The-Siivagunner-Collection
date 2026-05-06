@@ -1,7 +1,5 @@
-import flixel.FlxG;
 import flixel.util.FlxTimer;
 
-import funkin.Paths;
 import funkin.Highscore;
 import funkin.graphics.FunkinSprite;
 import funkin.play.ResultState;
@@ -13,10 +11,8 @@ import funkin.audio.FunkinSound;
 import flixel.FlxCamera;
 import funkin.graphics.FunkinCamera;
 import funkin.play.scoring.Scoring;
-import funkin.util.Constants;
 import flixel.effects.FlxFlicker;
 import StringTools;
-import funkin.Preferences;
 import funkin.data.freeplay.player.PlayerRegistry;
 import funkin.graphics.adobeanimate.FlxAtlasSprite;
 import funkin.modding.base.ScriptedFlxAtlasSprite;

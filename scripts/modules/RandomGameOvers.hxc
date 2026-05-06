@@ -1,4 +1,3 @@
-import flixel.FlxG;
 import funkin.data.character.CharacterDataParser;
 import funkin.modding.module.Module;
 import funkin.play.GameOverSubState;
@@ -72,7 +71,7 @@ class SiivagunnerRandomGameOvers extends Module
 		replacedBF.shader = state.boyfriend.shader;
 		state.insert(state.members.indexOf(state.boyfriend) + 1, replacedBF);
 
-		replacedBF.setPosition(state.boyfriend.x, state.boyfriend.y);
+		replacedBF.setPosition(state.boyfriend.x + replacedBF.globalOffsets[0], state.boyfriend.y + replacedBF.globalOffsets[1]);
 
 		state.remove(state.boyfriend);
 	}

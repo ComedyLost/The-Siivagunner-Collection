@@ -1,38 +1,43 @@
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import funkin.play.cutscene.dialogue.Conversation;
-import flixel.FlxG;
 import funkin.audio.FunkinSound;
-import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
+import flixel.util.FlxSave;
 
 class SenpaiHypnoConversation extends Conversation
 {
-  function new()
-  {
-    super('senpai-hypno');
-  }
+	function new()
+	{
+		super('senpai-hypno');
+		save = new FlxSave();
+		save.bind("SiivaOptions", "FunkinCrew");
+	}
 
-  public function onDialogueStart(event:DialogueScriptEvent):Void
-  {
-    super.onDialogueStart(event);  
-    if (FlxG.save.data.siivalunch) return;
-    var random = _data.music.asset;
-    switch (FlxG.random.int(1, 3)) {
-      case 1: random = _data.music.asset;
-      case 2: random = "LunchboxSiiva";
-      case 3: random = "LunchboxInGameVersion";
-    }
-    if (random == _data.music.asset) return;
-    this.music.stop();
-    this.music = FunkinSound.load(Paths.music(random), 0.0, true, true, true);
-    var fadeTime:Float = _data.music.fadeTime ?? 0.0;
-    if (fadeTime > 0.0) {
-      FlxTween.tween(music, {volume: 1.0}, fadeTime, {ease: FlxEase.linear});
-    } else {
-      if (music != null) {
-        music.volume = 1.0;
-      }
-    }
-  }
+	public function onDialogueStart(event:DialogueScriptEvent):Void
+	{
+		super.onDialogueStart(event);
+		if (save.data.siivalunch) return;
+		var random = _data.music.asset;
+		switch (FlxG.random.int(1, 3))
+		{
+			case 1: random = _data.music.asset;
+			case 2: random = "LunchboxSiiva";
+			case 3: random = "LunchboxInGameVersion";
+		}
+		if (random == _data.music.asset) return;
+		this.music.stop();
+		this.music = FunkinSound.load(Paths.music(random), 0.0, true, true, true);
+		var fadeTime:Float = _data.music.fadeTime ?? 0.0;
+		if (fadeTime > 0.0)
+		{
+			FlxTween.tween(music, {volume: 1.0}, fadeTime, {ease: FlxEase.linear});
+		}
+    else
+		{
+			if (music != null)
+			{
+				music.volume = 1.0;
+			}
+		}
+	}
 }

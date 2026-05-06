@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "name": "Pico (Gecs) [Playable]",
+  "assetPath": "characters/Pico_FNF_assetss_gecs",
+  "flipX": true,
+  "healthIcon": {
+    "id": "pico"
+  },
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "Pico Idle Dance",
+      "offsets": [50, 0]
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "Pico Note Right0",
+      "offsets": [-4, 2]
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "Pico Down Note0",
+      "offsets": [138, -82]
+    },
+    {
+      "name": "singUP",
+      "prefix": "pico Up note0",
+      "offsets": [78, 28]
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "Pico NOTE LEFT0",
+      "offsets": [129, -10]
+    }
+  ]
+}

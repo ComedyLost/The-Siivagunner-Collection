@@ -1,4 +1,5 @@
 {
+  "id": "the.siivagunner.collection",
   "title": "The Siivagunner Collection",
   "description": "A port of all Siivagunner base game rips into V-Slice.",
   "contributors": [
@@ -30,6 +31,11 @@
     {
       "name": "KoloInDaCrib",
       "role": "Code / Porting Help, Contributor",
+      "url": "https://twitter.com/KoloInDaCrib"
+    },
+    {
+      "name": "Hundrec",
+      "role": "Permission to use Shop (Boombox Ver.) chart + Playtester",
       "url": "https://twitter.com/KoloInDaCrib"
     },
     {

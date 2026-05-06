@@ -3,7 +3,6 @@ import funkin.graphics.FunkinSprite;
 import flixel.tweens.FlxTween;
 import funkin.play.PlayState;
 import funkin.play.song.Song;
-import flixel.FlxG;
 import funkin.graphics.shaders.Grayscale;
 import openfl.filters.ShaderFilter;
 

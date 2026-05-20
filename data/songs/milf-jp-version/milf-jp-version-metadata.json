@@ -1,0 +1,39 @@
+{
+ "version": "2.2.4",
+ "songName": "M.I.L.F (JP Version)",
+ "artist": "Kawai Sprite / SiivaGunner",
+ "charter": "SiivaGunner probably.",
+ "offsets": { },
+ "playData": {
+  "difficulties": [
+   "siiva"
+  ],
+  "characters": {
+   "player": "bf-carjp",
+   "girlfriend": "gf-carjp",
+   "opponent": "mom-car-jp",
+   "opponentVocals": [
+    "mom-car"
+   ],
+   "playerVocals": [
+    "bf-carjp"
+   ]
+  },
+  "album": "volumeHQ",
+  "stage": "limoRide",
+  "noteStyle": "funkin",
+  "ratings": {
+   "siiva": 7
+  },
+  "previewEnd": 0
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.4",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 180,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

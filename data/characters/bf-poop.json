@@ -1,0 +1,274 @@
+{
+	"version": "1.0.0",
+	"renderType": "multisparrow",
+	"offsets": [
+		0,
+		-10
+	],
+	"danceEvery": 1,
+	"applyStageMatrix": false,
+	"scale": 1,
+	"name": "Boyfriend (Poop Version)",
+	"flipX": true,
+	"cameraOffsets": [
+		-50,
+		-20
+	],
+	"singTime": 8,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"assetPath": "characters/BOYFRIEND-POOP",
+	"healthIcon": {
+		"isPixel": false,
+		"offsets": [
+			0,
+			0
+		],
+		"scale": 1,
+		"id": "bf-poop",
+		"flipX": false
+	},
+	"atlasSettings": {
+		"applyStageMatrix": false,
+		"useRenderTexture": false,
+		"filterQuality": 1,
+		"cacheOnLoad": false,
+		"swfMode": true
+	},
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				0
+			],
+			"frameRate": 24,
+			"prefix": "BF idle dance",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "idle"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				10,
+				-5
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE LEFT0",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-11,
+				-52
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE DOWN0",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWN"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-40,
+				30
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE UP0",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singUP"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-42,
+				-5
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE RIGHT0",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				9,
+				18
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE LEFT MISS",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-9,
+				-20
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE DOWN MISS",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-33,
+				28
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE UP MISS",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singUPmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-41,
+				20
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE RIGHT MISS",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				0
+			],
+			"frameRate": 24,
+			"prefix": "bf pre attack",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "preAttack"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				0
+			],
+			"frameRate": 24,
+			"prefix": "boyfriend attack",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "attack"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				0
+			],
+			"frameRate": 24,
+			"prefix": "boyfriend dodge",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "dodge"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				6
+			],
+			"frameRate": 24,
+			"prefix": "BF HEY!!",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "hey"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				31,
+				5
+			],
+			"frameRate": 24,
+			"prefix": "BF dies",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "firstDeath"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				31,
+				2
+			],
+			"frameRate": 24,
+			"prefix": "BF dies",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "fakeoutDeath"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				31,
+				0
+			],
+			"frameRate": 24,
+			"prefix": "BF Dead Loop",
+			"animType": "framelabel",
+			"flipX": false,
+			"name": "deathLoop",
+			"looped": true
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				31,
+				60
+			],
+			"frameRate": 24,
+			"prefix": "BF Dead confirm",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "deathConfirm"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				1,
+				50
+			],
+			"frameRate": 24,
+			"prefix": "BF idle shaking",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "scared"
+		}
+	]
+}

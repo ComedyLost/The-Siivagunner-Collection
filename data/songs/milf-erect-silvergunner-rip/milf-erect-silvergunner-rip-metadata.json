@@ -1,0 +1,40 @@
+{
+ "version": "2.2.4",
+ "songName": "milf-erect-silvergunner-rip",
+ "artist": "Silvergunner",
+ "charter": "Tangly",
+ "offsets": { },
+ "playData": {
+  "difficulties": [
+   "nightmare"
+  ],
+  "characters": {
+   "player": "bf-car",
+   "girlfriend": "gf-car",
+   "opponent": "mom-car",
+   "opponentVocals": [
+    "dad"
+   ],
+   "playerVocals": [
+    "bf"
+   ]
+  },
+  "album": "volumeHQ",
+  "stage": "limoRideErect",
+  "noteStyle": "funkin",
+  "ratings": {
+   "erect": 0,
+   "nightmare": 12
+  },
+  "previewEnd": 0
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.4",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 200,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

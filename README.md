@@ -44,6 +44,8 @@ Feel free to port any song that isn't ported yet and open a [Pull Request](https
 - Fresh
     - [HQ](https://www.youtube.com/watch?v=IwFtWJ8miG8)
     - [Alternative Mix](https://www.youtube.com/watch?v=vVmZqoHKIkk)
+    - [Itch.io Build](https://www.youtube.com/watch?v=ijg0ll_b39k)
+    - [Poop Version](https://www.youtube.com/watch?v=A_LxjGxkVQs)
     - [Vinyl Mix](https://www.youtube.com/watch?v=98Mf-1JVdJs)
     - [Week 7 Update](https://www.youtube.com/watch?v=7qHtw5Xsk_o)
     - [Pico Mix](https://www.youtube.com/watch?v=YFUf-BBOa60)
@@ -92,6 +94,7 @@ Feel free to port any song that isn't ported yet and open a [Pull Request](https
 - M.I.L.F
     - [HQ](https://www.youtube.com/watch?v=TtIvjpxKb3c)
     - [Beta Mix](https://www.youtube.com/watch?v=HoaxzTPp3NQ)
+    - [JP Version](https://www.youtube.com/watch?v=zNZSbz4E9Us)
     - [Short Mix](https://siivagunner.wiki/wiki/M.I.L.F._(Short_Mix)_-_Friday_Night_Funkin%27) (I'm Sorry)
         - [Beta Mix](https://siivagunner.wiki/wiki/M.I.L.F._(Short_Mix)_(Beta_Mix)_-_Friday_Night_Funkin%27)
 
@@ -157,6 +160,7 @@ Feel free to port any song that isn't ported yet and open a [Pull Request](https
 - [vanzz](https://twitter.com/Da_ArtistFunkin) - Made Bopeebo (HQ) Sprite
 - [ChazbillYT](https://youtube.com/@chazbillyt) - Made Difficulty Sprite
 - [KoloInDaCrib](https://twitter.com/KoloInDaCrib) - Contributor
+- [TanglyHippo](https://github.com/TanglyHippo) - Contributor
 - [Hundrec](https://www.youtube.com/@Hundrec) - Permission to use chart + Playtester
 - [The SiivaGunner Team](https://www.youtube.com/@SiIvaGunner) - Made the rips
 

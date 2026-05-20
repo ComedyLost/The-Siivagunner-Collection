@@ -1,0 +1,39 @@
+{
+ "version": "2.2.4",
+ "songName": "Fresh (Poop Version)",
+ "artist": "Kawai Sprite / SiivaGunner",
+ "charter": "SiivaGunner probably",
+ "offsets": { },
+ "playData": {
+  "difficulties": [
+   "siiva"
+  ],
+  "characters": {
+   "player": "bf-poop",
+   "girlfriend": "gf-poop",
+   "opponent": "dad-poop",
+   "opponentVocals": [
+    "dad"
+   ],
+   "playerVocals": [
+    "bf-poop"
+   ]
+  },
+  "album": "volumeHQ",
+  "stage": "mainStage",
+  "noteStyle": "funkin",
+  "ratings": {
+   "siiva": 4
+  },
+  "previewEnd": 0
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.4",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 128,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

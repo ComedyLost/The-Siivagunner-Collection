@@ -1,0 +1,37 @@
+{
+ "version": "2.2.4",
+ "songName": "Fresh (Itch.io Build)",
+ "artist": "Kawai Sprite / SiivaGunner",
+ "charter": "SiivaGunner probably",
+ "offsets": { },
+ "playData": {
+  "difficulties": [
+   "siiva"
+  ],
+  "characters": {
+   "player": "bf",
+   "girlfriend": "gf",
+   "opponent": "dad-bus",
+   "playerVocals": [
+    "bf"
+   ]
+  },
+  "album": "volumeHQ",
+  "stage": "mainStage",
+  "noteStyle": "funkin",
+  "ratings": {
+   "normal": 13,
+   "siiva": 0
+  },
+  "previewEnd": 0
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.4",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 120,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

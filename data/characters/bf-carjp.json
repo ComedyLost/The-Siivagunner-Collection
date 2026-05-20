@@ -1,0 +1,289 @@
+{
+	"renderType": "multisparrow",
+	"offsets": [
+		0,
+		12
+	],
+	"applyStageMatrix": false,
+	"startingAnimation": "idle",
+	"death": {
+		"cameraOffsets": [
+			-62,
+			42
+		]
+	},
+	"assetPath": "characters/bfCarJp",
+	"healthIcon": {
+		"isPixel": false,
+		"offsets": [
+			0,
+			0
+		],
+		"scale": 1,
+		"id": "bf",
+		"flipX": false
+	},
+	"version": "1.0.0",
+	"danceEvery": 1,
+	"scale": 1,
+	"name": "Boyfriend (Car JP)",
+	"flipX": true,
+	"cameraOffsets": [
+		-17,
+		36
+	],
+	"isPixel": false,
+	"singTime": 8,
+	"atlasSettings": {
+		"applyStageMatrix": false,
+		"useRenderTexture": false,
+		"filterQuality": 1,
+		"cacheOnLoad": false,
+		"swfMode": true
+	},
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				0
+			],
+			"frameRate": 24,
+			"prefix": "BF idle dance",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"prefix": "BF idle dance",
+			"frameIndices": [
+				10,
+				11,
+				12,
+				13
+			],
+			"animType": "framelabel",
+			"flipX": false,
+			"name": "idle-hold",
+			"looped": true,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"offsets": [
+				21,
+				-6
+			],
+			"frameIndices": [
+				0,
+				1,
+				2,
+				3
+			],
+			"prefix": "BF NOTE LEFT",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFT",
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"offsets": [
+				21,
+				-6
+			],
+			"prefix": "BF NOTE LEFT",
+			"frameIndices": [
+				4,
+				5,
+				6,
+				7,
+				8
+			],
+			"animType": "framelabel",
+			"flipX": false,
+			"name": "singLEFT-hold",
+			"looped": true,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"offsets": [
+				0,
+				-51
+			],
+			"frameIndices": [
+				0,
+				1,
+				2,
+				3,
+				4
+			],
+			"prefix": "BF NOTE DOWN",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWN",
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"offsets": [
+				0,
+				-51
+			],
+			"prefix": "BF NOTE DOWN",
+			"frameIndices": [
+				4,
+				5,
+				6,
+				7,
+				8
+			],
+			"animType": "framelabel",
+			"flipX": false,
+			"name": "singDOWN-hold",
+			"looped": true,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"offsets": [
+				-29,
+				29
+			],
+			"frameIndices": [
+				0,
+				1,
+				2,
+				3,
+				4
+			],
+			"prefix": "BF NOTE UP",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singUP",
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"offsets": [
+				-29,
+				29
+			],
+			"prefix": "BF NOTE UP",
+			"frameIndices": [
+				4,
+				5,
+				6,
+				7,
+				8
+			],
+			"animType": "framelabel",
+			"flipX": false,
+			"name": "singUP-hold",
+			"looped": true,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"offsets": [
+				-32,
+				-7
+			],
+			"frameIndices": [
+				0,
+				1,
+				2,
+				3,
+				4
+			],
+			"prefix": "BF NOTE RIGHT",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT",
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"offsets": [
+				-32,
+				-7
+			],
+			"prefix": "BF NOTE RIGHT",
+			"frameIndices": [
+				4,
+				5,
+				6,
+				7,
+				8
+			],
+			"animType": "framelabel",
+			"flipX": false,
+			"name": "singRIGHT-hold",
+			"looped": true,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				21,
+				27
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE LEFT MISS",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-14,
+				-21
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE DOWN MISS",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-29,
+				29
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE UP MISS",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singUPmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-32,
+				21
+			],
+			"frameRate": 24,
+			"prefix": "BF NOTE RIGHT MISS",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHTmiss"
+		}
+	]
+}

@@ -1,0 +1,240 @@
+{
+	"version": "1.0.0",
+	"renderType": "sparrow",
+	"offsets": [
+		20,
+		0
+	],
+	"danceEvery": 1,
+	"applyStageMatrix": false,
+	"scale": 1,
+	"name": "Daddy Dearest (Poop Version)",
+	"cameraOffsets": [
+		20,
+		-15
+	],
+	"flipX": false,
+	"singTime": 8,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"assetPath": "characters/DADDY_DEAREST_POOP",
+	"healthIcon": {
+		"offsets": [
+			0,
+			0
+		],
+		"isPixel": false,
+		"scale": 1,
+		"id": "dad-poop",
+		"flipX": false
+	},
+	"atlasSettings": {
+		"applyStageMatrix": false,
+		"useRenderTexture": false,
+		"filterQuality": 1,
+		"cacheOnLoad": false,
+		"swfMode": true
+	},
+	"animations": [
+		{
+			"offsets": [
+				20,
+				20
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "Dad idle dance",
+			"animType": "framelabel",
+			"name": "idle",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				20,
+				20
+			],
+			"frameIndices": [
+				11,
+				12,
+				0,
+				1
+			],
+			"prefix": "Dad idle dance",
+			"animType": "framelabel",
+			"looped": true,
+			"name": "idle-hold",
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"offsets": [
+				15,
+				27
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "Dad Sing Note LEFT",
+			"animType": "framelabel",
+			"name": "singLEFT",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				15,
+				27
+			],
+			"frameIndices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16
+			],
+			"prefix": "Dad Sing Note LEFT",
+			"animType": "framelabel",
+			"looped": true,
+			"name": "singLEFT-hold",
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"offsets": [
+				19,
+				-10
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "Dad Sing Note DOWN",
+			"animType": "framelabel",
+			"name": "singDOWN",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				19,
+				-10
+			],
+			"frameIndices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16
+			],
+			"prefix": "Dad Sing Note DOWN",
+			"animType": "framelabel",
+			"looped": true,
+			"name": "singDOWN-hold",
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"offsets": [
+				11,
+				75
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "Dad Sing Note UP",
+			"animType": "framelabel",
+			"name": "singUP",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				11,
+				75
+			],
+			"frameIndices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16
+			],
+			"prefix": "Dad Sing Note UP",
+			"animType": "framelabel",
+			"looped": true,
+			"name": "singUP-hold",
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"offsets": [
+				15,
+				49
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "Dad Sing Note RIGHT",
+			"animType": "framelabel",
+			"name": "singRIGHT",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				15,
+				49
+			],
+			"frameIndices": [
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16
+			],
+			"prefix": "Dad Sing Note RIGHT",
+			"animType": "framelabel",
+			"looped": true,
+			"name": "singRIGHT-hold",
+			"flipX": false,
+			"flipY": false,
+			"frameRate": 24
+		}
+	]
+}

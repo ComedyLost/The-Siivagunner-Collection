@@ -33,12 +33,20 @@ class SiivagunnerStageEdits extends Module
 				PlayState.instance.currentStage.getNamedProp('stageBack').loadTexture('inGame/stageback');
 				PlayState.instance.currentStage.getNamedProp('stageFront').loadTexture('inGame/stagefront');
 				PlayState.instance.currentStage.getNamedProp('stageCurtains').loadTexture('inGame/stagecurtains');
+			case "fresh-itchio-build":
+				if (PlayState.instance.currentStageId != 'mainStage') return;
+				PlayState.instance.currentStage.getNamedProp('stageBack').loadTexture('bus/stageback');
+				PlayState.instance.currentStage.getNamedProp('stageFront').loadTexture('bus/stagefront');
+			case "fresh-poop-version":
+				if (PlayState.instance.currentStageId != 'mainStage') return;
+				PlayState.instance.currentStage.getNamedProp('stageBack').loadTexture('poop/stageback');
+				PlayState.instance.currentStage.getNamedProp('stageFront').loadTexture('poop/stagefront');
+				PlayState.instance.currentStage.getNamedProp('stageCurtains').loadTexture('poop/stagecurtains');
 			case "pico-in-game-version":
 				if (PlayState.instance.currentStageId != 'mainStage') return;
 				PlayState.instance.currentStage.getNamedProp('stageBack').loadTexture('picoInGame/stageback');
 				PlayState.instance.currentStage.getNamedProp('stageFront').loadTexture('picoInGame/stagefront');
 				PlayState.instance.currentStage.getNamedProp('stageCurtains').loadTexture('picoInGame/stagecurtains');
-
 			case "high-eu-version":
 				if (PlayState.instance.currentStageId != 'limoRide') return;
 				PlayState.instance.currentStage.getNamedProp('limo').loadSparrow('limo/limoDriveEU');
@@ -53,6 +61,18 @@ class SiivagunnerStageEdits extends Module
 					if (i <= 2) PlayState.instance.currentStage.getNamedProp('limoDancer' + i).hasDanced = true;
 					PlayState.instance.currentStage.getNamedProp('limoDancer' + i).dance(true);
 				}
+			case "milf-jp-version":
+				if (PlayState.instance.currentStageId != 'limoRide') return;
+				PlayState.instance.currentStage.getNamedProp('limo').loadSparrow('limo/limoDriveJP');
+				PlayState.instance.currentStage.getNamedProp('limo').animation.addByPrefix('drive', 'Limo stage', 24, true);
+				PlayState.instance.currentStage.getNamedProp('limo').animation.play('drive', true);
+				for (i in 1...6) {
+					PlayState.instance.currentStage.getNamedProp('limoDancer' + i).loadSparrow('limo/limoDancerJP');
+					PlayState.instance.currentStage.getNamedProp('limoDancer' + i).animation.addByIndices('danceLeft', 'bg dancer sketch PINK', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], '', 24);
+					PlayState.instance.currentStage.getNamedProp('limoDancer' + i).animation.addByIndices('danceRight', 'bg dancer sketch PINK', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], '', 24);
+					PlayState.instance.currentStage.getNamedProp('limoDancer' + i).dance(true);
+				}
+
 			case "roses-siiva", "ice-roses":
 				if (PlayState.instance.currentStageId != 'school') return;
 				PlayState.instance.currentStage.getNamedProp('freaks').idleSuffix = '-scared';

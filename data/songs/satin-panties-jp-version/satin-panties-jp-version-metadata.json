@@ -1,0 +1,40 @@
+{
+ "version": "2.2.4",
+ "songName": "Satin Panties (JP Version)",
+ "artist": "Kawai Sprite / SiivaGunner",
+ "charter": "ninjamuffin99 + MtH + Spazkid / SiivaGunner",
+ "offsets": { },
+ "playData": {
+  "difficulties": [
+   "siiva"
+  ],
+  "characters": {
+   "player": "ataru-car",
+   "girlfriend": "lum-car",
+   "opponent": "mom-car",
+   "opponentVocals": [
+    "mom-car"
+   ],
+   "playerVocals": [
+    "bf-car"
+   ]
+  },
+  "stage": "limoRide",
+  "noteStyle": "funkin",
+  "ratings": {
+   "easy": 1,
+   "normal": 2,
+   "siiva": 2
+  },
+  "album": "volumeHQ"
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.3",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 110,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

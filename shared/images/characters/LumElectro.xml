@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="LumElectro.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="knife toss0000" x="0" y="0" width="1596" height="812"/>
+	<SubTexture name="knife toss0001" x="1596" y="0" width="1596" height="812"/>
+	<SubTexture name="knife toss0002" x="0" y="812" width="1596" height="812"/>
+	<SubTexture name="knife toss0003" x="1596" y="812" width="1596" height="812"/>
+	<SubTexture name="knife toss0004" x="0" y="1624" width="1596" height="812"/>
+	<SubTexture name="knife toss0005" x="0" y="812" width="1596" height="812"/>
+	<SubTexture name="knife toss0006" x="1596" y="812" width="1596" height="812"/>
+	<SubTexture name="knife toss0007" x="0" y="1624" width="1596" height="812"/>
+	<SubTexture name="knife toss0008" x="0" y="812" width="1596" height="812"/>
+	<SubTexture name="knife toss0009" x="1596" y="812" width="1596" height="812"/>
+	<SubTexture name="knife toss0010" x="0" y="1624" width="1596" height="812"/>
+	<SubTexture name="knife toss0011" x="0" y="812" width="1596" height="812"/>
+	<SubTexture name="knife toss0012" x="0" y="812" width="1596" height="812"/>
+	<SubTexture name="knife toss0013" x="0" y="812" width="1596" height="812"/>
+	<SubTexture name="knife toss0014" x="0" y="812" width="1596" height="812"/>
+	<SubTexture name="knife toss0015" x="0" y="812" width="1596" height="812"/>
+	<SubTexture name="knife toss0016" x="0" y="812" width="1596" height="812"/>
+	<SubTexture name="knife toss0017" x="0" y="812" width="1596" height="812"/>
+	<SubTexture name="knife toss0018" x="0" y="812" width="1596" height="812"/>
+	<SubTexture name="knife toss0019" x="1596" y="1624" width="1596" height="812"/>
+	<SubTexture name="knife toss0020" x="1596" y="1624" width="1596" height="812"/>
+	<SubTexture name="knife toss0021" x="1596" y="1624" width="1596" height="812"/>
+	<SubTexture name="knife toss0022" x="0" y="2436" width="1596" height="812"/>
+	<SubTexture name="knife toss0023" x="0" y="2436" width="1596" height="812"/>
+	<SubTexture name="knife toss0024" x="0" y="2436" width="1596" height="812"/>
+	<SubTexture name="knife toss0025" x="0" y="2436" width="1596" height="812"/>
+	<SubTexture name="knife toss0026" x="0" y="2436" width="1596" height="812"/>
+	<SubTexture name="knife toss0027" x="0" y="2436" width="1596" height="812"/>
+</TextureAtlas>

@@ -1,0 +1,330 @@
+{
+	"renderType": "multianimateatlas",
+	"offsets": [
+		17,
+		3
+	],
+	"applyStageMatrix": false,
+	"startingAnimation": "idle",
+	"death": {
+		"cameraOffsets": [
+			-62,
+			42
+		]
+	},
+	"assetPath": "shared:characters/AtaruCar",
+	"healthIcon": {
+		"isPixel": false,
+		"offsets": [
+			0,
+			0
+		],
+		"scale": 1,
+		"id": "ataru",
+		"flipX": false
+	},
+	"version": "1.0.0",
+	"danceEvery": 1,
+	"scale": 1,
+	"name": "Ataru (Car)",
+	"flipX": true,
+	"cameraOffsets": [
+		-17,
+		36
+	],
+	"isPixel": false,
+	"singTime": 8,
+	"atlasSettings": {
+		"applyStageMatrix": false,
+		"swfMode": true,
+		"useRenderTexture": false,
+		"cacheOnLoad": false,
+		"filterQuality": 1
+	},
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				-50
+			],
+			"frameRate": 24,
+			"prefix": "Idle",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [
+				0,
+				-50
+			],
+			"prefix": "Idle",
+			"frameIndices": [
+				10,
+				11,
+				12,
+				13
+			],
+			"animType": "framelabel",
+			"flipX": false,
+			"name": "idle-hold",
+			"looped": true,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				-50
+			],
+			"frameRate": 24,
+			"prefix": "Left",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [
+				0,
+				-50
+			],
+			"prefix": "Left",
+			"frameIndices": [
+				10,
+				11,
+				12,
+				13
+			],
+			"animType": "framelabel",
+			"flipX": false,
+			"name": "singLEFT-hold",
+			"looped": true,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				-50
+			],
+			"frameRate": 24,
+			"prefix": "Down",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [
+				0,
+				-50
+			],
+			"prefix": "Down",
+			"frameIndices": [
+				10,
+				11,
+				12,
+				13
+			],
+			"animType": "framelabel",
+			"flipX": false,
+			"name": "singDOWN-hold",
+			"looped": true,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				-50
+			],
+			"frameRate": 24,
+			"prefix": "Up",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singUP"
+		},
+		{
+			"offsets": [
+				0,
+				-50
+			],
+			"prefix": "Up",
+			"frameIndices": [
+				10,
+				11,
+				12,
+				13
+			],
+			"animType": "framelabel",
+			"flipX": false,
+			"name": "singUP-hold",
+			"looped": true,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				-50
+			],
+			"frameRate": 24,
+			"prefix": "Right",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				0,
+				-50
+			],
+			"prefix": "Right",
+			"frameIndices": [
+				10,
+				11,
+				12,
+				13
+			],
+			"animType": "framelabel",
+			"flipX": false,
+			"name": "singRIGHT-hold",
+			"looped": true,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				-50
+			],
+			"frameRate": 24,
+			"prefix": "Left Miss",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				-50
+			],
+			"frameRate": 24,
+			"prefix": "Down Miss",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				-50
+			],
+			"frameRate": 24,
+			"prefix": "Up Miss",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singUPmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				-50
+			],
+			"frameRate": 24,
+			"prefix": "Right Miss",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				-50
+			],
+			"frameRate": 24,
+			"prefix": "Hey",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "hey"
+		},
+		{
+			"offsets": [
+				447,
+				398
+			],
+			"asset": "shared:characters/AtaruGameOver",
+			"prefix": "Death Intro",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "firstDeath",
+			"flipY": false,
+			"frameRate": 24,
+			"atlasSettings": {
+				"uniqueInCache": true
+			}
+		},
+		{
+			"offsets": [
+				447,
+				398
+			],
+			"prefix": "Death Loop",
+			"flipX": false,
+			"animType": "framelabel",
+			"looped": true,
+			"name": "deathLoop",
+			"flipY": false,
+			"assetPath": "shared:characters/AtaruGameOver",
+			"frameRate": 24
+		},
+		{
+			"offsets": [
+				447,
+				398
+			],
+			"asset": "shared:characters/AtaruGameOver",
+			"prefix": "Death Confirm",
+			"animType": "framelabel",
+			"flipX": false,
+			"looped": false,
+			"name": "deathConfirm",
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"offsets": [
+				-11,
+				-115
+			],
+			"prefix": "fake out death BF",
+			"looped": false,
+			"flipX": false,
+			"animType": "symbol",
+			"name": "fakeoutDeath",
+			"flipY": false,
+			"assetPath": "shared:characters/bfFakeOut",
+			"frameRate": 24
+		}
+	]
+}

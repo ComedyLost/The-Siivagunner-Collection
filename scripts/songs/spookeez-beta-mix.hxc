@@ -126,10 +126,39 @@ class SpookeezBetaMixSong extends Song
 		blackScreen?.visible = false;
 	}
 
+	var reverseImage:Bool = false;
+
 	override function onStepHit(event) {
 		super.onStepHit(event);
 		if (!save.data.siivaexfx) return;
-
+		if (PlayState.instance.isGameOverState) return;
+		trace(event.step % 32);
+		if (shouldFreeplay) {
+			if (event.step >= 576) {
+				switch (event.step % 16) {
+					case 4: freeplay2.flipX = !freeplay2.flipX;
+					case 6: freeplay2.flipX = !freeplay2.flipX;
+					case 10: freeplay1.flipX = !freeplay1.flipX;
+					case 12: freeplay1.flipX = !freeplay1.flipX;
+				}
+			} else {
+				var freeplayFirst:FunkinSprite = (reverseImage ? freeplay2 : freeplay1);
+				var freeplaySecond:FunkinSprite = (reverseImage ? freeplay1 : freeplay2);	
+				switch (event.step % 32) { // Hard coded because fuck you
+					case 4: freeplayFirst.flipX = !freeplayFirst.flipX;
+					case 6: freeplayFirst.flipX = !freeplayFirst.flipX;
+					case 12: freeplaySecond.flipX = !freeplaySecond.flipX;
+					case 14: freeplaySecond.flipX = !freeplaySecond.flipX;
+					case 20: freeplayFirst.flipX = !freeplayFirst.flipX;
+					case 22: freeplayFirst.flipX = !freeplayFirst.flipX;
+					case 23: freeplaySecond.flipX = !freeplaySecond.flipX;
+					case 25: freeplaySecond.flipX = !freeplaySecond.flipX;
+					case 28: freeplayFirst.flipX = !freeplayFirst.flipX;
+					case 30: freeplayFirst.flipX = !freeplayFirst.flipX;
+					case 31: reverseImage = !reverseImage;
+				}		
+			}
+		}
 		switch (event.step) {
 			case 64:
 				if (camMini == null) return;
@@ -147,6 +176,7 @@ class SpookeezBetaMixSong extends Song
 				if (freeplay1 == null || freeplay2 == null) return;
 				FlxTween.cancelTweensOf(freeplay1);
 				FlxTween.cancelTweensOf(freeplay2);
+				reverseImage = false;
 				freeplay1.flipX = false;
 				freeplay2.flipX = true;
 				freeplay1.y = 0;
@@ -160,8 +190,15 @@ class SpookeezBetaMixSong extends Song
 				shouldFreeplay = true;
 			case 564:
 				shouldScroll = false;
+			case 570:
+				shouldFreeplay = false;
+			case 576:
+				shouldFreeplay = true;
+			case 688:
+				shouldFreeplay = false;
 			case 704:
 				shouldScroll = true;
+				shouldFreeplay = true;
 				scrollingCamPos = 'right';
 			case 960:
 				shouldScroll = false;
@@ -244,7 +281,7 @@ class SpookeezBetaMixSong extends Song
 
 		PlayState.instance.camGame.flashSprite.scaleX = -1;
 
-		var screenShot = ModStore.stores.get('FreeplayScreenshot');
+		var screenShot = ModStore.stores.get('FreeplayScreenshot').clone();
 		if (screenShot != null) {
 			freeplay1 = new FunkinSprite().loadGraphic(screenShot);
 			freeplay1.scrollFactor.set();

@@ -146,8 +146,7 @@ class SiivaGunnerFreeplayCapsule extends Module {
 					if (FlxG.state.subState.controls.active) {
 						Cursor.hide();
 						FlxG.mouse.visible = false;
-						var shot:Bitmap = new Bitmap(BitmapData.fromImage(FlxG.stage.window.readPixels()));
-						ModStore.stores.set('FreeplayScreenshot', shot.bitmapData);
+						ModStore.stores.set('FreeplayScreenshot', BitmapData.fromImage(FlxG.stage.window.readPixels()));
 						// FlxG.state.subState.add(preview);
 					}
 					onConfirmOG();

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="gf-koumepixel.png" width="160" height="32">
+	<SubTexture name="idle0001" x="47" y="1" width="36" height="28" frameX="-7" frameY="-11" frameWidth="50" frameHeight="50"/>
+	<SubTexture name="confirm0001" x="47" y="1" width="36" height="28" frameX="-7" frameY="-11" frameWidth="50" frameHeight="50"/>
+	<SubTexture name="confirm0002" x="125" y="1" width="34" height="30" frameX="-8" frameY="-6" frameWidth="50" frameHeight="50"/>
+	<SubTexture name="confirm0003" x="1" y="1" width="43" height="28" frameX="-4" frameY="-11" frameWidth="50" frameHeight="50"/>
+	<SubTexture name="confirm0004" x="86" y="1" width="36" height="26" frameX="-8" frameY="-11" frameWidth="50" frameHeight="50"/>
+	<SubTexture name="confirm-hold0004" x="86" y="1" width="36" height="26" frameX="-8" frameY="-11" frameWidth="50" frameHeight="50"/>
+</TextureAtlas>

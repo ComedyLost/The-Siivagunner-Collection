@@ -1,0 +1,38 @@
+{
+ "version": "2.2.4",
+ "songName": "Tutorial (JP Version)",
+ "artist": "Kawai Sprite / SiivaGunner",
+ "charter": "ninjamuffin99 + MtH / SiivaGunner",
+ "offsets": { },
+ "playData": {
+  "difficulties": [
+   "siiva"
+  ],
+  "characters": {
+   "player": "nono",
+   "opponent": "koume",
+   "opponentVocals": [
+    "gf"
+   ],
+   "playerVocals": [
+    "bf"
+   ]
+  },
+  "stage": "spin",
+  "noteStyle": "funkin",
+  "ratings": {
+   "siiva": 1
+  },
+  "album": "volumeHQ",
+  "previewEnd": 0.185710327356213
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.4",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 95,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

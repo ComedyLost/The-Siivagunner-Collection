@@ -1,0 +1,39 @@
+{
+ "version": "2.2.4",
+ "songName": "Senpai (OST Version)",
+ "artist": "Kawai Sprite / SiivaGunner",
+ "charter": "ninjamuffin99 + MtH / SiivaGunner",
+ "offsets": { },
+ "playData": {
+  "difficulties": [
+   "siiva"
+  ],
+  "characters": {
+   "player": "bf-pixel",
+   "girlfriend": "gf-pixel",
+   "opponent": "senpai",
+   "opponentVocals": [
+    "senpai"
+   ],
+   "playerVocals": [
+    "bf-pixel"
+   ]
+  },
+  "stage": "school",
+  "noteStyle": "pixel",
+  "ratings": {
+   "siiva": 3
+  },
+  "album": "volumeHQ",
+  "previewEnd": 0.121286007786134
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.4",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 144,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

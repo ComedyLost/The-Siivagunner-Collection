@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "backdrop": {
+    "type": "solid",
+    "fadeTime": 2.0,
+    "color": "#BFB3DFD8"
+  },
+  "music": {
+    "asset": "",
+    "fadeTime": 0,
+    "looped": false
+  },
+  "outro": {
+    "type": "fade",
+    "fadeTime": 1.0
+  },
+  "dialogue": [
+    {
+      "speaker": "senpai-zombie",
+      "speakerAnimation": "talk",
+      "box": "roses",
+      "boxAnimation": "idle",
+
+      "text": ["Braaaaainz..."]
+    },
+    {
+      "speaker": "bf-pixel",
+      "speakerAnimation": "talkEnter",
+      "box": "roses",
+      "boxAnimation": "idle",
+
+      "text": ["Bep boob"]
+    }
+  ]
+}

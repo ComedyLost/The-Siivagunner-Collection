@@ -1,0 +1,40 @@
+{
+ "version": "2.2.4",
+ "songName": "Bopeebo (Short Mix)",
+ "artist": "Kawai Sprite / SiivaGunner",
+ "charter": "ninjamuffin99 + MtH / SiivaGunner",
+ "offsets": { },
+ "playData": {
+  "difficulties": [
+   "siiva"
+  ],
+  "characters": {
+   "player": "bf",
+   "girlfriend": "gf",
+   "opponent": "dad",
+   "opponentVocals": [
+    "dad"
+   ],
+   "playerVocals": [
+    "bf"
+   ]
+  },
+  "stage": "mainStage",
+  "noteStyle": "funkin",
+  "ratings": {
+   "siiva": 2
+  },
+  "album": "volumeHQ",
+  "previewStart": 0.0620989443179466,
+  "previewEnd": 0.827985924239288
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.4",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 100,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

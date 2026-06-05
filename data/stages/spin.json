@@ -1,0 +1,31 @@
+{
+ "version": "1.0.2",
+ "name": "Unnamed",
+ "props": [
+  {
+   "assetPath": "SpinBG",
+   "atlasSettings": null,
+   "name": "SpinBG",
+   "position": [-640, -340],
+   "scale": 1,
+   "startingAnimation": ""
+  }
+ ],
+ "characters": {
+  "bf": {
+   "cameraOffsets": [-100, -100],
+   "position": [1006.5, 899],
+   "zIndex": 300
+  },
+  "dad": {
+   "cameraOffsets": [150, -100],
+   "position": [348, 888],
+   "zIndex": 200
+  },
+  "gf": {
+   "cameraOffsets": [0, 0],
+   "position": [739.5, 791],
+   "zIndex": 100
+  }
+ }
+}

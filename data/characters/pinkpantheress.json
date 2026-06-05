@@ -1,0 +1,30 @@
+{
+    "version": "1.0.1",
+    "name": "PinkPantheress",
+    "renderType": "animateatlas",
+    "assetPath": "shared:characters/pinkpantheress",
+    "offsets": [-30, -60],
+    "cameraOffsets": [0, 20],
+    "animations": [
+      {
+        "name": "idle",
+        "prefix": "Idle"
+      },
+      {
+        "name": "singLEFT",
+        "prefix": "Left"
+      },
+      {
+        "name": "singDOWN",
+        "prefix": "Down"
+      },
+      {
+        "name": "singUP",
+        "prefix": "Up"
+      },
+      {
+        "name": "singRIGHT",
+        "prefix": "Right"
+      }
+    ]
+}

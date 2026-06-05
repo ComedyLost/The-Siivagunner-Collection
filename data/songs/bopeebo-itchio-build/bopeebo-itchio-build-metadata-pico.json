@@ -1,0 +1,39 @@
+{
+ "version": "2.2.4",
+ "songName": "Bopeebo (Pico Mix) [Itch.io Build]",
+ "artist": "That Andy Guy (feat. Saruky) / SiivaGunner",
+ "charter": "fabs + Spazkid / SiivaGunner",
+ "offsets": { },
+ "playData": {
+  "difficulties": [
+   "siiva"
+  ],
+  "characters": {
+   "player": "pico-scatman",
+   "girlfriend": "nene-scatman",
+   "opponent": "dad-scatman",
+   "instrumental": "pico",
+   "opponentVocals": [
+    "dad"
+   ],
+   "playerVocals": [
+    "pico"
+   ]
+  },
+  "stage": "mainStageErect",
+  "noteStyle": "funkin",
+  "ratings": {
+   "siiva": 5
+  },
+  "album": "volumeHQ"
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.3",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 130,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+import funkin.modding.module.Module;
+import funkin.ui.title.AttractState;
+import funkin.modding.ModStore;
+
+class StratagemVideo extends Module
+{
+  var addedVideo(get, set);
+
+  function get_addedVideo()
+  {
+    return ModStore.get('SiivaAddedStratagemVideo') ?? false;
+  }
+
+  function set_addedVideo(value:Bool)
+  {
+    ModStore.stores.set('SiivaAddedStratagemVideo', value);
+    return value;
+  }
+
+  public function new()
+  {
+    super('StratagemVideo');
+    if (!addedVideo)
+    {
+      addedVideo = true;
+      AttractState.VIDEO_PATHS.insert(0, {path: Paths.videos('stratagem')});
+    }
+  }
+}

@@ -1,0 +1,25 @@
+package funkin.ui.story;
+
+import flixel.FlxG;
+import funkin.ui.story.Level;
+import funkin.ui.story.StoryMenuState;
+
+class Weekend1Level extends Level
+{
+  function new()
+  {
+    super('weekend1');
+  }
+
+  override function getSongs():Array<String>
+  {
+    if (FlxG.state is StoryMenuState)
+    {
+      return ["Darnell", "Lit Up", "2hot"];
+    }
+    else
+    {
+      return super.getSongs();
+    }
+  }
+}

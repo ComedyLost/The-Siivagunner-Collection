@@ -1,3 +1,5 @@
 [
-    { "op": "add", "path": "/ownedChars/-", "value": "pico-playable-sus" }
+    { "op": "add", "path": "/ownedChars/-", "value": "pico-playable-sus" },
+    { "op": "add", "path": "/ownedChars/-", "value": "michaeljordan-blazin" },
+    { "op": "add", "path": "/ownedChars/-", "value": "pico-scatman" }
 ]

@@ -1,0 +1,23 @@
+{
+  "version": "2.2.4",
+  "songName": "Winter Horrorland (HQ)",
+  "artist": "Bassetfilms",
+  "charter": "ninjamuffin99 + MtH",
+  "offsets": {},
+  "playData": {
+    "difficulties": ["siiva"],
+    "characters": {
+      "player": "bf-christmas",
+      "girlfriend": "gf-christmas",
+      "opponent": "stingy",
+      "opponentVocals": ["stingy"],
+      "playerVocals": ["bf"]
+    },
+    "stage": "mallEvil",
+    "noteStyle": "funkin",
+    "ratings": { "siiva": 3 },
+    "album": "volumeHQ"
+  },
+  "generatedBy": "Friday Night Funkin' - v0.8.1",
+  "timeChanges": [{ "t": 0, "b": 0, "bpm": 159, "bt": [4, 4, 4, 4] }]
+}

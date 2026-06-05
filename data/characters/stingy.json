@@ -1,0 +1,30 @@
+{
+  "version": "1.0.1",
+  "name": "Stingy",
+  "assetPath": "shared:characters/stingy",
+  "renderType": "animateatlas",
+  "offsets": [25, -3],
+  "cameraOffsets": [25, 35],
+  "animations": [
+    {
+    "name": "idle",
+    "prefix": "Idle"
+    },
+    {
+    "name": "singLEFT",
+    "prefix": "Left"
+    },
+    {
+    "name": "singDOWN",
+    "prefix": "Down"
+    },
+    {
+    "name": "singUP",
+    "prefix": "Up"
+    },
+    {
+    "name": "singRIGHT",
+    "prefix": "Right"
+    }
+    ]
+}

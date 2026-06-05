@@ -1,0 +1,32 @@
+{
+  "version": "2.2.4",
+  "songName": "Lit Up (BF Mix) [HQ]",
+  "artist": "Saruky / SiivaGunner",
+  "charter": "fabs + Spazkid / SiivaGunner",
+  "divisions": 96,
+  "looped": false,
+  "playData": {
+    "songVariations": [],
+    "difficulties": ["siiva"],
+    "characters": {
+      "player": "bf-bugging",
+      "girlfriend": "gf-bugging",
+      "opponent": "darnell",
+      "instrumental": "bf",
+      "altInstrumentals": [],
+      "opponentVocals": ["darnell"],
+      "playerVocals": ["bf"]
+    },
+    "stage": "phillyStreetsErect",
+    "noteStyle": "funkin",
+    "album": "volumeHQ",
+    "ratings": { "siiva": 6 },
+    "previewStart": 0,
+    "previewEnd": 0
+  },
+  "generatedBy": "Friday Night Funkin' - v0.5.3",
+  "timeFormat": "ms",
+  "timeChanges": [
+    { "t": 0, "b": 0, "bpm": 176, "n": 4, "d": 4, "bt": [4, 4, 4, 4] }
+  ]
+}

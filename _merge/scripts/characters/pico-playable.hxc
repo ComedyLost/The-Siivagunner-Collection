@@ -1,0 +1,30 @@
+import funkin.audio.FunkinSound;
+import funkin.play.PlayState;
+
+@:merge_combine
+class PicoPlayerBaseCharacter
+{
+  @:merge_override
+  function get_CACHE_SOUND_PATHS():Array<String>
+  {
+    return ["singed_loop", "Gun_Prep", "Pico_Bonk", "shot1", "shot2", "shot3", "shot4", "brainless/shot1", "brainless/shot2", "brainless/shot3", "brainless/shot4"];
+  }
+
+  @:merge_override
+  function playFireGunAnim():Void
+  {
+    this.playAnimation('shoot', true, true);
+
+    var sound:String = "shot";
+
+    if (PlayState.instance != null)
+    {
+      if (PlayState.instance.currentSong.id == "2hot-siiva")
+      {
+        sound = "brainless/shot";
+      }
+    }
+
+    FunkinSound.playOnce(Paths.soundRandom(sound, 1, 4));
+  }
+}

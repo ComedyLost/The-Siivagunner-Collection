@@ -1,0 +1,42 @@
+package funkin.play.character;
+
+import funkin.graphics.FunkinSprite;
+import funkin.play.character.PicoPlayerBaseCharacter;
+
+class PicoScatmanCharacter extends PicoPlayerBaseCharacter
+{
+  override function get_CACHE_IMAGE_PATHS():Array<String>
+  {
+    return ["characters/nene/KnifeTossScatman"];
+  }
+
+  override function get_CACHE_SOUND_PATHS():Array<String>
+  {
+    return [];
+  }
+
+  public function new()
+  {
+    super('pico-scatman');
+  }
+
+  override function createDeathSprites():Void
+  {
+    var gf:BaseCharacter = currentStage.getGirlfriend();
+
+    if (deathSpriteNene != null && !deathSpriteNene.alive)
+    {
+      deathSpriteNene.revive();
+    }
+
+    deathSpriteNene = FunkinSprite.createSparrow(0, 0, "characters/nene/KnifeTossScatman");
+    deathSpriteNene.x = gf.originalPosition.x + 120;
+    deathSpriteNene.y = gf.originalPosition.y;
+    deathSpriteNene.zIndex = this.zIndex - 5;
+    deathSpriteNene.animation.addByPrefix('throw', "knife toss0", 24, false);
+    deathSpriteNene.animation.onFinish.add(function(name:String)
+    {
+      deathSpriteNene.kill();
+    });
+  }
+}

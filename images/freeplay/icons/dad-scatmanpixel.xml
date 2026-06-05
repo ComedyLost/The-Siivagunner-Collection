@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TextureAtlas imagePath="dadpixel.png" width="34" height="141">
-  <SubTexture name="idle0001" x="0" y="77"  width="31" height="33" frameX="-12" frameY="-6" frameWidth="50" frameHeight="40"/>
-
-  <SubTexture name="confirm0001" x="0" y="77"  width="31" height="33" frameX="-12" frameY="-6" frameWidth="50" frameHeight="40"/>
-  <SubTexture name="confirm0002" x="0" y="110"  width="34" height="31" frameX="-11" frameY="-9" frameWidth="50" frameHeight="40"/>
-  <SubTexture name="confirm0003" x="0" y="0"  width="32" height="39" frameX="-11" frameY="-1" frameWidth="50" frameHeight="40"/>
-  <SubTexture name="confirm0004" x="0" y="39"  width="32" height="38" frameX="-12" frameY="-2" frameWidth="50" frameHeight="40"/>
-
-  <SubTexture name="confirm-hold0001" x="0" y="39"  width="32" height="38" frameX="-12" frameY="-2" frameWidth="50" frameHeight="40"/>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="dad-scatmanpixel.png" width="77" height="81">
+	<SubTexture name="confirm0001" x="42" y="44" width="34" height="36" frameX="-11" frameY="-3" frameWidth="50" frameHeight="40"/>
+	<SubTexture name="confirm0002" x="1" y="44" width="38" height="32" frameX="-9" frameY="-8" frameWidth="50" frameHeight="40"/>
+	<SubTexture name="confirm0003" x="38" y="1" width="33" height="40" frameX="-11" frameY="-0" frameWidth="50" frameHeight="40"/>
+	<SubTexture name="confirm0004" x="1" y="1" width="34" height="40" frameX="-11" frameY="-0" frameWidth="50" frameHeight="40"/>
 </TextureAtlas>

@@ -1,0 +1,26 @@
+import funkin.play.PlayState;
+import funkin.play.stage.Stage;
+import StringTools;
+
+@:merge_combine
+class PhillyStreetsStage
+{
+  @:merge_insert(30)
+  function onCreate()
+  {
+    if (PlayState.instance != null)
+    {
+      switch (PlayState.instance.currentSong.id)
+      {
+        case "lit-up-siiva":
+          rainShaderStartIntensity = 0.1;
+          rainShaderEndIntensity = 0.2;  
+        case "2hot-siiva":
+          rainShaderStartIntensity = 0.2;
+          rainShaderEndIntensity = 0.4;
+  
+          PlayState.instance.currentStage.getNamedProp('spraycanPile').loadTexture("SpraycanPile-brainless");  
+      }
+    } 
+  }
+}

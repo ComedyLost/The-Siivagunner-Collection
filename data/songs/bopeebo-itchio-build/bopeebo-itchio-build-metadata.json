@@ -10,7 +10,7 @@
     "altVocals": {    }
   },
   "playData": {
-    "songVariations": [    ],
+    "songVariations": ["pico"],
     "difficulties": [
       "siiva"
     ],

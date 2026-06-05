@@ -1,0 +1,11 @@
+package funkin.play.character;
+
+import funkin.play.character.NeneBaseCharacter;
+
+class LolaBlazinCharacter extends NeneBaseCharacter
+{
+  public function new()
+  {
+    super('lola-blazin');
+  }
+}

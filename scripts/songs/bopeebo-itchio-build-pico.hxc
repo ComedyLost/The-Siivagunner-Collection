@@ -1,0 +1,30 @@
+package funkin.play.song;
+
+import funkin.play.Countdown;
+import funkin.play.CountdownStep;
+import funkin.play.song.Song;
+
+class BopeeboPicoMixItchIoBuildSong extends Song
+{
+  public function new()
+  {
+    super('bopeebo-itchio-build', {variation: 'pico'});
+  }
+
+  public override function onBeatHit(event:SongTimeScriptEvent):Void
+  {
+    super.onBeatHit(event);
+
+    // 97 year old FNF mod still serves their events the old fashioned way
+    switch (event.beat)
+    {
+      // CountdownStep.THREE has no countdown graphic in base game
+      case 93:
+        Countdown.showCountdownGraphic(CountdownStep.TWO);
+      case 94:
+        Countdown.showCountdownGraphic(CountdownStep.ONE);
+      case 95:
+        Countdown.showCountdownGraphic(CountdownStep.GO);
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "version": "1.0.0",
+  "name": "Pico (Scatman)",
+  "assetPath": "shared:characters/pico/scatman/basic",
+  "death": {
+    "cameraOffsets": [10, -40],
+    "cameraZoom": 1.0
+  },
+  "flipX": true,
+  "renderType": "multianimateatlas",
+  "offsets": [19, 1],
+  "cameraOffsets": [-19, 32],
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "Idle"
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "Right"
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "Down"
+    },
+    {
+      "name": "singUP",
+      "prefix": "Up"
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "Left"
+    },
+    {
+      "name": "singLEFTmiss",
+      "prefix": "Left Miss"
+    },
+    {
+      "name": "singDOWNmiss",
+      "prefix": "Down Miss"
+    },
+    {
+      "name": "singUPmiss",
+      "prefix": "Up Miss"
+    },
+    {
+      "name": "singRIGHTmiss",
+      "prefix": "Right Miss"
+    },
+    {
+      "name": "hey",
+      "prefix": "Hey"
+    },
+    {
+      "assetPath": "shared:characters/pico/scatman/death",
+      "name": "firstDeath",
+      "prefix": "Death Intro",
+      "offsets": [100, 195]
+    },
+    {
+      "assetPath": "shared:characters/pico/scatman/death",
+      "name": "deathLoop",
+      "prefix": "Death Loop",
+      "looped": true,
+      "offsets": [100, 195]
+    },
+    {
+      "assetPath": "shared:characters/pico/scatman/death",
+      "name": "deathConfirm",
+      "prefix": "Death Confirm",
+      "offsets": [100, 195]
+    }
+  ]
+}

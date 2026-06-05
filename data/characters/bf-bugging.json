@@ -1,0 +1,82 @@
+{
+  "version": "1.0.0",
+  "name": "Boyfriend (Bugging)",
+  "renderType": "multianimateatlas",
+  "assetPath": "shared:characters/bf-bugging/basic",
+  "flipX": true,
+  "offsets": [21, 4],
+  "cameraOffsets": [-18, 36],
+  "healthIcon": {
+    "id": "bf"
+  },
+  "death": {
+    "cameraOffsets": [-73, 42]
+  },
+  "atlasSettings": {
+    "swfMode": false
+  },
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "Idle"
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "Left"
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "Down"
+    },
+    {
+      "name": "singUP",
+      "prefix": "Up"
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "Right"
+    },
+    {
+      "name": "singLEFTmiss",
+      "prefix": "Left Miss"
+    },
+    {
+      "name": "singDOWNmiss",
+      "prefix": "Down Miss"
+    },
+    {
+      "name": "singUPmiss",
+      "prefix": "Up Miss"
+    },
+    {
+      "name": "singRIGHTmiss",
+      "prefix": "Right Miss"
+    },
+    {
+      "name": "hey",
+      "prefix": "Hey"
+    },
+    {
+      "assetPath": "shared:characters/bf-bugging/death",
+      "name": "firstDeath",
+      "prefix": "Death Intro",
+      "offsets": [21, 90],
+      "atlasSettings": {
+        "uniqueInCache": true
+      }
+    },
+    {
+      "assetPath": "shared:characters/bf-bugging/death",
+      "name": "deathLoop",
+      "prefix": "Death Loop",
+      "looped": true,
+      "offsets": [21, 90]
+    },
+    {
+      "assetPath": "shared:characters/bf-bugging/death",
+      "name": "deathConfirm",
+      "prefix": "Death Confirm",
+      "offsets": [21, 90]
+    }
+  ]
+}

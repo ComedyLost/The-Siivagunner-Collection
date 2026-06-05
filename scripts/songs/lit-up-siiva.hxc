@@ -1,0 +1,22 @@
+import funkin.play.song.Song;
+import funkin.save.Save;
+import funkin.play.PlayState;
+
+class LitUpSiivaSong extends Song
+{
+  public function new()
+  {
+    super('lit-up-siiva');
+  }
+
+  public function listDifficulties(variationId:String, variationIds:Array<String>, showLocked:Bool):Array<String>
+  {
+    if (showLocked || Save.instance.hasBeatenLevel('weekend1'))
+    {
+      return super.listDifficulties(variationId, variationIds);
+    }
+
+    // Hide all difficulties if the player has not beaten the week.
+    return [];
+  }
+}

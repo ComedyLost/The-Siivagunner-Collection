@@ -88,7 +88,7 @@ class SiivaOptions extends Module
 				save.flush();
 			}, save.data.rottenshader);
 			// Don't exist yet
-			/*prefs.createPrefItemCheckbox("Siiva Results Music", "Replaces the results music with custom rips made by me.", (value) -> {
+			/*prefs.createPrefItemCheckbox("Siiva Results Music", "Replaces the results music with their rip counterparts.", (value) -> {
 				save.data.siivaresults = value;
 				save.flush();
 			}, save.data.siivaresults);*/

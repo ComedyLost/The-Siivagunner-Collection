@@ -1,0 +1,39 @@
+{
+ "version": "2.2.4",
+ "songName": "Lit Up (HQ)",
+ "artist": "Kawai Sprite / SiivaGunner",
+ "charter": "Jenny Crowe + Spazkid / SiivaGunner",
+ "offsets": { },
+ "playData": {
+  "songVariations": ["bf"],
+  "difficulties": [
+   "siiva"
+  ],
+  "characters": {
+   "player": "pico-playable",
+   "girlfriend": "nene",
+   "opponent": "pinkpantheress",
+   "opponentVocals": [
+    "pinkpantheress"
+   ],
+   "playerVocals": [
+    "pico-playable"
+   ]
+  },
+  "stage": "phillyStreets",
+  "noteStyle": "funkin",
+  "ratings": {
+   "siiva": 4
+  },
+  "album": "volumeHQ"
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.4",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 176,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

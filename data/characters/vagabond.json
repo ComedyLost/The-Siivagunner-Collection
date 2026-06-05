@@ -1,0 +1,84 @@
+{
+  "version": "1.0.1",
+  "name": "Wayward Vagabond",
+  "assetPath": "characters/wv",
+  "flipX": true,
+  "renderType": "multisparrow",
+  "singTime": 8.0,
+  "isPixel": true,
+  "healthIcon": {
+    "id": "wv-pixel",
+    "isPixel": true
+  },
+  "death": {
+    "cameraOffsets": [-85, -20]
+  },
+  "scale": 6,
+  "offsets": [-10, -3],
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "Idle0",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singUP",
+      "prefix": "UpNote0",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "LeftNote0",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "RightNote0",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "DownNote0",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singUPmiss",
+      "prefix": "UpMiss0",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singLEFTmiss",
+      "prefix": "LeftMiss0",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singRIGHTmiss",
+      "prefix": "RightMiss0",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singDOWNmiss",
+      "prefix": "DownMiss0",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "firstDeath",
+      "prefix": "BF Dies pixel",
+      "assetPath": "characters/vagabondDEAD",
+      "offsets": [12, -29]
+    },
+    {
+      "name": "deathLoop",
+      "prefix": "Retry Loop",
+      "assetPath": "characters/vagabondDEAD",
+      "looped": true,
+      "offsets": [6, -29]
+    },
+    {
+      "name": "deathConfirm",
+      "prefix": "RETRY CONFIRM",
+      "assetPath": "characters/vagabondDEAD",
+      "offsets": [6, -29]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "name": "Bec Noir",
+  "assetPath": "characters/bec_noir",
+  "singTime": 8.0,
+  "renderType": "multisparrow",
+  "isPixel": true,
+  "scale": 6,
+  "cameraOffsets": [40, 0],
+  "offsets": [38, 42],
+  "healthIcon": {
+    "id": "bec-pixel",
+    "isPixel": true
+  },
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "Bec Idle",
+      "offsets": [0, 0]
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "Bec LEFT NOTE",
+      "offsets": [5, 0]
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "Bec DOWN NOTE",
+      "offsets": [-3, -1]
+    },
+    {
+      "name": "singUP",
+      "prefix": "Bec UP NOTE",
+      "offsets": [3, 1]
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "Bec RIGHT NOTE",
+      "offsets": [0, 0]
+    }
+  ]
+}

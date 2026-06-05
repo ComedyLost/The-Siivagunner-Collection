@@ -1,0 +1,67 @@
+{
+  "version": "1.0.0",
+
+  "backdrop": {
+    "type": "solid",
+    "fadeTime": 2.0,
+    "color": "#BFB3DFD8"
+  },
+
+  "music": {
+    "asset": "LunchboxScary",
+    "fadeTime": 2.0,
+    "looped": true
+  },
+
+  "outro": {
+    "type": "fade",
+    "fadeTime": 1.0
+  },
+
+  "dialogue": [
+    {
+      "speaker": "bec",
+      "speakerAnimation": "talkEnter",
+      "box": "homestuck",
+      "boxAnimation": "enter",
+
+      "text": [
+        "You are now Jack Noir.",
+        " You were just about to extract some precious cargo from this poor bastard's chest cavity."
+      ],
+      "speed": 1.0
+    },
+    {
+      "speaker": "bec",
+      "speakerAnimation": "talk",
+      "box": "homestuck",
+      "boxAnimation": "idle",
+
+      "text": [
+        "But now you and the would-be corpse seem to have been whisked away far beyond the reaches of paradox space."
+      ]
+    },
+    {
+      "speaker": "bec",
+      "speakerAnimation": "talk",
+      "box": "homestuck",
+      "boxAnimation": "idle",
+
+      "text": [
+        "And powers far greater than yours are making you sing first, stab later.",
+		" Is that broad in red forcing this?"
+      ]
+    },
+    {
+      "speaker": "bec",
+      "speakerAnimation": "talk",
+      "box": "homestuck",
+      "boxAnimation": "idle",
+
+      "text": [
+	    "You swear you'll wring her goddamn neck once your tune has been carried.",
+		" > [S] WV: Funk off."
+	  ]
+    }
+  ]
+}

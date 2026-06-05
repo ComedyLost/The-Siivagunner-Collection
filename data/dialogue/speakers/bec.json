@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "name": "Bec",
+  "assetPath": "weeb/portrait-bec",
+  "flipX": false,
+  "isPixel": true,
+  "scale": 5.4,
+  "offsets": [-428, -187],
+  "animations": [
+    {
+      "name": "talkEnter",
+      "prefix": "portraitEnter0",
+      "frameRate": 12
+    },
+    {
+      "name": "talk",
+      "prefix": "portraitTalk0"
+    }
+  ]
+}

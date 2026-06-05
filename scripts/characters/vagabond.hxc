@@ -1,0 +1,28 @@
+import funkin.play.character.MultiSparrowCharacter;
+import funkin.play.GameOverSubState;
+
+class VagabondCharacter extends MultiSparrowCharacter
+{
+    function new()
+    {
+        super('vagabond');
+    }
+
+    function onCreate(event:ScriptEvent)
+    {
+        super.onCreate(event);
+        trace("HI HELLO1");
+
+        GameOverSubState.blueBallSuffix = '-pixel';
+        GameOverSubState.musicSuffix = '-pixel-homestuck';
+    }
+
+    function onSongRetry(event:ScriptEvent):Void
+    {
+        super.onSongRetry(event);
+        trace("HI HELLO2");
+
+        GameOverSubState.blueBallSuffix = '-pixel';
+        GameOverSubState.musicSuffix = '-pixel-homestuck';
+    }
+}

@@ -1,0 +1,39 @@
+{
+ "version": "2.2.4",
+ "songName": "Thorns (Beta Version)",
+ "artist": "Kawai Sprite",
+ "charter": "ninjamuffin99 + MtH",
+ "offsets": { },
+ "playData": {
+  "difficulties": [
+   "siiva"
+  ],
+  "characters": {
+   "player": "vagabond",
+   "girlfriend": "gf-pixel",
+   "opponent": "bec_noir",
+   "opponentVocals": [
+    "bec_noir"
+   ],
+   "playerVocals": [
+    "vagabond"
+   ]
+  },
+  "stage": "schoolEvil",
+  "noteStyle": "pixel",
+  "album": "volumeHQ",
+  "ratings": {
+   "siiva": 11
+  },
+  "previewEnd": 0
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.4",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 190,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}

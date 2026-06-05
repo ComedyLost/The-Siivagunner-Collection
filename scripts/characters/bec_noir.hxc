@@ -1,0 +1,80 @@
+import funkin.play.character.MultiSparrowCharacter;
+import funkin.play.PlayState;
+import flixel.FlxSprite;
+import flixel.FlxG;
+import flixel.util.FlxSpriteUtil;
+import funkin.graphics.shaders.TextureSwap;
+import funkin.play.character.CharacterType;
+import flixel.util.FlxTimer;
+
+class BecNoirCharacter extends MultiSparrowCharacter {
+	function new() {
+		super('bec_noir');
+	}
+
+	var greenSunChance:Int = 85; // Defaults to 85, a 15% chance to flash
+	var greenSunExtraChance:Int = 0; // This goes up the longer Bec goes without flashing
+	var greenSunDieRoll:Int;
+	
+	var greenSunTextureSwap:TextureSwap;
+	var greenSunAmount:Float = 0.0; // Used to fade between Green Sun mode and normal mode
+	
+	var greenSunFadeAmount:Float = 0.2; // Randomise how long it takes to fade from Green Sun mode to normal
+	var greenSunFadeMax:Float = 0.15; // FASTEST Bec will fade back
+	var greenSunFadeMin:Float = 0.314; // SLOWEST Bec will fade back
+	
+	function onCreate(event:ScriptEvent)
+  {
+    super.onCreate(event);
+
+	greenSunTextureSwap = new TextureSwap();
+	greenSunTextureSwap.loadSwapImage(Paths.image('bec_noir_greensun'));
+	this.shader = greenSunTextureSwap;
+	greenSunTextureSwap.set_amount(0.0);
+  }
+
+  function onNoteHit(event:HitNoteScriptEvent) {
+		super.onNoteHit(event);
+		
+		// Only trigger when BEC'S notes are hit, whether he's the enemy (intended) or player (just in case)
+		if ((!event.note.noteData.getMustHitNote() && this.characterType == CharacterType.DAD) || (event.note.noteData.getMustHitNote() && this.characterType == CharacterType.BF)){
+			
+			// Only flash if Bec isn't already in the middle of flashing
+			if (Preferences.flashingLights && greenSunAmount <= 0.0){ 
+				greenSunDieRoll = FlxG.random.int(0,100) + greenSunExtraChance;
+				if (greenSunDieRoll >= greenSunChance){ 
+					flash();
+				}
+				else {
+					greenSunExtraChance += 2;
+				}
+			}
+		}
+	}
+	
+	function flash(){
+		greenSunAmount = 1.0;
+		greenSunTextureSwap.amount = greenSunAmount;
+		
+		greenSunFadeAmount = FlxG.random.float(greenSunFadeMin,greenSunFadeMax);
+		
+		greenSunExtraChance = -3; //Make it less likely to flash IMMEDIATELY afterwards
+		
+		fadeBack();
+	}
+	
+	function fadeBack(stepsTotal:Int = 3){
+		var steps:Int = stepsTotal;
+		
+		new FlxTimer().start(greenSunFadeAmount / stepsTotal, _ ->
+		{
+		  var V:Float = (1 / stepsTotal) * steps;
+		  if (steps == stepsTotal) V = 1;
+		  
+		  greenSunAmount = V;
+		  greenSunTextureSwap.amount = greenSunAmount;
+		  
+		  steps--;
+		}, stepsTotal + 1);
+	}
+}

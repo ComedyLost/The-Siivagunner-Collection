@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bec_noirpixel.png">
+	<!-- Made using Maru Aseprite JSON to XML converter -->
+	<SubTexture name="idle00000" x="1" y="1" width="41" height="36"/>
+	
+	<SubTexture name="confirm00000" x="1" y="1" width="41" height="36"/>
+	<SubTexture name="confirm00001" x="43" y="1" width="41" height="36"/>
+	<SubTexture name="confirm00002" x="85" y="1" width="41" height="36"/>
+	<SubTexture name="confirm00003" x="127" y="1" width="41" height="36"/>
+	<SubTexture name="confirm00004" x="169" y="1" width="41" height="36"/>
+	<SubTexture name="confirm00005" x="211" y="1" width="41" height="36"/>
+	<SubTexture name="confirm00006" x="253" y="1" width="41" height="36"/>
+	
+	<SubTexture name="confirm-hold00000" x="295" y="1" width="41" height="36"/>
+</TextureAtlas>

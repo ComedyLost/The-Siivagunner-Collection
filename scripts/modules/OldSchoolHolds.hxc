@@ -12,56 +12,55 @@ import flixel.util.FlxSave;
 class OldSchoolHolds extends Module
 {
     function new() {
-        super('OldSchoolHolds');
+        super('OldSchoolHolds', null, {state: PlayState});
 
 		save = new FlxSave();
 		save.bind("SiivaOptions", "FunkinCrew");
     }
 
-	//Only stutter on a step (same way Psych Engine / Pre 0.3 did it)
-	function onStepHit(event:SongTimeScriptEvent):Void {	
-		if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
-		if (PlayState.instance.isMinimalMode) return;
-
+	final ANIMATION_TIMER_LIMIT:Float = 0.16666667;
+	var animationTimers:Array<Float> = [0.0, 0.0];
+	
+	function onUpdate(event:UpdateScriptEvent):Void {
+		super.onUpdate(event);
 		if (!save.data.siivastutter) return;
-
-		if (PlayState.instance.currentDifficulty != 'siiva') return;
-
-		processNotes();	
-	}	
-
-	function processNotes():Void {
-		if (PlayState.instance.playerStrumline?.notes?.members == null || PlayState.instance.opponentStrumline?.notes?.members == null) return;
-
-		// Process hold notes on the opponent's side.
+		if (PlayState.instance == null) return;
 		for (holdNote in PlayState.instance.opponentStrumline.holdNotes.members) {
-			if (holdNote == null || !holdNote.alive) continue;
-				
+			if (holdNote == null || !holdNote.alive || holdNote.noteData == null)
+				continue;
+	
 			// While the hold note is being hit, and there is length on the hold note...
-			if (holdNote.hitNote && !holdNote.missedNote && holdNote.sustainLength > 50) {
-				if (PlayState.instance.currentStage.getDad() != null && PlayState.instance.currentStage.getDad().isSinging()){
-					var anim = PlayState.instance.currentStage.getDad().getCurrentAnimation();
-					var singShit = anim.substr(anim.indexOf('-') + 1); //Grab the ending suffix so we can play that instead of the default
-					PlayState.instance.currentStage.getDad().playSingAnimation(holdNote.noteData.getDirection(), false, singShit);
+			if (holdNote.hitNote && !holdNote.missedNote && holdNote.sustainLength > 0) {
+				animationTimers[0] += event.elapsed;
+	
+				var dad:Null<AnimateAtlasCharacter> = PlayState.instance.currentStage?.getDad();
+	
+				// Make sure the opponent keeps singing while the note is held.
+				if (PlayState.instance.currentStage != null && dad != null && dad.isSinging() && animationTimers[0] >= ANIMATION_TIMER_LIMIT) {
+					animationTimers[0] = 0.0;
+					dad.playSingAnimation(holdNote.noteDirection);
+					dad.holdTimer = 0;
 				}
 			}
 		}
+	
 		for (holdNote in PlayState.instance.playerStrumline.holdNotes.members) {
-			if (holdNote == null || !holdNote.alive) continue;
-				
+			if (holdNote == null || !holdNote.alive || holdNote.noteData == null)
+				continue;
+	
 			// While the hold note is being hit, and there is length on the hold note...
-			if (holdNote.hitNote && !holdNote.missedNote && holdNote.sustainLength > 50) {
-				// Make sure the opponent keeps singing while the note is held.
-				if (PlayState.instance.currentStage.getBoyfriend() != null && PlayState.instance.currentStage.getBoyfriend().isSinging()){
-					var anim = PlayState.instance.currentStage.getBoyfriend().getCurrentAnimation();
-					var singShit = anim.substr(anim.indexOf('-') + 1);
-					PlayState.instance.currentStage.getBoyfriend().playSingAnimation(holdNote.noteData.getDirection(), false, singShit);
-				} else if (PlayState.instance.currentStage.getGirlfriend() != null && PlayState.instance.currentStage.getGirlfriend().isSinging()){
-					var anim = PlayState.instance.currentStage.getGirlfriend().getCurrentAnimation();
-					var singShit = anim.substr(anim.indexOf('-') + 1);
-					PlayState.instance.currentStage.getGirlfriend().playSingAnimation(holdNote.noteData.getDirection(), false, singShit);
+			if (holdNote.hitNote && !holdNote.missedNote && holdNote.sustainLength > 0) {
+				animationTimers[1] += event.elapsed;
+	
+				var bf:Null<AnimateAtlasCharacter> = PlayState.instance.currentStage?.getBoyfriend();
+	
+				// Make sure the player keeps singing while the note is held.
+				if (PlayState.instance.currentStage != null && bf != null && bf.isSinging() && animationTimers[1] >= ANIMATION_TIMER_LIMIT) {
+					animationTimers[1] = 0.0;
+					bf.playSingAnimation(holdNote.noteDirection);
+					bf.holdTimer = 0;
 				}
 			}
-		}	  
+		}
 	}
 }
